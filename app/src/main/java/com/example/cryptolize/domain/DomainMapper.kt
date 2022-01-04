@@ -1,4 +1,4 @@
-package com.example.cryptolize.utils
+package com.example.cryptolize.domain
 
 
 /**

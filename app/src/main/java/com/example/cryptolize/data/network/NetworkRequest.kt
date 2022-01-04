@@ -1,5 +1,6 @@
 package com.example.cryptolize.data.network
 
+import com.example.cryptolize.data.model.CryptoListDTO
 import com.example.cryptolize.domain.models.CryptoListModel
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
@@ -19,7 +20,7 @@ private val moshi = Moshi.Builder()
 /**
  * Main entry point for network access.
  */
-object GitFindApiCall {
+object CryptolizeApiCall {
     // Configure retrofit to parse JSON and use coroutines
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
@@ -46,7 +47,7 @@ interface CryptoListService {
     suspend fun getAllCrypto(
         @Query("page") page: Int = 1,
         @Query("per_page") pageSize: Int = 2
-    ): Response<List<CryptoListModel>>
+    ): Response<List<CryptoListDTO>>
     // details
 
 }
