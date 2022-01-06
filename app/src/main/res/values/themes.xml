@@ -22,4 +22,23 @@
     <style name="Theme.Cryptolize.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Cryptolize.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    //splash
+
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        // Set the splash screen background, animated icon, and animation duration.
+        <item name="windowSplashScreenBackground">@color/white</item>
+
+        // Use windowSplashScreenAnimatedIcon to add either a drawable or an
+        // animated drawable. One of these is required.
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_icon</item>
+        <item name="windowSplashScreenAnimationDuration">200</item>
+        # Required for
+        # animated icons
+
+        // Set the theme of the Activity that directly follows your splash screen.
+        <item name="postSplashScreenTheme">@style/Theme.Cryptolize</item>
+        # Required.
+    </style>
+
 </resources>

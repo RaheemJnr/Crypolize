@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 
 data class CryptoListDTO(
     @Json(name = "id")
-    val id: Int? = null,
+    val id: String? = null,
     @Json(name = "symbol")
     val symbol: String? = null,
     @Json(name = "image")

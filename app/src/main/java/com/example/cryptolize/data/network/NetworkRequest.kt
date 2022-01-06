@@ -11,7 +11,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-const val BASE_URL = "coins/markets?"
+const val BASE_URL = "https://api.coingecko.com/api/v3/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -43,7 +43,7 @@ object CryptolizeApiCall {
  */
 interface CryptoListService {
     //list
-    @GET("vs_currency=usd&order=market_cap_desc&sparkline=true")
+    @GET("coins/markets?vs_currency=usd&order=market_cap_desc&sparkline=true")
     suspend fun getAllCrypto(
         @Query("page") page: Int = 1,
         @Query("per_page") pageSize: Int = 2
