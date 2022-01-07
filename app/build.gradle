@@ -59,6 +59,7 @@ dependencies {
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0'
     implementation 'androidx.activity:activity-compose:1.4.0'
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0-rc02"
     //paging
     implementation "androidx.paging:paging-compose:1.0.0-alpha14"
     //compose navigation
@@ -80,13 +81,15 @@ dependencies {
     implementation 'androidx.core:core-splashscreen:1.0.0-alpha01'
 
     //lottie animation
-    def lottieVersion = "3.4.0"
-    implementation "com.airbnb.android:lottie:$lottieVersion"
+    implementation "com.airbnb.android:lottie:4.2.0"
+
+    //carousel pager
+    implementation "com.google.accompanist:accompanist-pager:0.19.0"
 
     //test
-//    testImplementation 'junit:junit:'
-//    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-//    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
-//    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
 }
