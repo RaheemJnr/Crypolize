@@ -44,16 +44,16 @@ fun CryptoListScreen() {
             Surface(
                 modifier = Modifier.padding(8.dp)
             ) {
-                LazyColumn(state = lazyListState) {
-                    itemsIndexed(pagingItems) { _, item ->
-                        if (item != null) {
-                            Column() {
-                                Text(text = item.toString())
-
-                            }
-                        }
-                    }
-                }
+//                LazyColumn(state = lazyListState) {
+//                    itemsIndexed(pagingItems) { _, item ->
+//                        if (item != null) {
+//                            Column() {
+//                                Text(text = item.toString())
+//
+//                            }
+//                        }
+//                    }
+//                }
             }
         }
     }
