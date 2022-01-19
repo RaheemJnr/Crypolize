@@ -81,7 +81,7 @@ dependencies {
     implementation 'androidx.core:core-splashscreen:1.0.0-alpha01'
 
     //lottie animation
-    implementation "com.airbnb.android:lottie:4.2.0"
+    implementation "com.airbnb.android:lottie-compose:4.2.0"
 
     //carousel pager
     implementation "com.google.accompanist:accompanist-pager:0.19.0"

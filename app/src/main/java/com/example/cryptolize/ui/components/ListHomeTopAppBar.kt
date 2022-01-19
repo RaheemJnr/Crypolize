@@ -40,7 +40,6 @@ fun ListTopAppbar() {
                     top.linkTo(parent.top, margin = 8.dp)
                     bottom.linkTo(parent.bottom,)
                 }
-
         )
         // moreVert9
         Icon(

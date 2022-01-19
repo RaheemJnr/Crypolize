@@ -24,8 +24,6 @@ class CryptoListViewModel(private val repo: CryptolizeRepo) : ViewModel() {
         }.flow.cachedIn(viewModelScope)
 
 
-
-
     /** viewModel Factory
      * it function is to tell the viewModel how to
      * create the repo object injected as a dependency

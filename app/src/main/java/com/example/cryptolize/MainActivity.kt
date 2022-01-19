@@ -12,8 +12,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.cryptolize.navigation.MainScreenNavigation
 import com.example.cryptolize.ui.theme.CryptolizeTheme
+import com.google.accompanist.pager.ExperimentalPagerApi
 
 class MainActivity : ComponentActivity() {
+    @ExperimentalPagerApi
     @ExperimentalMaterialApi
     @ExperimentalAnimationApi
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +35,7 @@ class MainActivity : ComponentActivity() {
 }
 
 
+@ExperimentalPagerApi
 @ExperimentalMaterialApi
 @ExperimentalAnimationApi
 @Preview(showBackground = true)

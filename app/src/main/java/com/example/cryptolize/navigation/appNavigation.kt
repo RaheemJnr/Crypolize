@@ -7,8 +7,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.cryptolize.ui.screens.CryptoListScreen
+import com.google.accompanist.pager.ExperimentalPagerApi
 
 /** nav graph to navigate to respective screens */
+@ExperimentalPagerApi
 @ExperimentalAnimationApi
 @ExperimentalMaterialApi
 @Composable

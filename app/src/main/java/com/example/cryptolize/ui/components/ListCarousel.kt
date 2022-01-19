@@ -24,13 +24,12 @@ import kotlinx.coroutines.delay
 @ExperimentalPagerApi
 @Composable
 fun ListCarousel() {
-    val images = listOf(
+    val carouselImages = listOf(
         R.drawable.ic_launcher_foreground,
         R.drawable.ic_launcher_background,
         R.drawable.splash_icon,
-        // include the other images here...
     )
-    val text = listOf(
+    val carouselText = listOf(
         "Bitcoin latest price is now at $100000",
         "Eth is on the verge of surpassing bitcoin's market capitalization",
         "Harmony one is the latestest coin to hit the $10 price mark!!"
@@ -42,53 +41,47 @@ fun ListCarousel() {
             elevation = 8.dp,
             shape = RoundedCornerShape(16.dp),
             modifier = Modifier
-                .size(width = 390.dp, height = 150.dp)
+                .size(width = 390.dp, height = 160.dp)
                 .padding(start = 16.dp, end = 16.dp, top = 16.dp)
         ) {
             HorizontalPager(
                 state = pageState,
-                count = images.size
+                count = carouselImages.size
             ) { page ->
                 Column(
-                    verticalArrangement = Arrangement.spacedBy(4.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
+                    //
                     Image(
-                        painterResource(id = images[page]),
-                        null,
-                        modifier = Modifier.fillMaxHeight(0.8f)
+                        painterResource(id = carouselImages[page]),
+                        "",
+                        modifier = Modifier
+                            .fillMaxHeight(0.87f)
                             .fillMaxWidth(),
                         contentScale = ContentScale.Crop
                     )
                     //
                     Text(
-                        text = text[page],
+                        text = carouselText[page],
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                         fontSize = 16.sp,
                         fontFamily = FontFamily.Serif,
-                        modifier = Modifier.padding(horizontal = 8.dp)
+                        modifier = Modifier.padding(start = 8.dp, end = 8.dp, bottom = 10.dp)
                     )
                 }
             }
 
 
         }
-//        LazyRow(
-//            state = LazyListState(pageState.currentPage)
-//        ) {
-//            itemsIndexed(text) { _, item ->
-//
-//            }
-//
-//        }
     }
     LaunchedEffect(pageState.currentPage) {
-        delay(3000) // wait for 3 seconds.
-        // increasing the position and check the limit
+        // wait for 3 seconds.
+        delay(3000)
+        // increasing the position and check the size
         var newPosition = pageState.currentPage + 1
-        if (newPosition > images.lastIndex) newPosition = 0
-        // scrolling to the new position.
+        if (newPosition > carouselImages.lastIndex) newPosition = 0
+        // scrolling to the new position(starting from the beginning).
         pageState.animateScrollToPage(newPosition)
     }
 }
