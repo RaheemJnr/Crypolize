@@ -1,11 +1,14 @@
 package com.example.cryptolize.ui.screens
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -15,6 +18,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemsIndexed
 import com.example.cryptolize.data.DTOMapper
 import com.example.cryptolize.repository.CryptolizeRepoImpl
+import com.example.cryptolize.ui.components.CryptoListItems
 import com.example.cryptolize.ui.components.ListCarousel
 import com.example.cryptolize.ui.components.ListHeader
 import com.example.cryptolize.ui.components.ListTopAppbar
@@ -39,38 +43,39 @@ fun CryptoListScreen() {
     ) {
         Column {
             ListCarousel()
+            Spacer(modifier = Modifier.height(10.dp))
+            // list header
+            ListHeader()
             //
             Surface(
-                modifier = Modifier.padding(8.dp)
+                // modifier = Modifier.padding(4.dp)
             ) {
-                // list header
-                ListHeader()
                 //
                 LazyColumn(state = lazyListState) {
                     itemsIndexed(pagingItems) { _, item ->
                         if (item != null) {
-                            Column() {
-                                // Text(text = item.toString())
-                                //Text(text = "success")
-
-                            }
+//                            Column() {
+//                                // Text(text = item.toString())
+//                                //Text(text = "success")
+//                            }
+                            CryptoListItems(items = item, onClick = {})
                         }
                     }
                     pagingItems.apply {
                         when {
                             loadState.refresh is LoadState.Loading -> item {
-                                // LoaderDialog()
+                                CircularProgressIndicator()
+//                                 LoaderDialog()
                             }
-                            loadState.append is LoadState.Loading -> {
-                                //  item { LoaderDialog() }
+                            loadState.append is LoadState.Loading -> item {
+                                CircularProgressIndicator()
                             }
                             loadState.refresh is LoadState.Error -> item {
                                 //refactor
-                                // Text(text = "Error fetching data")
+                                Text(text = "Error fetching data")
                             }
                         }
                     }
-//                }
                 }
             }
         }

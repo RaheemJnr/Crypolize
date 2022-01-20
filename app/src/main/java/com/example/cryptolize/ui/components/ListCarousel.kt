@@ -32,7 +32,7 @@ fun ListCarousel() {
     val carouselText = listOf(
         "Bitcoin latest price is now at $100000",
         "Eth is on the verge of surpassing bitcoin's market capitalization",
-        "Harmony one is the latestest coin to hit the $10 price mark!!"
+        "Harmony one is the latest coin to hit the $10 price mark!!"
     )
 
     val pageState = rememberPagerState()

@@ -23,7 +23,7 @@ fun ListHeader() {
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(8.dp)
+                .padding(start = 10.dp, top = 8.dp, bottom = 2.dp, end = 10.dp)
         ) {
             Text(
                 text = "Name/Pair",
