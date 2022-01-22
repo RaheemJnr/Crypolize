@@ -110,7 +110,7 @@ fun CryptoListItems(
             elevation = 8.dp,
         ) {
             Text(
-                text = "-1.24%",
+                text = "${items.price_change_percentage_24h}%",
                 fontSize = 18.sp,
                 modifier = Modifier.padding(10.dp)
             )
