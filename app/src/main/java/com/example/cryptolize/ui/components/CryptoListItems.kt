@@ -80,9 +80,7 @@ fun CryptoListItems(
 
         }
         Column(
-            modifier = Modifier.offset(
-                x = (-20).dp
-            )
+            modifier = Modifier.offset(x = (-20).dp)
         ) {
             //
             Text(
@@ -94,7 +92,6 @@ fun CryptoListItems(
                 fontSize = 14.sp,
                 color = Color.Black.copy(alpha = 0.5f)
             )
-
         }
         //
         Surface(

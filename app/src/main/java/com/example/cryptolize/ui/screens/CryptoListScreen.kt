@@ -47,25 +47,23 @@ fun CryptoListScreen() {
             // list header
             ListHeader()
             //
-            Surface(
-                // modifier = Modifier.padding(4.dp)
-            ) {
+            Surface {
                 //
                 LazyColumn(state = lazyListState) {
                     itemsIndexed(pagingItems) { _, item ->
-                        if (item != null) {
-//                            Column() {
-//                                // Text(text = item.toString())
-//                                //Text(text = "success")
-//                            }
-                            CryptoListItems(items = item, onClick = {})
+                        item?.let {
+                            Column {
+                                CryptoListItems(
+                                    items = item,
+                                    onClick = {}
+                                )
+                            }
                         }
                     }
                     pagingItems.apply {
                         when {
                             loadState.refresh is LoadState.Loading -> item {
                                 CircularProgressIndicator()
-//                                 LoaderDialog()
                             }
                             loadState.append is LoadState.Loading -> item {
                                 CircularProgressIndicator()
@@ -81,3 +79,5 @@ fun CryptoListScreen() {
         }
     }
 }
+
+
