@@ -12,7 +12,6 @@ import com.example.cryptolize.utils.PageNumSource
 
 class CryptoListViewModel(private val repo: CryptolizeRepo) : ViewModel() {
 
-
     //
     fun getCryptoList(pageSize: Int = 20) =
         Pager(config = PagingConfig(pageSize = pageSize, initialLoadSize = pageSize)) {

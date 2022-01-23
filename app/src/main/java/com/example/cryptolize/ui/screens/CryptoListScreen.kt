@@ -28,7 +28,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 @ExperimentalPagerApi
 @Composable
 fun CryptoListScreen() {
-
+    //viewModel
     val viewModel: CryptoListViewModel = viewModel(
         factory = CryptoListViewModel.CryptoListViewModelFactory(CryptolizeRepoImpl(DTOMapper()))
     )
