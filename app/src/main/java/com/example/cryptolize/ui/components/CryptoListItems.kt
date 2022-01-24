@@ -115,7 +115,8 @@ fun CryptoListItems(
                 modifier = Modifier
                     .width(60.dp)
                     .height(35.dp)
-
+                    .offset(x = (4).dp)
+                    .padding(10.dp)
             )
         }
 
