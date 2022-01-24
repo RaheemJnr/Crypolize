@@ -18,6 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.cryptolize.domain.models.CryptoListModel
+import com.example.cryptolize.utils.roundPriceChange
 import com.example.cryptolize.utils.roundToThreeDecimals
 import java.util.*
 
@@ -67,6 +68,7 @@ fun CryptoListItems(
                 onClick()
             }
     ) {
+        // name/pair
         Column() {
             Text(
                 text = annotatedText
@@ -79,6 +81,7 @@ fun CryptoListItems(
             )
 
         }
+        // last price
         Column(
             modifier = Modifier.offset(x = (-20).dp)
         ) {
@@ -93,7 +96,7 @@ fun CryptoListItems(
                 color = Color.Black.copy(alpha = 0.5f)
             )
         }
-        //
+        // 24h change
         Surface(
             color = when {
                 items.price_change_percentage_24h!! > 0 -> Color(0xff32a852)
@@ -107,9 +110,12 @@ fun CryptoListItems(
             elevation = 8.dp,
         ) {
             Text(
-                text = "${items.price_change_percentage_24h}%",
-                fontSize = 18.sp,
-                modifier = Modifier.padding(10.dp)
+                text = "${items.price_change_percentage_24h.roundPriceChange()}%",
+                fontSize = 17.sp,
+                modifier = Modifier
+                    .width(60.dp)
+                    .height(35.dp)
+
             )
         }
 
