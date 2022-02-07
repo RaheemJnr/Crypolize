@@ -17,7 +17,7 @@ import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemsIndexed
 import com.example.cryptolize.data.DTOMapper
-import com.example.cryptolize.repository.CryptolizeRepoImpl
+import com.example.cryptolize.domain.repository.CryptolizeRepoImpl
 import com.example.cryptolize.ui.components.CryptoListItems
 import com.example.cryptolize.ui.components.ListCarousel
 import com.example.cryptolize.ui.components.ListHeader

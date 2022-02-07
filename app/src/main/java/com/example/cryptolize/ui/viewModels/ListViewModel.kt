@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
-import com.example.cryptolize.repository.CryptolizeRepo
+import com.example.cryptolize.domain.repository.CryptolizeRepo
 import com.example.cryptolize.utils.PageNumSource
 
 

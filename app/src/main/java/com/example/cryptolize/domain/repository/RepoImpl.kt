@@ -1,4 +1,4 @@
-package com.example.cryptolize.repository
+package com.example.cryptolize.domain.repository
 
 import com.example.cryptolize.data.DTOMapper
 import com.example.cryptolize.data.network.CryptolizeApiCall
