@@ -52,7 +52,11 @@ fun CryptoListScreen() {
         }
     ) {
         Column {
-            ListCarousel()
+            ListCarousel(
+                onClick = {
+                    showShortToast(context = context, "Banner was clicked!!")
+                }
+            )
             Spacer(modifier = Modifier.height(10.dp))
             // list header
             ListHeader()

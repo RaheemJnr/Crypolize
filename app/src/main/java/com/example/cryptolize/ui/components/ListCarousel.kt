@@ -23,7 +23,9 @@ import kotlinx.coroutines.delay
 
 @ExperimentalPagerApi
 @Composable
-fun ListCarousel() {
+fun ListCarousel(
+    onClick: () -> Unit
+) {
     val carouselImages = listOf(
         R.drawable.bitcoin_one,
         R.drawable.bitcoin_two,
