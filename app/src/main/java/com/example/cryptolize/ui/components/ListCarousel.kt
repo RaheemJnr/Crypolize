@@ -1,6 +1,7 @@
 package com.example.cryptolize.ui.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -48,7 +49,11 @@ fun ListCarousel(
     )
 
     val pageState = rememberPagerState()
-    Row {
+    Row(modifier = Modifier
+        .clickable {
+            onClick()
+        }
+    ) {
         Card(
             elevation = 8.dp,
             shape = RoundedCornerShape(16.dp),
