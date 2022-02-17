@@ -9,8 +9,7 @@ import java.io.IOException
 
 //from compose cookbook
 class PageNumSource<Value : Any>(
-    private val loadPage:
-    suspend (pageNum: Int, pageSize: Int) -> List<Value>?
+    private val loadPage: suspend (pageNum: Int, pageSize: Int) -> List<Value>?
 ) : PagingSource<Int, Value>() {
     //load data
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Value> {

@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.sp
 import com.example.cryptolize.domain.models.CryptoListModel
 import com.example.cryptolize.utils.roundPriceChange
 import com.example.cryptolize.utils.roundToThreeDecimals
+import com.example.cryptolize.utils.roundToTwoDecimals
 import java.util.*
 
 @Composable
@@ -63,7 +64,7 @@ fun CryptoListItems(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(12.dp)
+            .padding(18.dp)
             .clickable {
                 onClick()
             }
@@ -75,7 +76,7 @@ fun CryptoListItems(
             )
             //
             Text(
-                text = "Vol ${items.total_volume}M",
+                text = "Vol ${items.total_volume.roundPriceChange()}",
                 fontSize = 14.sp,
                 color = Color.Black.copy(alpha = 0.5f)
             )
@@ -100,7 +101,7 @@ fun CryptoListItems(
         Surface(
             color = when {
                 items.price_change_percentage_24h!! > 0 -> Color(0xff32a852)
-                items.price_change_percentage_24h.equals(0) -> Color.Gray
+                items.price_change_percentage_24h.equals(0.0) -> Color.Gray
                 else -> {
                     Color.Red
                 }
