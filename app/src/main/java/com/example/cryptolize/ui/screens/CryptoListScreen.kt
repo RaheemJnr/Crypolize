@@ -104,10 +104,12 @@ fun CryptoListScreen() {
                             loadState.append is LoadState.Loading -> item {
                                 //CircularProgressIndicator()
                                 LottieLoadingView()
+                                TODO("Add text just like binance")
                             }
                             loadState.refresh is LoadState.Error -> item {
                                 //refactor
                                 Text(text = "Error fetching data")
+                                TODO("use lottie error animation")
                             }
                         }
                     }
