@@ -15,9 +15,11 @@ import com.example.cryptolize.ui.theme.CryptolizeTheme
 import com.google.accompanist.pager.ExperimentalPagerApi
 
 class MainActivity : ComponentActivity() {
-    @ExperimentalPagerApi
-    @ExperimentalMaterialApi
-    @ExperimentalAnimationApi
+
+    @OptIn(
+        ExperimentalPagerApi::class, ExperimentalAnimationApi::class,
+        ExperimentalMaterialApi::class
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //splash screen

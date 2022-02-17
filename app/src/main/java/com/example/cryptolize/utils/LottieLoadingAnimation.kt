@@ -20,15 +20,14 @@ import kotlin.math.max
 
 
 @Composable
-fun LottieLoadingView(
-) {
+fun LottieLoadingView() {
 
 // to keep track if the animation is playing
 // and play pause accordingly
     var isPlaying by remember { mutableStateOf(true) }
 
 // for speed
-    var speed by remember { mutableStateOf(1f) }
+    val speed by remember { mutableStateOf(1f) }
 
     // remember lottie composition, which
 // accepts the lottie composition result
@@ -68,7 +67,8 @@ fun LottieLoadingView(
     Column(
         Modifier
             .background(Color.White)
-            .fillMaxSize(),
+            .fillMaxWidth()
+            .requiredSize(100.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -79,7 +79,8 @@ fun LottieLoadingView(
         LottieAnimation(
             composition,
             progress,
-            modifier = Modifier.size(400.dp)
+            modifier = Modifier.size(400.dp),
+            alignment = Alignment.Center
         )
 
     }
