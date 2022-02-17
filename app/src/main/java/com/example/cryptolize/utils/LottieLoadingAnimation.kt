@@ -73,17 +73,6 @@ fun LottieLoadingView(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        // Heading
-        Text(
-            text = "Lottie",
-            color = Color.Gray,
-            fontSize = 70.sp,
-            fontWeight = FontWeight.SemiBold,
-            fontStyle = FontStyle.Italic,
-            modifier = Modifier.padding(10.dp)
-        )
-
-
         // LottieAnimation
         // Pass the composition
         // and the progress state
@@ -93,81 +82,6 @@ fun LottieLoadingView(
             modifier = Modifier.size(400.dp)
         )
 
-        // Buttons to control the animation
-        Row(
-            horizontalArrangement = Arrangement.SpaceAround,
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Row(
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-
-                // Button to decrease speed
-                Button(
-                    onClick = {
-                        // check to prevent speed going negative
-                        speed = max(speed - 0.25f, 0f)
-                    },
-                    // Button background color
-                    colors = ButtonDefaults.buttonColors(
-                        backgroundColor = Color(0xFF0F9D58)
-                    )
-                ) {
-                    Text(
-                        text = "-",
-                        color = Color.White,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 20.sp,
-
-                        )
-                }
-
-                // Button to Increase speed
-                Text(
-                    text = "Speed ( $speed ) ",
-                    color = Color.Black,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 15.sp, modifier = Modifier.padding(horizontal = 10.dp)
-
-                )
-                Button(
-                    onClick = {
-                        // Increase the speed by 0.25
-                        speed += 0.25f
-                    },
-                    colors = ButtonDefaults.buttonColors(
-                        backgroundColor = Color(0xFF0F9D58)
-                    )
-                ) {
-                    Text(
-                        text = "+",
-                        color = Color.White,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 20.sp
-                    )
-                }
-            }
-
-
-            // Button to pause and play
-            Button(
-                onClick = {
-                    // change isPlaying state to pause/play
-                    isPlaying = !isPlaying
-                },
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color(0xFF0F9D58)
-                )
-            ) {
-                Text(
-                    // display text according to state
-                    text = if (isPlaying) "Pause" else "Play",
-                    color = Color.White
-                )
-            }
-        }
     }
 
 
