@@ -25,14 +25,24 @@ import kotlinx.coroutines.delay
 @Composable
 fun ListCarousel() {
     val carouselImages = listOf(
-        R.drawable.ic_launcher_foreground,
-        R.drawable.ic_launcher_background,
-        R.drawable.splash_icon,
+        R.drawable.bitcoin_one,
+        R.drawable.bitcoin_two,
+        R.drawable.harmony_one,
+        R.drawable.nervos_one,
+        R.drawable.tezos_one,
+        R.drawable.nervous_two,
+        R.drawable.harmony_two,
+        R.drawable.binance,
     )
     val carouselText = listOf(
         "Bitcoin latest price is now at $100000",
         "Eth is on the verge of surpassing bitcoin's market capitalization",
-        "Harmony one is the latest coin to hit the $10 price mark!!"
+        "Harmony one is the latest coin to hit the $10 price mark!!",
+        "Nervous Network 'CKB' hit the expected $100 price mark!!",
+        "Tezos introduced latest Bitcoin Hedge Fund",
+        "Nervous successfully link the whole crypto space",
+        "Harmony is next best Defi Eco system",
+        "Binance still the leading crypto exchange after 30 years!!"
     )
 
     val pageState = rememberPagerState()
