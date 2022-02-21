@@ -20,7 +20,7 @@ import kotlin.math.max
 
 
 @Composable
-fun LottieLoadingView() {
+fun LottieLoadingView(showText: Boolean) {
 
 // to keep track if the animation is playing
 // and play pause accordingly
@@ -76,12 +76,19 @@ fun LottieLoadingView() {
         // LottieAnimation
         // Pass the composition
         // and the progress state
+        if (showText) {
+            Text(text = "Loading")
+        }
+        //
         LottieAnimation(
             composition,
             progress,
             modifier = Modifier.size(400.dp),
+
             alignment = Alignment.Center
         )
+
+
 
     }
 

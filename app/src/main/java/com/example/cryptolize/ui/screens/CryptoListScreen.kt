@@ -12,6 +12,8 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -32,6 +34,8 @@ import com.example.cryptolize.ui.viewModels.CryptoListViewModel
 import com.example.cryptolize.utils.LottieLoadingView
 import com.example.cryptolize.utils.showShortToast
 import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 
 @ExperimentalPagerApi
 @Composable
@@ -43,6 +47,7 @@ fun CryptoListScreen() {
     //
     val context = LocalContext.current
     //
+    val isRefreshing by viewModel.isRefreshing.collectAsState()
     val pagingItems = viewModel.getCryptoList().collectAsLazyPagingItems()
     val lazyListState = rememberLazyListState()
 
@@ -63,57 +68,64 @@ fun CryptoListScreen() {
             //
             Surface {
                 //
-                LazyColumn(state = lazyListState) {
-                    itemsIndexed(pagingItems) { _, item ->
-                        item?.let {
-                            Column {
-                                CryptoListItems(
-                                    items = item,
-                                    onClick = {
-                                        showShortToast(
-                                            context = context,
-                                            message = "clicked ${item.symbol}"
-                                        )
-                                    }
-                                )
-                            }
-                        }
+                SwipeRefresh(
+                    state = rememberSwipeRefreshState(isRefreshing = isRefreshing),
+                    onRefresh = {
+                        pagingItems.refresh()
                     }
-                    pagingItems.apply {
-                        when {
-                            loadState.refresh is LoadState.Loading -> item {
-                                Dialog(
-                                    onDismissRequest = {},
-                                    DialogProperties(
-                                        dismissOnBackPress = false,
-                                        dismissOnClickOutside = false
-                                    )
-                                ) {
-                                    Box(
-                                        modifier = Modifier
-                                            .size(55.dp)
-                                            .background(
-                                                Color.Transparent,
-                                                shape = RoundedCornerShape(8.dp)
+                ) {
+                    LazyColumn(state = lazyListState) {
+                        itemsIndexed(pagingItems) { _, item ->
+                            item?.let {
+                                Column {
+                                    CryptoListItems(
+                                        items = item,
+                                        onClick = {
+                                            showShortToast(
+                                                context = context,
+                                                message = "clicked ${item.symbol}"
                                             )
-                                    ) {
-                                        LottieLoadingView()
-                                    }
+                                        }
+                                    )
                                 }
                             }
-                            loadState.append is LoadState.Loading -> item {
-                                //CircularProgressIndicator()
-                                LottieLoadingView()
-                                TODO("Add text just like binance")
-                            }
-                            loadState.refresh is LoadState.Error -> item {
-                                //refactor
-                                Text(text = "Error fetching data")
-                                TODO("use lottie error animation")
+                        }
+                        pagingItems.apply {
+                            when {
+                                loadState.refresh is LoadState.Loading -> item {
+                                    Dialog(
+                                        onDismissRequest = {},
+                                        DialogProperties(
+                                            dismissOnBackPress = false,
+                                            dismissOnClickOutside = false
+                                        )
+                                    ) {
+                                        Box(
+                                            modifier = Modifier
+                                                .size(55.dp)
+                                                .background(
+                                                    Color.Transparent,
+                                                    shape = RoundedCornerShape(8.dp)
+                                                )
+                                        ) {
+                                            LottieLoadingView(showText = false)
+                                        }
+                                    }
+                                }
+                                loadState.append is LoadState.Loading -> item {
+                                    //CircularProgressIndicator()
+                                    LottieLoadingView(showText = true)
+                                }
+                                loadState.refresh is LoadState.Error -> item {
+                                    //refactor
+                                    Text(text = "Error fetching data")
+                                    TODO("use lottie error animation")
+                                }
                             }
                         }
                     }
                 }
+
             }
         }
     }

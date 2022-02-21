@@ -81,6 +81,10 @@ dependencies {
     //splash screen
     implementation 'androidx.core:core-splashscreen:1.0.0-alpha01'
 
+    //swipe to refresh
+    implementation "com.google.accompanist:accompanist-swiperefresh:0.23.0"
+
+
     //lottie animation
     implementation "com.airbnb.android:lottie-compose:4.2.2"
 
