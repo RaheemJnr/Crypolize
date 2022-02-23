@@ -32,6 +32,7 @@ import com.example.cryptolize.ui.components.ListHeader
 import com.example.cryptolize.ui.components.ListTopAppbar
 import com.example.cryptolize.ui.viewModels.CryptoListViewModel
 import com.example.cryptolize.utils.LottieLoadingView
+import com.example.cryptolize.utils.openUrl
 import com.example.cryptolize.utils.showShortToast
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.swiperefresh.SwipeRefresh
@@ -59,7 +60,8 @@ fun CryptoListScreen() {
         Column {
             ListCarousel(
                 onClick = {
-                    showShortToast(context = context, "Banner was clicked!!")
+//                    showShortToast(context = context, "Banner was clicked!!")
+                    context.openUrl(url = "https://github.com/RaheemJnr")
                 }
             )
             Spacer(modifier = Modifier.height(10.dp))
@@ -119,7 +121,7 @@ fun CryptoListScreen() {
                                 loadState.refresh is LoadState.Error -> item {
                                     //refactor
                                     Text(text = "Error fetching data")
-                                    TODO("use lottie error animation")
+//                                    TODO("use lottie error animation")
                                 }
                             }
                         }

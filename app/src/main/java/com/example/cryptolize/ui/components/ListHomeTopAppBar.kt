@@ -3,7 +3,6 @@ package com.example.cryptolize.ui.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
@@ -25,7 +24,7 @@ fun ListTopAppbar() {
         modifier = Modifier
             .fillMaxWidth(),
     ) {
-        val (profileIcon, notificationIcon, moreVertIcon) = createRefs()
+        val (profileIcon, notificationIcon, moreVertIcon, searchBar) = createRefs()
         //person icon
         Icon(
             imageVector = Icons.Filled.Person,
@@ -34,19 +33,26 @@ fun ListTopAppbar() {
             modifier = Modifier
                 .clip(RoundedCornerShape(32.dp))
                 .background(Color.Black)
-                .size(26.dp)
+                .size(32.dp)
                 .constrainAs(profileIcon) {
                     start.linkTo(parent.start, margin = 8.dp)
                     top.linkTo(parent.top, margin = 8.dp)
-                    bottom.linkTo(parent.bottom,)
+                    bottom.linkTo(parent.bottom)
+                    end.linkTo(searchBar.start)
                 }
         )
-        // moreVert9
+        CryptoListSearch(
+            modifier = Modifier.constrainAs(searchBar) {
+                start.linkTo(profileIcon.end, margin = 4.dp)
+                end.linkTo(notificationIcon.start)
+            }
+        )
+        // moreVert
         Icon(
             imageVector = Icons.Filled.MoreVert,
             contentDescription = "more vert",
             modifier = Modifier
-                .size(24.dp)
+                .size(28.dp)
                 .constrainAs(moreVertIcon) {
                     end.linkTo(parent.end, margin = 8.dp)
                     top.linkTo(parent.top, margin = 4.dp)
@@ -58,7 +64,7 @@ fun ListTopAppbar() {
             imageVector = Icons.Filled.Notifications,
             contentDescription = "notification",
             modifier = Modifier
-                .size(24.dp)
+                .size(28.dp)
                 .constrainAs(notificationIcon) {
                     end.linkTo(moreVertIcon.start, margin = 8.dp)
                     top.linkTo(parent.top)

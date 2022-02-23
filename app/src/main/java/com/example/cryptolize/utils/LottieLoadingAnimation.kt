@@ -13,9 +13,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.airbnb.lottie.compose.*
+import java.util.*
 import kotlin.math.max
 
 
@@ -77,7 +79,10 @@ fun LottieLoadingView(showText: Boolean) {
         // Pass the composition
         // and the progress state
         if (showText) {
-            Text(text = "Loading")
+            Text(
+                text = "Loading".uppercase(Locale.getDefault()),
+                fontWeight = FontWeight.Bold,
+                )
         }
         //
         LottieAnimation(
@@ -87,7 +92,6 @@ fun LottieLoadingView(showText: Boolean) {
 
             alignment = Alignment.Center
         )
-
 
 
     }
