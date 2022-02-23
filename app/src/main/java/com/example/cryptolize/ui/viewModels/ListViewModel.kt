@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 
 class CryptoListViewModel(private val repo: CryptolizeRepo) : ViewModel() {
 
-    private val _isRefreshing = MutableStateFlow(true)
+    private val _isRefreshing = MutableStateFlow(false)
 
     val isRefreshing: StateFlow<Boolean>
         get() = _isRefreshing.asStateFlow()
