@@ -1,12 +1,13 @@
-package com.example.cryptolize.domain.repository
+package com.example.cryptolize.domain.repository.list
 
 import androidx.annotation.WorkerThread
 import com.example.cryptolize.data.ListDTOMapper
 import com.example.cryptolize.data.network.CryptolizeApiCall
 import com.example.cryptolize.domain.models.Crypto
-import com.example.cryptolize.domain.models.detailModel.CoinDetail
+import com.example.cryptolize.domain.repository.ListRepo
 
-class CryptolizeRepoImpl(private val mapper: ListDTOMapper) : CryptolizeRepo {
+
+class ListRepoImpl(private val mapper: ListDTOMapper) : ListRepo {
 
     @WorkerThread
     override suspend fun getCryptoList(
@@ -20,20 +21,6 @@ class CryptolizeRepoImpl(private val mapper: ListDTOMapper) : CryptolizeRepo {
         } else {
             emptyList()
         }
-    }
-
-    @WorkerThread
-    override suspend fun getCoinDetails(coinId: String): List<CoinDetail> {
-        val response = CryptolizeApiCall.CRYPTO_SERVICE.getCoinDetails(coinId = coinId)
-        return if (response.isSuccessful && !response.body().isNullOrEmpty()){
-            val body = response.body()
-            val bo = mapper.toDomainList(body)
-            bo
-        }else{
-            emptyList()
-        }
-
-
     }
 
 }

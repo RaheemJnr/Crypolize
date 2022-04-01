@@ -6,10 +6,8 @@ import com.example.cryptolize.domain.models.detailModel.CoinDetail
 /**
  * interface to get our data
  */
-interface CryptolizeRepo {
+interface ListRepo {
     //list
     suspend fun getCryptoList(page: Int, pageSize: Int): List<Crypto>
 
-    //details
-    suspend fun getCoinDetails(coinId: String): List<CoinDetail>
 }
