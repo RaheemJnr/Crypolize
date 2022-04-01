@@ -14,6 +14,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -21,11 +22,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemsIndexed
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.rememberLottieComposition
+import com.example.cryptolize.R
 import com.example.cryptolize.data.DTOMapper
 import com.example.cryptolize.domain.repository.CryptolizeRepoImpl
+import com.example.cryptolize.navigation.MainScreen
 import com.example.cryptolize.ui.components.CryptoListItems
 import com.example.cryptolize.ui.components.ListCarousel
 import com.example.cryptolize.ui.components.ListHeader
@@ -40,7 +46,7 @@ import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 
 @ExperimentalPagerApi
 @Composable
-fun CryptoListScreen() {
+fun CryptoListScreen(navController: NavController) {
     //viewModel
     val viewModel: CryptoListViewModel = viewModel(
         factory = CryptoListViewModel.CryptoListViewModelFactory(CryptolizeRepoImpl(DTOMapper()))
@@ -48,7 +54,7 @@ fun CryptoListScreen() {
     //
     val context = LocalContext.current
     //
-    val isRefreshing by viewModel.isRefreshing.collectAsState()
+    val isRefreshing = viewModel.isRefreshing.collectAsState()
     val pagingItems = viewModel.getCryptoList().collectAsLazyPagingItems()
     val lazyListState = rememberLazyListState()
 
@@ -60,7 +66,6 @@ fun CryptoListScreen() {
         Column {
             ListCarousel(
                 onClick = {
-//                    showShortToast(context = context, "Banner was clicked!!")
                     context.openUrl(url = "https://github.com/RaheemJnr")
                 }
             )
@@ -71,9 +76,9 @@ fun CryptoListScreen() {
             Surface {
                 //
                 SwipeRefresh(
-                    state = rememberSwipeRefreshState(isRefreshing = isRefreshing),
+                    state = rememberSwipeRefreshState(isRefreshing = isRefreshing.value),
                     onRefresh = {
-                        pagingItems.refresh()
+                        viewModel.refresh()
                     }
                 ) {
                     LazyColumn(state = lazyListState) {
@@ -87,6 +92,8 @@ fun CryptoListScreen() {
                                                 context = context,
                                                 message = "clicked ${item.symbol}"
                                             )
+                                            navController.navigate("${MainScreen.DetailScreen.route}/${item.id}")
+
                                         }
                                     )
                                 }
@@ -94,6 +101,7 @@ fun CryptoListScreen() {
                         }
                         pagingItems.apply {
                             when {
+                                //refresh list
                                 loadState.refresh is LoadState.Loading -> item {
                                     Dialog(
                                         onDismissRequest = {},
@@ -110,18 +118,56 @@ fun CryptoListScreen() {
                                                     shape = RoundedCornerShape(8.dp)
                                                 )
                                         ) {
-                                            LottieLoadingView(showText = false)
+                                            val composition by rememberLottieComposition(
+                                                LottieCompositionSpec
+                                                    // here `code` is the file name of lottie file
+                                                    // use it accordingly
+                                                    .RawRes(R.raw.cryptolize_loading_anim)
+                                            )
+                                            composition?.let { lottieComposition ->
+                                                LottieLoadingView(
+                                                    showText = false,
+                                                    composition = lottieComposition
+                                                )
+                                            }
                                         }
                                     }
                                 }
+                                //add to the already available list
                                 loadState.append is LoadState.Loading -> item {
-                                    //CircularProgressIndicator()
-                                    LottieLoadingView(showText = true)
+                                    val composition by rememberLottieComposition(
+
+                                        LottieCompositionSpec
+                                            // here `code` is the file name of lottie file
+                                            // use it accordingly
+                                            .RawRes(R.raw.cryptolize_loading_anim)
+                                    )
+                                    composition?.let { lottieComposition ->
+                                        LottieLoadingView(
+                                            showText = true,
+                                            composition = lottieComposition
+                                        )
+                                    }
                                 }
                                 loadState.refresh is LoadState.Error -> item {
-                                    //refactor
-                                    Text(text = "Error fetching data")
-//                                    TODO("use lottie error animation")
+                                    Box(
+                                        contentAlignment = Alignment.Center,
+                                        modifier = Modifier
+                                    ) {
+                                        val composition by rememberLottieComposition(
+
+                                            LottieCompositionSpec
+                                                // here `code` is the file name of lottie file
+                                                // use it accordingly
+                                                .RawRes(R.raw.cryptolize_error)
+                                        )
+                                        composition?.let { lottieComposition ->
+                                            LottieLoadingView(
+                                                showText = false,
+                                                composition = lottieComposition
+                                            )
+                                        }
+                                    }
                                 }
                             }
                         }

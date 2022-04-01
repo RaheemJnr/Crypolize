@@ -6,7 +6,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.cryptolize.ui.screens.CryptoListScreen
+import com.example.cryptolize.ui.screens.DetailScreen
 import com.google.accompanist.pager.ExperimentalPagerApi
 
 /** nav graph to navigate to respective screens */
@@ -21,12 +23,17 @@ fun MainScreenNavigation() {
     NavHost(navController, startDestination = MainScreen.CryptoListScreen.route) {
         //List
         composable(MainScreen.CryptoListScreen.route) {
-            CryptoListScreen()
+            CryptoListScreen(navController = navController)
         }
-        //
-//        composable(MainScreen.DetailsList.route) {
-//
-//        }
+
+        composable(MainScreen.DetailScreen.route) {
+
+        }
+
+        //detail screen
+        composable("${MainScreen.DetailScreen.route}/{coin}") { backStackEntry ->
+            DetailScreen(navController, backStackEntry.arguments?.getString("coin") ?: "")
+        }
 
     }
 

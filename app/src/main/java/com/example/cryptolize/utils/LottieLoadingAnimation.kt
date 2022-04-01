@@ -16,30 +16,25 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.airbnb.lottie.LottieComposition
 import com.airbnb.lottie.compose.*
 import java.util.*
 import kotlin.math.max
 
 
 @Composable
-fun LottieLoadingView(showText: Boolean) {
+fun LottieLoadingView(showText: Boolean,composition: LottieComposition) {
 
 // to keep track if the animation is playing
 // and play pause accordingly
-    var isPlaying by remember { mutableStateOf(true) }
+    val isPlaying by remember { mutableStateOf(true) }
 
 // for speed
     val speed by remember { mutableStateOf(1f) }
 
     // remember lottie composition, which
 // accepts the lottie composition result
-    val composition by rememberLottieComposition(
 
-        LottieCompositionSpec
-            // here `code` is the file name of lottie file
-            // use it accordingly
-            .RawRes(com.example.cryptolize.R.raw.cryptolize_loading_anim)
-    )
 
     // to control the animation
     val progress by animateLottieCompositionAsState(
