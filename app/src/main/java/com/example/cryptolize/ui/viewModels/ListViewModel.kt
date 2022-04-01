@@ -8,7 +8,8 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import com.example.cryptolize.domain.models.Crypto
-import com.example.cryptolize.domain.repository.listRepo
+import com.example.cryptolize.domain.repository.ListRepo
+import com.example.cryptolize.domain.repository.detail.DetailRepo
 import com.example.cryptolize.utils.PageNumSource
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,7 +17,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 
-class CryptoListViewModel(private val repo: listRepo) : ViewModel() {
+class CryptoListViewModel(private val repo: DetailRepo) : ViewModel() {
 
     private val _isRefreshing = MutableStateFlow(false)
 
@@ -55,7 +56,7 @@ class CryptoListViewModel(private val repo: listRepo) : ViewModel() {
      * it function is to tell the viewModel how to
      * create the repo object injected as a dependency
      * */
-    class CryptoListViewModelFactory(private val repo: listRepo) :
+    class CryptoListViewModelFactory(private val repo: ListRepo) :
         ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {

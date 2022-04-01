@@ -26,7 +26,7 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.cryptolize.R
 import com.example.cryptolize.data.ListDTOMapper
-import com.example.cryptolize.domain.repository.list.listRepoImpl
+import com.example.cryptolize.domain.repository.list.ListRepoImpl
 import com.example.cryptolize.navigation.MainScreen
 import com.example.cryptolize.ui.components.CryptoListItems
 import com.example.cryptolize.ui.components.ListCarousel
@@ -45,7 +45,7 @@ import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 fun CryptoListScreen(navController: NavController) {
     //viewModel
     val viewModel: CryptoListViewModel = viewModel(
-        factory = CryptoListViewModel.CryptoListViewModelFactory(listRepoImpl(ListDTOMapper()))
+        factory = CryptoListViewModel.CryptoListViewModelFactory(ListRepoImpl(ListDTOMapper()))
     )
     //
     val context = LocalContext.current
