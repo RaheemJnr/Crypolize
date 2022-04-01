@@ -1,7 +1,7 @@
 package com.example.cryptolize.data.network
 
 import com.example.cryptolize.data.model.CryptoListDTO
-import com.example.cryptolize.domain.models.CryptoListModel
+import com.example.cryptolize.data.model.detailsDto.DetailsDTO
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -9,6 +9,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 const val BASE_URL = "https://api.coingecko.com/api/v3/"
@@ -29,8 +30,8 @@ object CryptolizeApiCall {
         .build()
 
     //
-    val CRYPTO_LIST_SERVICE: CryptoListService by lazy {
-        retrofit.create(CryptoListService::class.java)
+    val CRYPTO_SERVICE: CryptoService by lazy {
+        retrofit.create(CryptoService::class.java)
     }
     //
 
@@ -41,13 +42,19 @@ object CryptolizeApiCall {
  * A retrofit service to fetch list of github repo data
  * for listScreen
  */
-interface CryptoListService {
+interface CryptoService {
     //list
     @GET("coins/markets?vs_currency=usd&order=market_cap_desc&sparkline=true")
-    suspend fun getAllCrypto(
+    suspend fun getCryptoList(
         @Query("page") page: Int = 1,
         @Query("per_page") pageSize: Int = 20
     ): Response<List<CryptoListDTO>>
+
     // details
+
+    @GET(value = "coins/{coinId}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=true")
+    suspend fun getCoinDetails(
+        @Path("coinId") coinId: String,
+    ): Response<List<DetailsDTO>>
 
 }

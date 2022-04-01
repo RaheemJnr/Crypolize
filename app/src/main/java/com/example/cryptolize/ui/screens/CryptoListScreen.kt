@@ -1,16 +1,12 @@
 package com.example.cryptolize.ui.screens
 
-import android.content.Context
-import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -29,7 +25,7 @@ import androidx.paging.compose.itemsIndexed
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.cryptolize.R
-import com.example.cryptolize.data.DTOMapper
+import com.example.cryptolize.data.ListDTOMapper
 import com.example.cryptolize.domain.repository.CryptolizeRepoImpl
 import com.example.cryptolize.navigation.MainScreen
 import com.example.cryptolize.ui.components.CryptoListItems
@@ -49,7 +45,7 @@ import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 fun CryptoListScreen(navController: NavController) {
     //viewModel
     val viewModel: CryptoListViewModel = viewModel(
-        factory = CryptoListViewModel.CryptoListViewModelFactory(CryptolizeRepoImpl(DTOMapper()))
+        factory = CryptoListViewModel.CryptoListViewModelFactory(CryptolizeRepoImpl(ListDTOMapper()))
     )
     //
     val context = LocalContext.current

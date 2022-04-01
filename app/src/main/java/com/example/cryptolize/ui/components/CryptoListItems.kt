@@ -17,15 +17,14 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.cryptolize.domain.models.CryptoListModel
+import com.example.cryptolize.domain.models.Crypto
 import com.example.cryptolize.utils.roundPriceChange
 import com.example.cryptolize.utils.roundToThreeDecimals
-import com.example.cryptolize.utils.roundToTwoDecimals
 import java.util.*
 
 @Composable
 fun CryptoListItems(
-    items: CryptoListModel,
+    items: Crypto,
     onClick: () -> Unit,
 ) {
     val annotatedText = buildAnnotatedString {
@@ -129,7 +128,7 @@ fun CryptoListItems(
 @Composable
 fun CryptoListItemsPreview() {
     CryptoListItems(
-        items = CryptoListModel(
+        items = Crypto(
             id = "BTC", symbol = "BTC",
             image = "", current_price = 42205.3,
             price_change_percentage_24h = null, total_volume = 22.4

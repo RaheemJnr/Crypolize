@@ -2,27 +2,27 @@ package com.example.cryptolize.data
 
 import com.example.cryptolize.data.model.CryptoListDTO
 import com.example.cryptolize.domain.DomainMapper
-import com.example.cryptolize.domain.models.CryptoListModel
+import com.example.cryptolize.domain.models.Crypto
 
 /**
  * we use #DomainMapper interface to map our domain model to network DTO
  */
 
-class DTOMapper : DomainMapper<CryptoListDTO, CryptoListModel> {
-    override fun mapToDomainModel(model: CryptoListDTO)
-            : CryptoListModel {
-        return CryptoListModel(
-            id = model.id,
-            symbol = model.symbol,
-            image = model.image,
-            current_price = model.current_price,
-            price_change_percentage_24h = model.price_change_percentage_24h,
-            total_volume = model.total_volume
+class ListDTOMapper : DomainMapper<CryptoListDTO, Crypto> {
+    override fun mapToDomainModel(dtoModel: CryptoListDTO)
+            : Crypto {
+        return Crypto(
+            id = dtoModel.id,
+            symbol = dtoModel.symbol,
+            image = dtoModel.image,
+            current_price = dtoModel.current_price,
+            price_change_percentage_24h = dtoModel.price_change_percentage_24h,
+            total_volume = dtoModel.total_volume
         )
 
     }
 
-    override fun mapFromDomainModel(domainModel: CryptoListModel)
+    override fun mapFromDomainModel(domainModel: Crypto)
             : CryptoListDTO {
         return CryptoListDTO(
             id = domainModel.id,
@@ -34,11 +34,11 @@ class DTOMapper : DomainMapper<CryptoListDTO, CryptoListModel> {
     }
 
     fun toDomainList(initial: List<CryptoListDTO>)
-            : List<CryptoListModel> {
+            : List<Crypto> {
         return initial.map { mapToDomainModel(it) }
     }
 
-    fun fromDomainList(initial: List<CryptoListModel>)
+    fun fromDomainList(initial: List<Crypto>)
             : List<CryptoListDTO> {
         return initial.map { mapFromDomainModel(it) }
     }

@@ -1,6 +1,5 @@
 package com.example.cryptolize.ui.viewModels
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -8,8 +7,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
-import androidx.paging.compose.collectAsLazyPagingItems
-import com.example.cryptolize.domain.models.CryptoListModel
+import com.example.cryptolize.domain.models.Crypto
 import com.example.cryptolize.domain.repository.CryptolizeRepo
 import com.example.cryptolize.utils.PageNumSource
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -25,8 +23,8 @@ class CryptoListViewModel(private val repo: CryptolizeRepo) : ViewModel() {
     val isRefreshing: StateFlow<Boolean>
         get() = _isRefreshing.asStateFlow()
 
-    private suspend fun repo(pageNum: Int, pageSize: Int): List<CryptoListModel> {
-        return repo.getGitHubDataList(
+    private suspend fun repo(pageNum: Int, pageSize: Int): List<Crypto> {
+        return repo.getCryptoList(
             pageNum, pageSize
         )
     }

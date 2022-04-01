@@ -1,6 +1,6 @@
 package com.example.cryptolize.domain.models
 
-data class CryptoListModel(
+data class Crypto(
     val id: String? = null,
     val symbol: String? = null,
     val image: String? = null,
