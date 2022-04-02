@@ -1,6 +1,5 @@
 package com.example.cryptolize.domain.repository.detail
 
-import android.util.Log
 import androidx.annotation.WorkerThread
 import com.example.cryptolize.data.DetailDTOMapper
 import com.example.cryptolize.data.network.CryptolizeApiCall
@@ -11,20 +10,18 @@ import retrofit2.Response
 
 class DetailRepoImpl(private val mapper: DetailDTOMapper) : DetailRepo {
     @WorkerThread
-    override suspend fun getCoinDetails(coinId: String): CoinDetail {
+    override suspend fun getCoinDetails(coinId: String): List<CoinDetail> {
         val response =
             CryptolizeApiCall.CRYPTO_SERVICE.getCoinDetails(coinId = coinId)
-        return try{
-            response.isSuccessful
-                val body = response.body()
-                val bo = mapper.mapToDomainModel(body!!)
-                bo
-        }catch (e:Exception){
-            Log.d("details error","${e.localizedMessage}!!")
+
+        return if (response.isSuccessful) {
+            val body = response.body()
+            val bo = mapper.toDomainList(listOf(body!!))
+            bo
+        } else {
+            emptyList()
         }
-
     }
-
 }
 
 

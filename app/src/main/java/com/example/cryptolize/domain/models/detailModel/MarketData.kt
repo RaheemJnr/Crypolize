@@ -22,7 +22,7 @@ data class MarketData(
 
 
 data class TotalVolume(
-    val usd: Int,
+    val usd: Long,
 )
 
 
@@ -49,7 +49,7 @@ data class AthChangePercentage(
 )
 
 data class MarketCap(
-    val usd: Int,
+    val usd: Long,
 )
 
 data class Ath(

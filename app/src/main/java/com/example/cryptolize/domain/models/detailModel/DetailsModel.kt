@@ -7,14 +7,14 @@ import com.example.cryptolize.data.model.detailsDto.MarketData
 
 
 data class CoinDetail(
-    val id: String,
-    val symbol: String,
-    val name: String,
-    val description: Description,
-    val links: Links,
-    val image: Image,
-    val market_cap_rank: Int,
-    val market_data: MarketData,
+    val id: String? = null,
+    val symbol: String? = null,
+    val name: String? = null,
+    val description: Description? = null,
+    val links: Links? = null,
+    val image: Image? = null,
+    val market_cap_rank: Int? = null,
+    val market_data: MarketData? = null,
 )
 
 data class Description(
