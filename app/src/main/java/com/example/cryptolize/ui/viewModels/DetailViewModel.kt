@@ -6,17 +6,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.cryptolize.domain.models.detailModel.CoinDetail
 import com.example.cryptolize.domain.repository.detail.DetailRepo
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class CoinDetailViewModel(private val repo: DetailRepo) : ViewModel() {
 
-    private val _isRefreshing = MutableStateFlow(false)
 
-    val isRefreshing: StateFlow<Boolean>
-        get() = _isRefreshing.asStateFlow()
+
+    private val _getCoin = MutableSharedFlow<List<CoinDetail>>()
+    val getCoin: SharedFlow<List<CoinDetail>>
+        get() = _getCoin
 
     private suspend fun repo(coinId: String): List<CoinDetail> {
         return repo.getCoinDetails(
@@ -24,23 +23,13 @@ class CoinDetailViewModel(private val repo: DetailRepo) : ViewModel() {
         )
     }
 
-//    fun refresh(pageSize: Int = 20) {
-//        viewModelScope.launch {
-//            _isRefreshing.emit(true)
-//            try {
-//                repo(pageSize, pageSize)
-//            } catch (e: Exception) {
-//                Log.d("refresh log", e.localizedMessage!!)
-//            }
-//            _isRefreshing.emit(false)
-//
-//        }
-//    }
+
 
 
     fun getCoinDetail(coinId: String) = viewModelScope.launch {
         try {
-            repo(coinId = coinId)
+            val result = repo(coinId = coinId)
+            _getCoin.emit(result)
         } catch (e: Exception) {
             Log.d("details error", e.localizedMessage!!)
         }
@@ -55,7 +44,7 @@ class CoinDetailViewModel(private val repo: DetailRepo) : ViewModel() {
         ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return CryptoListViewModel(repo) as T
+            return CoinDetailViewModel(repo) as T
         }
     }
 }

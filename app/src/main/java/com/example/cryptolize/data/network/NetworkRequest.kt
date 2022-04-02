@@ -55,6 +55,6 @@ interface CryptoService {
     @GET(value = "coins/{coinId}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=true")
     suspend fun getCoinDetails(
         @Path("coinId") coinId: String,
-    ): Response<List<DetailsDTO>>
+    ): Response<DetailsDTO>
 
 }
