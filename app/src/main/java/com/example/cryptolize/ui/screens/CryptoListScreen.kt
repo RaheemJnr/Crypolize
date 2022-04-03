@@ -21,7 +21,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
-import androidx.paging.compose.itemsIndexed
+import androidx.paging.compose.items
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.cryptolize.R
@@ -33,7 +33,7 @@ import com.example.cryptolize.ui.components.ListCarousel
 import com.example.cryptolize.ui.components.ListHeader
 import com.example.cryptolize.ui.components.ListTopAppbar
 import com.example.cryptolize.ui.viewModels.CryptoListViewModel
-import com.example.cryptolize.utils.LottieLoadingView
+import com.example.cryptolize.utils.LottieAnimation
 import com.example.cryptolize.utils.openUrl
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.swiperefresh.SwipeRefresh
@@ -77,8 +77,11 @@ fun CryptoListScreen(navController: NavController) {
                     }
                 ) {
                     LazyColumn(state = lazyListState) {
-                        itemsIndexed(pagingItems) { _, item ->
-
+                        items(items = pagingItems,
+                            key = { crypto ->
+                                crypto.id.toString()
+                            }
+                        ) { item ->
                             item?.let {
                                 Column {
                                     CryptoListItems(
@@ -119,8 +122,8 @@ fun CryptoListScreen(navController: NavController) {
                                                     .RawRes(R.raw.cryptolize_loading_anim)
                                             )
                                             composition?.let { lottieComposition ->
-                                                LottieLoadingView(
-                                                    showText = false,
+                                                LottieAnimation(
+                                                    showMessage = false,
                                                     composition = lottieComposition
                                                 )
                                             }
@@ -137,27 +140,26 @@ fun CryptoListScreen(navController: NavController) {
                                             .RawRes(R.raw.cryptolize_loading_anim)
                                     )
                                     composition?.let { lottieComposition ->
-                                        LottieLoadingView(
-                                            showText = true,
+                                        LottieAnimation(
+                                            showMessage = true,
+                                            message = "Loading",
                                             composition = lottieComposition
                                         )
                                     }
                                 }
                                 loadState.refresh is LoadState.Error -> item {
-                                    Box(
-                                        contentAlignment = Alignment.Center,
-                                        modifier = Modifier
+                                    Box(modifier = Modifier.fillMaxSize(),
+                                        contentAlignment = Alignment.BottomCenter,
+
                                     ) {
                                         val composition by rememberLottieComposition(
-
                                             LottieCompositionSpec
-                                                // here `code` is the file name of lottie file
-                                                // use it accordingly
                                                 .RawRes(R.raw.cryptolize_error)
                                         )
                                         composition?.let { lottieComposition ->
-                                            LottieLoadingView(
-                                                showText = false,
+                                            LottieAnimation(
+                                                showMessage = true,
+                                                message = "Some Error Occur",
                                                 composition = lottieComposition
                                             )
                                         }

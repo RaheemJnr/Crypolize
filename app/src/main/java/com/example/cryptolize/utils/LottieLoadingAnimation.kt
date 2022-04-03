@@ -1,29 +1,26 @@
 package com.example.cryptolize.utils
 
-import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
-import androidx.compose.runtime.*
-import androidx.compose.runtime.R
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.airbnb.lottie.LottieComposition
-import com.airbnb.lottie.compose.*
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieConstants
+import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import java.util.*
-import kotlin.math.max
 
 
 @Composable
-fun LottieLoadingView(showText: Boolean,composition: LottieComposition) {
+fun LottieAnimation(showMessage: Boolean, message: String? = null, composition: LottieComposition) {
 
 // to keep track if the animation is playing
 // and play pause accordingly
@@ -73,11 +70,13 @@ fun LottieLoadingView(showText: Boolean,composition: LottieComposition) {
         // LottieAnimation
         // Pass the composition
         // and the progress state
-        if (showText) {
-            Text(
-                text = "Loading".uppercase(Locale.getDefault()),
-                fontWeight = FontWeight.Bold,
+        if (showMessage) {
+            if (message != null) {
+                Text(
+                    text = message.uppercase(Locale.getDefault()),
+                    fontWeight = FontWeight.Bold,
                 )
+            }
         }
         //
         LottieAnimation(
