@@ -35,7 +35,6 @@ import com.example.cryptolize.ui.components.ListTopAppbar
 import com.example.cryptolize.ui.viewModels.CryptoListViewModel
 import com.example.cryptolize.utils.LottieLoadingView
 import com.example.cryptolize.utils.openUrl
-import com.example.cryptolize.utils.showShortToast
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
@@ -79,17 +78,16 @@ fun CryptoListScreen(navController: NavController) {
                 ) {
                     LazyColumn(state = lazyListState) {
                         itemsIndexed(pagingItems) { _, item ->
+
                             item?.let {
                                 Column {
                                     CryptoListItems(
                                         items = item,
                                         onClick = {
-                                            showShortToast(
-                                                context = context,
-                                                message = "clicked ${item.symbol}"
+                                            navController.navigate(
+                                                route =
+                                                "${MainScreen.DetailScreen.route}/${item.id}/${item.symbol}"
                                             )
-                                            navController.navigate("${MainScreen.DetailScreen.route}/${item.id}/${item.symbol}")
-
                                         }
                                     )
                                 }
