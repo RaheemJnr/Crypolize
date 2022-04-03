@@ -42,7 +42,7 @@ fun DetailsTopBar(navController: NavController, coinDetail: CoinDetail) {
                 contentDescription = "swap pair",
                 tint = Color.Black,
                 modifier = Modifier
-                    .size(22.dp)
+                    .size(24.dp)
             )
             Text(
                 text = "${coinDetail.name}/USDT",
