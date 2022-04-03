@@ -10,8 +10,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.cryptolize.data.DetailDTOMapper
-import com.example.cryptolize.domain.models.detailModel.CoinDetail
+import com.example.cryptolize.domain.mappers.DetailDTOMapper
 import com.example.cryptolize.domain.repository.detail.DetailRepoImpl
 import com.example.cryptolize.ui.components.DetailsTopBar
 import com.example.cryptolize.ui.viewModels.CoinDetailViewModel

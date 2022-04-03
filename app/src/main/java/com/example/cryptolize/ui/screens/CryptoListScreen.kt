@@ -25,7 +25,7 @@ import androidx.paging.compose.itemsIndexed
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.cryptolize.R
-import com.example.cryptolize.data.ListDTOMapper
+import com.example.cryptolize.domain.mappers.ListDTOMapper
 import com.example.cryptolize.domain.repository.list.ListRepoImpl
 import com.example.cryptolize.navigation.MainScreen
 import com.example.cryptolize.ui.components.CryptoListItems

@@ -1,7 +1,7 @@
 package com.example.cryptolize.domain.repository.list
 
 import androidx.annotation.WorkerThread
-import com.example.cryptolize.data.ListDTOMapper
+import com.example.cryptolize.domain.mappers.ListDTOMapper
 import com.example.cryptolize.data.network.CryptolizeApiCall
 import com.example.cryptolize.domain.models.Crypto
 import com.example.cryptolize.domain.repository.ListRepo

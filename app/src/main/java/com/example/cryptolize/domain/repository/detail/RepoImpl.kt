@@ -1,7 +1,7 @@
 package com.example.cryptolize.domain.repository.detail
 
 import androidx.annotation.WorkerThread
-import com.example.cryptolize.data.DetailDTOMapper
+import com.example.cryptolize.domain.mappers.DetailDTOMapper
 import com.example.cryptolize.data.network.CryptolizeApiCall
 import com.example.cryptolize.domain.models.detailModel.CoinDetail
 import com.squareup.moshi.Moshi

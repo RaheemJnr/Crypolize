@@ -1,7 +1,6 @@
-package com.example.cryptolize.data
+package com.example.cryptolize.domain.mappers
 
 import com.example.cryptolize.data.model.CryptoListDTO
-import com.example.cryptolize.domain.DomainMapper
 import com.example.cryptolize.domain.models.Crypto
 
 /**

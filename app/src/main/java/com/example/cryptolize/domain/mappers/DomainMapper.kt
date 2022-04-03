@@ -1,4 +1,4 @@
-package com.example.cryptolize.domain
+package com.example.cryptolize.domain.mappers
 
 
 /**
