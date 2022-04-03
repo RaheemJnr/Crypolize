@@ -6,30 +6,30 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.cryptolize.domain.models.detailModel.CoinDetail
 import com.example.cryptolize.domain.repository.detail.DetailRepo
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
 
 class CoinDetailViewModel(private val repo: DetailRepo) : ViewModel() {
 
 
-
-    private val _getCoin = MutableSharedFlow<List<CoinDetail>>()
-    val getCoin: SharedFlow<List<CoinDetail>>
+    private val _getCoin = MutableSharedFlow<CoinDetail>()
+    val getCoin: SharedFlow<CoinDetail>
         get() = _getCoin
 
-    private suspend fun repo(coinId: String): List<CoinDetail> {
+    private suspend fun repo(coinId: String): CoinDetail? {
         return repo.getCoinDetails(
             coinId
         )
     }
 
 
-
-
     fun getCoinDetail(coinId: String) = viewModelScope.launch {
         try {
             val result = repo(coinId = coinId)
-            _getCoin.emit(result)
+            if (result != null) {
+                _getCoin.emit(result)
+            }
         } catch (e: Exception) {
             Log.d("details error", e.localizedMessage!!)
         }

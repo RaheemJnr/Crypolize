@@ -6,7 +6,6 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
 import com.example.cryptolize.ui.screens.CryptoListScreen
 import com.example.cryptolize.ui.screens.DetailScreen
 import com.google.accompanist.pager.ExperimentalPagerApi

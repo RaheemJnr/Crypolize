@@ -10,16 +10,16 @@ import retrofit2.Response
 
 class DetailRepoImpl(private val mapper: DetailDTOMapper) : DetailRepo {
     @WorkerThread
-    override suspend fun getCoinDetails(coinId: String): List<CoinDetail> {
+    override suspend fun getCoinDetails(coinId: String): CoinDetail? {
         val response =
             CryptolizeApiCall.CRYPTO_SERVICE.getCoinDetails(coinId = coinId)
 
         return if (response.isSuccessful) {
             val body = response.body()
-            val bo = mapper.toDomainList(listOf(body!!))
+            val bo = body?.let { mapper.mapToDomainModel(it) }
             bo
         } else {
-            emptyList()
+            null
         }
     }
 }

@@ -11,7 +11,9 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.cryptolize.data.DetailDTOMapper
+import com.example.cryptolize.domain.models.detailModel.CoinDetail
 import com.example.cryptolize.domain.repository.detail.DetailRepoImpl
+import com.example.cryptolize.ui.components.DetailsTopBar
 import com.example.cryptolize.ui.viewModels.CoinDetailViewModel
 
 @Composable
@@ -21,11 +23,13 @@ fun DetailScreen(navController: NavHostController, coinId: String) {
         factory = CoinDetailViewModel.CoinDetailViewModelFactory(DetailRepoImpl(DetailDTOMapper()))
     )
 
-    val result = viewModel.getCoin.collectAsState(initial = "")
+    val result = viewModel.getCoin.collectAsState(initial = null).value
 
     Scaffold(
         topBar = {
-
+            if (result != null) {
+                DetailsTopBar(navController, result)
+            }
         }
     ) {
         Column(
@@ -39,7 +43,7 @@ fun DetailScreen(navController: NavHostController, coinId: String) {
                 Text(text = "Click here")
             }
             //
-            Text(text = "${result.value}")
+            Text(text = "$result")
         }
 
 

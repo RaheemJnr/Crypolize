@@ -1,9 +1,7 @@
 package com.example.cryptolize.ui.components
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -15,73 +13,28 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.cryptolize.R
+import com.example.cryptolize.domain.models.detailModel.CoinDetail
 
 @Composable
-fun DetailsTopBar() {
-//    ConstraintLayout(
-//        modifier = Modifier
-//            .fillMaxWidth(),
-//    ) {
-//        val (backButton, swapIcon, pairText, favorite) = createRefs()
-//        //person icon
-//        Icon(
-//            imageVector = Icons.Filled.ArrowBack,
-//            contentDescription = "back arrow",
-//            tint = Color.Black,
-//            modifier = Modifier
-//                .size(32.dp)
-//                .constrainAs(backButton) {
-//                    start.linkTo(parent.start, margin = 8.dp)
-//                    top.linkTo(parent.top, margin = 8.dp)
-//                    bottom.linkTo(parent.bottom)
-//                   // end.linkTo(swapIcon.start, margin = 24.dp)
-//                }
-//        )
-//        Icon(
-//            painterResource(id = R.drawable.pair_swap),
-//            contentDescription = "swap pair",
-//            tint = Color.Black,
-//            modifier = Modifier.constrainAs(swapIcon) {
-//                start.linkTo(backButton.end)
-//                end.linkTo(pairText.start, margin = 4.dp)
-//
-//            }
-//        )
-//        Text(
-//            "ONE/Usdt",
-//            modifier = Modifier.constrainAs(pairText) {
-//                end.linkTo(favorite.start)
-//                top.linkTo(parent.top, margin = 4.dp)
-//                bottom.linkTo(parent.bottom, margin = 4.dp)
-//            }
-//        )
-//        //favorite
-//        Icon(
-//            imageVector = Icons.Filled.Favorite,
-//            contentDescription = "notification",
-//            modifier = Modifier
-//                .size(28.dp)
-//                .constrainAs(favorite) {
-//                    end.linkTo(parent.end, margin = 8.dp)
-//                    top.linkTo(parent.top)
-//                    bottom.linkTo(parent.bottom)
-//                }
-//        )
-//
-//
-//    }
-
+fun DetailsTopBar(navController: NavController, coinDetail: CoinDetail) {
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
     ) {
         Icon(
             imageVector = Icons.Filled.ArrowBack,
             contentDescription = "back arrow",
             tint = Color.Black,
             modifier = Modifier
-                .size(32.dp)
+                .size(24.dp)
+                .clickable {
+                    navController.popBackStack()
+                }
         )
         Row {
             Icon(
@@ -89,11 +42,11 @@ fun DetailsTopBar() {
                 contentDescription = "swap pair",
                 tint = Color.Black,
                 modifier = Modifier
+                    .size(22.dp)
             )
             Text(
-                "ONE/Usdt",
+                text = "${coinDetail.name}/USDT",
                 modifier = Modifier
-
             )
         }
         //favorite
@@ -101,7 +54,7 @@ fun DetailsTopBar() {
             imageVector = Icons.Filled.Favorite,
             contentDescription = "notification",
             modifier = Modifier
-                .size(28.dp)
+                .size(24.dp)
 
         )
     }
@@ -111,5 +64,5 @@ fun DetailsTopBar() {
 @Preview(showBackground = true)
 @Composable
 fun DetailTopAppbarPrev() {
-    DetailsTopBar()
+    DetailsTopBar(navController = rememberNavController(), coinDetail = CoinDetail())
 }
