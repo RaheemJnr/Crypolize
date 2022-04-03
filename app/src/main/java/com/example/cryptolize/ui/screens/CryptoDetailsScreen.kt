@@ -14,9 +14,10 @@ import com.example.cryptolize.domain.mappers.DetailDTOMapper
 import com.example.cryptolize.domain.repository.detail.DetailRepoImpl
 import com.example.cryptolize.ui.components.DetailsTopBar
 import com.example.cryptolize.ui.viewModels.CoinDetailViewModel
+import java.util.*
 
 @Composable
-fun DetailScreen(navController: NavHostController, coinId: String) {
+fun DetailScreen(navController: NavHostController, coinId: String, coinName: String) {
     //viewModel
     val viewModel: CoinDetailViewModel = viewModel(
         factory = CoinDetailViewModel.CoinDetailViewModelFactory(DetailRepoImpl(DetailDTOMapper()))
@@ -26,9 +27,9 @@ fun DetailScreen(navController: NavHostController, coinId: String) {
 
     Scaffold(
         topBar = {
-            if (result != null) {
-                DetailsTopBar(navController, result)
-            }
+
+                DetailsTopBar(navController, coinName.uppercase(Locale.ROOT))
+
         }
     ) {
         Column(

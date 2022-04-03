@@ -88,7 +88,7 @@ fun CryptoListScreen(navController: NavController) {
                                                 context = context,
                                                 message = "clicked ${item.symbol}"
                                             )
-                                            navController.navigate("${MainScreen.DetailScreen.route}/${item.id}")
+                                            navController.navigate("${MainScreen.DetailScreen.route}/${item.id}/${item.symbol}")
 
                                         }
                                     )
