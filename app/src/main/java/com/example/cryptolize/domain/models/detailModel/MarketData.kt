@@ -57,5 +57,5 @@ data class Ath(
 )
 
 data class Sparkline7d(
-    val price: List<Double>
+    val price: List<Float>
 )

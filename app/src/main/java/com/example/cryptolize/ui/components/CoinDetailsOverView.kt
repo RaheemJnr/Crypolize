@@ -16,7 +16,8 @@ import java.util.*
 fun CoinDetailsOverView(coinDetail: CoinDetail) {
 
     Row(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
             .padding(8.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {

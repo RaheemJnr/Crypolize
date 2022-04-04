@@ -1,5 +1,21 @@
 package com.example.cryptolize.ui.components
 
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.Canvas
+import kotlin.math.min
+
 @Composable
 fun LineChart(
     modifier: Modifier = Modifier,
@@ -9,7 +25,7 @@ fun LineChart(
     shouldAnimate: Boolean = true,
 ) {
     val yValues = remember { yAxisValues }
-    val x = remember { Animatable(0f) }
+    val x = remember { androidx.compose.animation.core.Animatable(0f) }
     val xTarget = (yValues.size - 1).toFloat()
 
     LaunchedEffect(Unit) {
@@ -46,4 +62,14 @@ fun LineChart(
             style = Stroke(width = lineWidth)
         )
     }
+}
+
+fun getBounds(list: List<Float>): Pair<Float, Float> {
+    var min = Float.MAX_VALUE
+    var max = -Float.MAX_VALUE
+    list.forEach {
+        min = min.coerceAtMost(it)
+        max = max.coerceAtLeast(it)
+    }
+    return Pair(min, max)
 }

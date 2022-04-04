@@ -78,5 +78,5 @@ data class Ath(
 )
 
 data class Sparkline7d(
-    @Json(name = "price") val price: List<Double>? = listOf()
+    @Json(name = "price") val price: List<Float>? = listOf()
 )
