@@ -2,6 +2,7 @@ package com.example.cryptolize.ui.screens
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Button
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -12,6 +13,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.cryptolize.domain.mappers.DetailDTOMapper
 import com.example.cryptolize.domain.repository.detail.DetailRepoImpl
+import com.example.cryptolize.ui.components.CoinDetailsOverView
 import com.example.cryptolize.ui.components.DetailsTopBar
 import com.example.cryptolize.ui.viewModels.CoinDetailViewModel
 import java.util.*
@@ -27,23 +29,31 @@ fun DetailScreen(navController: NavHostController, coinId: String, coinName: Str
 
     Scaffold(
         topBar = {
-
-                DetailsTopBar(navController, coinName.uppercase(Locale.ROOT))
-
+            DetailsTopBar(navController, coinName.uppercase(Locale.ROOT))
         }
     ) {
-        Column(
-            Modifier.fillMaxSize()
-        ) {
-            Button(
-                onClick = {
-                    viewModel.getCoinDetail(coinId)
-                }
-            ) {
-                Text(text = "Click here")
+        LazyColumn {
+            // coin details overview
+            item {
+                result?.let { coinDetail -> CoinDetailsOverView(coinDetail = coinDetail) }
             }
             //
-            Text(text = "$result")
+            item {
+                Column(
+                    Modifier.fillMaxSize()
+                ) {
+                    Button(
+                        onClick = {
+                            viewModel.getCoinDetail(coinId)
+                        }
+                    ) {
+                        Text(text = "Click here")
+                    }
+                    //
+                    Text(text = "$result")
+                }
+            }
+
         }
 
 

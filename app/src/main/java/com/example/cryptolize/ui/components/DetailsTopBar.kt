@@ -69,6 +69,7 @@ fun DetailsTopBar(navController: NavController, coinName:String) {
             contentDescription = "notification",
             modifier = Modifier
                 .size(24.dp)
+                .padding(end = 8.dp)
 
         )
     }
