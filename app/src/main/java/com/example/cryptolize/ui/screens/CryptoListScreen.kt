@@ -148,10 +148,11 @@ fun CryptoListScreen(navController: NavController) {
                                     }
                                 }
                                 loadState.refresh is LoadState.Error -> item {
-                                    Box(modifier = Modifier.fillMaxSize(),
+                                    Box(
+                                        modifier = Modifier.fillMaxSize(),
                                         contentAlignment = Alignment.BottomCenter,
 
-                                    ) {
+                                        ) {
                                         val composition by rememberLottieComposition(
                                             LottieCompositionSpec
                                                 .RawRes(R.raw.cryptolize_error)
