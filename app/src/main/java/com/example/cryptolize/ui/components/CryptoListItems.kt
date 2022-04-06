@@ -20,6 +20,8 @@ import androidx.compose.ui.unit.sp
 import com.example.cryptolize.domain.models.Crypto
 import com.example.cryptolize.utils.Formatter.formatCurrency
 import com.example.cryptolize.utils.roundPriceChange
+import com.example.cryptolize.utils.roundToThreeDecimals
+import com.example.cryptolize.utils.roundToTwoDecimals
 import java.util.*
 
 @Composable
@@ -91,11 +93,11 @@ fun CryptoListItems(
         ) {
             //
             Text(
-                text = formatCurrency(items.current_price!!.toString()),
+                text = formatCurrency(items.current_price!!.toDouble().roundToTwoDecimals().toDouble()),
                 fontSize = 18.sp,
             )
             Text(
-                text = formatCurrency(items.current_price.toString()),
+                text = formatCurrency(items.current_price.toDouble().roundToThreeDecimals().toDouble()),
                 fontSize = 14.sp,
                 color = Color.Black.copy(alpha = 0.5f)
             )
