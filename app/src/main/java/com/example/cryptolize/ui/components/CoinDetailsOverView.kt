@@ -10,6 +10,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.cryptolize.domain.models.detailModel.CoinDetail
+import com.example.cryptolize.utils.Formatter.formatCurrency
+import com.example.cryptolize.utils.roundToThreeDecimals
 import java.util.*
 
 @Composable
@@ -32,11 +34,11 @@ fun CoinDetailsOverView(coinDetail: CoinDetail) {
             ) {
                 //
                 Text(
-                    text = "${coinDetail.market_data?.current_price?.usd}",
+                    text = formatCurrency(coinDetail.market_data?.current_price?.usd.toString()),
                     fontSize = 26.sp,
                 )
                 Text(
-                    text = "$${coinDetail.market_data?.current_price?.usd}",
+                    text = formatCurrency(coinDetail.market_data?.current_price?.usd.toString()),
                     fontSize = 22.sp,
                     color = Color.Black.copy(alpha = 0.5f)
                 )
@@ -50,11 +52,14 @@ fun CoinDetailsOverView(coinDetail: CoinDetail) {
             ) {
                 //
                 Text(
-                    text = "Volume(${coinDetail.symbol?.uppercase(Locale.ROOT)})",
+                    text = "Volume(${
+                        coinDetail.symbol?.uppercase(Locale.ROOT).toString()
+
+                    })",
                     fontSize = 14.sp,
                 )
                 Text(
-                    text = "${coinDetail.market_data?.total_volume?.usd}",
+                    text = formatCurrency(coinDetail.market_data?.total_volume?.usd.toString()),
                     fontSize = 12.sp,
                     color = Color.Black.copy(alpha = 0.5f)
                 )
@@ -64,7 +69,7 @@ fun CoinDetailsOverView(coinDetail: CoinDetail) {
                     fontSize = 14.sp,
                 )
                 Text(
-                    text = "${coinDetail.market_data?.price_change_percentage_24h}",
+                    text = formatCurrency(coinDetail.market_data?.price_change_percentage_24h.toString()),
                     fontSize = 12.sp,
                     color = Color.Black.copy(alpha = 0.5f)
                 )
@@ -80,7 +85,7 @@ fun CoinDetailsOverView(coinDetail: CoinDetail) {
                     fontSize = 14.sp,
                 )
                 Text(
-                    text = "${coinDetail.market_data?.high_24h?.usd}",
+                    text = formatCurrency(coinDetail.market_data?.high_24h?.usd.toString()),
                     fontSize = 12.sp,
                     color = Color.Black.copy(alpha = 0.5f)
                 )
@@ -90,7 +95,7 @@ fun CoinDetailsOverView(coinDetail: CoinDetail) {
                     fontSize = 14.sp,
                 )
                 Text(
-                    text = "${coinDetail.market_data?.low_24h?.usd}",
+                    text = formatCurrency(coinDetail.market_data?.low_24h?.usd!!.roundToThreeDecimals()),
                     fontSize = 12.sp,
                     color = Color.Black.copy(alpha = 0.5f)
                 )

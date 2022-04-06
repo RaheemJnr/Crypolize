@@ -18,8 +18,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.cryptolize.domain.models.Crypto
+import com.example.cryptolize.utils.Formatter.formatCurrency
 import com.example.cryptolize.utils.roundPriceChange
-import com.example.cryptolize.utils.roundToThreeDecimals
 import java.util.*
 
 @Composable
@@ -69,13 +69,17 @@ fun CryptoListItems(
             }
     ) {
         // name/pair
-        Column() {
+        Column {
             Text(
                 text = annotatedText
             )
             //
             Text(
-                text = "Vol ${items.total_volume.roundPriceChange()}",
+                text = "Vol ${
+                    formatCurrency(
+                        items.total_volume.toInt()
+                    )
+                }",
                 fontSize = 14.sp,
                 color = Color.Black.copy(alpha = 0.5f)
             )
@@ -87,11 +91,11 @@ fun CryptoListItems(
         ) {
             //
             Text(
-                text = items.current_price!!.roundToThreeDecimals(),
+                text = formatCurrency(items.current_price!!.toString()),
                 fontSize = 18.sp,
             )
             Text(
-                text = "$${items.current_price.roundToThreeDecimals()}",
+                text = formatCurrency(items.current_price.toString()),
                 fontSize = 14.sp,
                 color = Color.Black.copy(alpha = 0.5f)
             )
