@@ -93,11 +93,11 @@ fun CryptoListItems(
         ) {
             //
             Text(
-                text = formatCurrency(items.current_price!!.toDouble().roundToTwoDecimals().toDouble()),
+                text = formatCurrency(items.current_price!!.roundToTwoDecimals().toDouble()),
                 fontSize = 18.sp,
             )
             Text(
-                text = formatCurrency(items.current_price.toDouble().roundToThreeDecimals().toDouble()),
+                text = formatCurrency(items.current_price.roundToThreeDecimals().toDouble()),
                 fontSize = 14.sp,
                 color = Color.Black.copy(alpha = 0.5f)
             )

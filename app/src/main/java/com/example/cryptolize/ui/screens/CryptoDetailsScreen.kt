@@ -1,16 +1,16 @@
 package com.example.cryptolize.ui.screens
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Tab
+import androidx.compose.material.TabRow
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
@@ -59,14 +59,32 @@ fun DetailScreen(navController: NavHostController, coinId: String, coinName: Str
                     )
                 }
             }
+
             //
             item {
-                Column(
-                    Modifier.fillMaxSize()
-                ) {
-                    //
-                    Text(text = "$result")
+                val titles = listOf("Info", "Margin Data")
+                var tabIndex by remember { mutableStateOf(0) }
+                Column {
+                    TabRow(
+                        selectedTabIndex = tabIndex,
+                        backgroundColor = Color(0xFFf2f2f6),
+                        contentColor = Color.Black,
+                        modifier = Modifier
+                    ) {
+                        titles.forEachIndexed { index, title ->
+                            Tab(
+                                selected = tabIndex == index,
+                                onClick = { tabIndex = index },
+                                text = { Text(text = title) }
+                            )
+                        }
+                    }
+                    when (tabIndex) {
+                        0 -> Text("$result")
+                        1 -> Text("There content")
+                    }
                 }
+
             }
 
         }
