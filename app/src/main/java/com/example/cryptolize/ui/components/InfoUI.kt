@@ -7,12 +7,15 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.annotation.ExperimentalCoilApi
 import com.example.cryptolize.domain.models.detailModel.CoinDetail
 import com.example.cryptolize.utils.CoinImage
+import java.util.*
 
 @OptIn(ExperimentalAnimationApi::class, ExperimentalCoilApi::class)
 @Composable
@@ -31,9 +34,10 @@ fun InfoUI(coinDetail: CoinDetail) {
                 uri = coinDetail.image?.thumb,
                 contentDescription = " coin image thumb nail"
             )
+            Spacer(modifier = Modifier.width(4.dp))
             Text(
-                text = "${coinDetail.symbol}",
-                style = MaterialTheme.typography.body1,
+                text = "${coinDetail.symbol?.uppercase(Locale.ROOT)}",
+                style = MaterialTheme.typography.h5,
                 textAlign = TextAlign.Center
             )
         }
@@ -45,15 +49,8 @@ fun InfoUI(coinDetail: CoinDetail) {
                 .fillMaxWidth()
                 .padding(8.dp)
         ) {
-            Text(
-                text = "Rank",
-                style = MaterialTheme.typography.body2
-            )
-            Text(
-                text = "${coinDetail.market_cap_rank}",
-                style = MaterialTheme.typography.body1,
-                textAlign = TextAlign.Center
-            )
+            LeftSIdeItem(text = "Rank")
+            RightSideItem(text = "${coinDetail.market_cap_rank}")
         }
         //market cap
         Row(
@@ -63,15 +60,9 @@ fun InfoUI(coinDetail: CoinDetail) {
                 .fillMaxWidth()
                 .padding(8.dp)
         ) {
-            Text(
-                text = "Market Cap",
-                style = MaterialTheme.typography.body2
-            )
-            Text(
-                text = "${coinDetail.market_data?.market_cap}",
-                style = MaterialTheme.typography.body1,
-                textAlign = TextAlign.Center
-            )
+            LeftSIdeItem(text = "Market cap")
+            RightSideItem(text = "${coinDetail.market_data?.market_cap?.usd}")
+
         }
         //circulation supply
         Row(
@@ -81,15 +72,8 @@ fun InfoUI(coinDetail: CoinDetail) {
                 .fillMaxWidth()
                 .padding(8.dp)
         ) {
-            Text(
-                text = "Circulation Supply",
-                style = MaterialTheme.typography.body2
-            )
-            Text(
-                text = "${coinDetail.market_data?.circulating_supply}",
-                style = MaterialTheme.typography.body1,
-                textAlign = TextAlign.Center
-            )
+            LeftSIdeItem(text = "circulation Supply")
+            RightSideItem(text = "${coinDetail.market_data?.circulating_supply}")
         }
         //max supply
         Row(
@@ -99,15 +83,8 @@ fun InfoUI(coinDetail: CoinDetail) {
                 .fillMaxWidth()
                 .padding(8.dp)
         ) {
-            Text(
-                text = "Max Supply",
-                style = MaterialTheme.typography.body2
-            )
-            Text(
-                text = "${coinDetail.market_data?.max_supply}",
-                style = MaterialTheme.typography.body1,
-                textAlign = TextAlign.Center
-            )
+            LeftSIdeItem(text = "Max Supply")
+            RightSideItem(text = "${coinDetail.market_data?.max_supply}")
         }
         //total supply
         Row(
@@ -117,15 +94,8 @@ fun InfoUI(coinDetail: CoinDetail) {
                 .fillMaxWidth()
                 .padding(8.dp)
         ) {
-            Text(
-                text = "Total Supply",
-                style = MaterialTheme.typography.body2
-            )
-            Text(
-                text = "${coinDetail.market_data?.total_supply}",
-                style = MaterialTheme.typography.body1,
-                textAlign = TextAlign.Center
-            )
+            LeftSIdeItem(text = "Total Supply")
+            RightSideItem(text = "${coinDetail.market_data?.total_supply}")
         }
         //Ath
         Row(
@@ -135,15 +105,9 @@ fun InfoUI(coinDetail: CoinDetail) {
                 .fillMaxWidth()
                 .padding(8.dp)
         ) {
-            Text(
-                text = "ATH",
-                style = MaterialTheme.typography.body2
-            )
-            Text(
-                text = "${coinDetail.market_data?.ath}",
-                style = MaterialTheme.typography.body1,
-                textAlign = TextAlign.Center
-            )
+            LeftSIdeItem(text = "ATH")
+            RightSideItem(text = "${coinDetail.market_data?.ath?.usd}")
+
         }
         //description
         Column(
@@ -152,12 +116,14 @@ fun InfoUI(coinDetail: CoinDetail) {
         ) {
             Text(
                 text = "Description",
-                style = MaterialTheme.typography.body2
+                style = MaterialTheme.typography.body2,
+                fontWeight = FontWeight.Bold,
+                color = Color.Black.copy(alpha = 0.7f)
             )
             Text(
-                text = "${coinDetail.description}",
+                text = "${coinDetail.description?.en}",
                 style = MaterialTheme.typography.body2,
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Start
             )
         }
         //reference link
@@ -166,6 +132,26 @@ fun InfoUI(coinDetail: CoinDetail) {
 
 }
 
+@Composable
+fun RightSideItem(text: String) {
+    Text(
+        text = text,
+        style = MaterialTheme.typography.body1,
+        textAlign = TextAlign.Center,
+        fontWeight = FontWeight.Bold,
+        color = Color.Black
+    )
+}
+
+@Composable
+fun LeftSIdeItem(text: String) {
+    Text(
+        text = text,
+        style = MaterialTheme.typography.body2,
+        fontWeight = FontWeight.Bold,
+        color = Color.Black.copy(alpha = 0.5f)
+    )
+}
 
 @Preview
 @Composable

@@ -38,11 +38,11 @@ fun ReferenceUI() {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 18.dp, bottom = 6.dp, end = 18.dp),
+                .padding(start = 8.dp, bottom = 6.dp, end = 8.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = "Open",
+                text = "Reference Links",
                 fontWeight = FontWeight.Bold,
                 color = Color.Black.copy(alpha = 0.7f),
                 modifier = Modifier,
