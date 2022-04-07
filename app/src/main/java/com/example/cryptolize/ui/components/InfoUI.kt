@@ -114,12 +114,8 @@ fun InfoUI(coinDetail: CoinDetail) {
             modifier = Modifier
                 .padding(8.dp)
         ) {
-            Text(
-                text = "Description",
-                style = MaterialTheme.typography.body2,
-                fontWeight = FontWeight.Bold,
-                color = Color.Black.copy(alpha = 0.7f)
-            )
+
+            LeftSIdeItem(text = "Description")
             Text(
                 text = "${coinDetail.description?.en}",
                 style = MaterialTheme.typography.body2,

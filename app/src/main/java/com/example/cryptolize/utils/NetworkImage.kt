@@ -35,7 +35,7 @@ fun CoinImage(
     placeholderColor: Color? = MaterialTheme.colors.compositedOnSurface(0.2f),
 ) {
     Card(
-        modifier = Modifier.size(42.dp),
+        modifier = Modifier.size(32.dp),
         shape = CircleShape,
         elevation = 22.dp,
         border = BorderStroke(2.dp, Color.Gray)
