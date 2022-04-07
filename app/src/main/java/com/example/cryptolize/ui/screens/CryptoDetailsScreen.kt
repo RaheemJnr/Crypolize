@@ -1,5 +1,6 @@
 package com.example.cryptolize.ui.screens
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -25,6 +26,7 @@ import com.example.cryptolize.ui.theme.gradientRedColors
 import com.example.cryptolize.ui.viewModels.CoinDetailViewModel
 import java.util.*
 
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun DetailScreen(navController: NavHostController, coinId: String, coinName: String) {
     //viewModel
@@ -81,7 +83,9 @@ fun DetailScreen(navController: NavHostController, coinId: String, coinName: Str
                         }
                     }
                     when (tabIndex) {
-                        0 -> InfoUI()
+                        0 -> {
+                            result?.let { coinDetail -> InfoUI(coinDetail) }
+                        }
                         1 -> Text("There content")
                     }
                 }

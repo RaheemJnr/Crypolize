@@ -11,7 +11,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.cryptolize.domain.models.detailModel.CoinDetail
 import com.example.cryptolize.utils.Formatter.formatCurrency
-import com.example.cryptolize.utils.roundToThreeDecimals
 import java.util.*
 
 @Composable
