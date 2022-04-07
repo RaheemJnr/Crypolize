@@ -18,6 +18,7 @@ import com.example.cryptolize.domain.mappers.DetailDTOMapper
 import com.example.cryptolize.domain.repository.detail.DetailRepoImpl
 import com.example.cryptolize.ui.components.CoinDetailsOverView
 import com.example.cryptolize.ui.components.DetailsTopBar
+import com.example.cryptolize.ui.components.InfoUI
 import com.example.cryptolize.ui.components.LineChart
 import com.example.cryptolize.ui.theme.gradientGreenColors
 import com.example.cryptolize.ui.theme.gradientRedColors
@@ -49,12 +50,12 @@ fun DetailScreen(navController: NavHostController, coinId: String, coinName: Str
             }
             // line chart
             item {
-                result?.market_data?.sparkline_7d?.price?.let { it1 ->
+                result?.market_data?.sparkline_7d?.price?.let { chartData ->
                     LineChart(
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(350.dp),
-                        yAxisValues = it1,
+                        yAxisValues = chartData,
                         lineColors = if (result.market_data.price_change_24h!! > 0) gradientGreenColors else gradientRedColors
                     )
                 }
@@ -80,7 +81,7 @@ fun DetailScreen(navController: NavHostController, coinId: String, coinName: Str
                         }
                     }
                     when (tabIndex) {
-                        0 -> Text("$result")
+                        0 -> InfoUI()
                         1 -> Text("There content")
                     }
                 }
