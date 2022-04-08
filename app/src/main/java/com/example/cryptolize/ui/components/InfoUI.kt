@@ -12,9 +12,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.annotation.ExperimentalCoilApi
 import com.example.cryptolize.domain.models.detailModel.CoinDetail
 import com.example.cryptolize.utils.CoinImage
+import com.example.cryptolize.utils.Formatter.formatCurrency
+import com.example.cryptolize.utils.Formatter.formatWithoutCurrency
 import java.util.*
 
 @OptIn(ExperimentalAnimationApi::class, ExperimentalCoilApi::class)
@@ -61,9 +64,14 @@ fun InfoUI(coinDetail: CoinDetail) {
                 .padding(8.dp)
         ) {
             LeftSIdeItem(text = "Market cap")
-            RightSideItem(text = "${coinDetail.market_data?.market_cap?.usd}")
+            RightSideItem(
+                text = formatCurrency(
+                    coinDetail.market_data?.market_cap?.usd ?: "--"
+                )
+            )
 
         }
+
         //circulation supply
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -73,7 +81,11 @@ fun InfoUI(coinDetail: CoinDetail) {
                 .padding(8.dp)
         ) {
             LeftSIdeItem(text = "circulation Supply")
-            RightSideItem(text = "${coinDetail.market_data?.circulating_supply}")
+            RightSideItem(
+                text = formatWithoutCurrency(
+                    coinDetail.market_data?.circulating_supply ?: "--"
+                )
+            )
         }
         //max supply
         Row(
@@ -84,7 +96,11 @@ fun InfoUI(coinDetail: CoinDetail) {
                 .padding(8.dp)
         ) {
             LeftSIdeItem(text = "Max Supply")
-            RightSideItem(text = "${coinDetail.market_data?.max_supply}")
+            coinDetail.market_data?.max_supply?.let { formatCurrency(it) }?.let {
+                RightSideItem(
+                    text = it
+                )
+            }
         }
         //total supply
         Row(
@@ -95,55 +111,62 @@ fun InfoUI(coinDetail: CoinDetail) {
                 .padding(8.dp)
         ) {
             LeftSIdeItem(text = "Total Supply")
-            RightSideItem(text = "${coinDetail.market_data?.total_supply}")
-        }
-        //Ath
-        Row(
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp)
-        ) {
-            LeftSIdeItem(text = "ATH")
-            RightSideItem(text = "${coinDetail.market_data?.ath?.usd}")
-
-        }
-        //description
-        Column(
-            modifier = Modifier
-                .padding(8.dp)
-        ) {
-
-            LeftSIdeItem(text = "Description")
-            Text(
-                text = "${coinDetail.description?.en}",
-                style = MaterialTheme.typography.body2,
-                textAlign = TextAlign.Start
+            RightSideItem(
+                text = coinDetail.market_data?.total_supply?.let { formatWithoutCurrency(it) }
             )
         }
-        //reference link
-        ReferenceUI()
     }
+    //Ath
+    Row(
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+    ) {
+        LeftSIdeItem(text = "ATH")
+        RightSideItem(
+            text =
+            formatCurrency(coinDetail.market_data?.ath?.usd ?: "--")
+        )
+    }
+    //description
+    Column(
+        modifier = Modifier
+            .padding(8.dp)
+    ) {
 
+        LeftSIdeItem(text = "Description")
+        Text(
+            text = "${coinDetail.description?.en}",
+            style = MaterialTheme.typography.body2,
+            textAlign = TextAlign.Start
+        )
+    }
+    //reference link
+    ReferenceUI()
+    Spacer(modifier = Modifier.height(30.dp))
 }
 
+
 @Composable
-fun RightSideItem(text: String) {
-    Text(
-        text = text,
-        style = MaterialTheme.typography.body1,
-        textAlign = TextAlign.Center,
-        fontWeight = FontWeight.Bold,
-        color = Color.Black
-    )
+fun RightSideItem(text: String?) {
+    if (text != null) {
+        Text(
+            text = text,
+            style = MaterialTheme.typography.body1,
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold,
+            color = Color.Black
+        )
+    }
 }
 
 @Composable
 fun LeftSIdeItem(text: String) {
     Text(
         text = text,
-        style = MaterialTheme.typography.body2,
+        fontSize = 18.sp,
         fontWeight = FontWeight.Bold,
         color = Color.Black.copy(alpha = 0.5f)
     )

@@ -33,11 +33,11 @@ fun CoinDetailsOverView(coinDetail: CoinDetail) {
             ) {
                 //
                 Text(
-                    text = formatCurrency(coinDetail.market_data?.current_price?.usd!!.toDouble()),
+                    text = formatCurrency(coinDetail.market_data?.current_price?.usd ?: "--"),
                     fontSize = 26.sp,
                 )
                 Text(
-                    text = formatCurrency(coinDetail.market_data.current_price.usd.toDouble()),
+                    text = formatCurrency(coinDetail.market_data?.current_price?.usd ?: "--"),
                     fontSize = 22.sp,
                     color = Color.Black.copy(alpha = 0.5f)
                 )
@@ -58,7 +58,7 @@ fun CoinDetailsOverView(coinDetail: CoinDetail) {
                     fontSize = 14.sp,
                 )
                 Text(
-                    text = formatCurrency(coinDetail.market_data?.total_volume?.usd!!.toDouble()),
+                    text = formatCurrency(coinDetail.market_data?.total_volume?.usd ?: "--"),
                     fontSize = 12.sp,
                     color = Color.Black.copy(alpha = 0.5f)
                 )
@@ -68,7 +68,7 @@ fun CoinDetailsOverView(coinDetail: CoinDetail) {
                     fontSize = 14.sp,
                 )
                 Text(
-                    text = formatCurrency(coinDetail.market_data.price_change_percentage_24h!!.toDouble()),
+                    text = "${coinDetail.market_data?.price_change_percentage_24h}",
                     fontSize = 12.sp,
                     color = Color.Black.copy(alpha = 0.5f)
                 )
@@ -84,7 +84,7 @@ fun CoinDetailsOverView(coinDetail: CoinDetail) {
                     fontSize = 14.sp,
                 )
                 Text(
-                    text = formatCurrency(coinDetail.market_data?.high_24h?.usd!!.toDouble()),
+                    text = formatCurrency(coinDetail.market_data?.high_24h?.usd ?: "--"),
                     fontSize = 12.sp,
                     color = Color.Black.copy(alpha = 0.5f)
                 )
@@ -94,16 +94,13 @@ fun CoinDetailsOverView(coinDetail: CoinDetail) {
                     fontSize = 14.sp,
                 )
                 Text(
-                    text = formatCurrency(coinDetail.market_data.low_24h?.usd!!.toDouble()),
+                    text = formatCurrency(coinDetail.market_data?.low_24h?.usd ?: "--"),
                     fontSize = 12.sp,
                     color = Color.Black.copy(alpha = 0.5f)
                 )
             }
         }
-
     }
-
-
 }
 
 

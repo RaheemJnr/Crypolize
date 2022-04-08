@@ -44,7 +44,7 @@ fun ReferenceUI() {
             Text(
                 text = "Reference Links",
                 fontWeight = FontWeight.Bold,
-                color = Color.Black.copy(alpha = 0.7f),
+                color = Color.Black.copy(alpha = 0.5f),
                 modifier = Modifier,
                 textAlign = TextAlign.Center,
                 fontSize = 18.sp

@@ -91,10 +91,7 @@ fun DetailScreen(navController: NavHostController, coinId: String, coinName: Str
                 }
 
             }
-
         }
-
-
     }
 
 }

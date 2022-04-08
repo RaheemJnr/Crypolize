@@ -21,4 +21,12 @@ object Formatter {
         val numberFormat = NumberFormat.getCurrencyInstance(Locale(LANGUAGE, COUNTRY))
         return numberFormat.format(value)
     }
+
+
+    fun formatWithoutCurrency(value: Any): String {
+        val numberFormat = NumberFormat.getCurrencyInstance()
+        numberFormat.minimumFractionDigits = 2
+        return numberFormat.format(value).replace("[^0123456789.,()-]", "")
+//        ("[^0123456789.,]", "")
+    }
 }

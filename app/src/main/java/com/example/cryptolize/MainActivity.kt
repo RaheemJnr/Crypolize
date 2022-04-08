@@ -20,10 +20,12 @@ class MainActivity : ComponentActivity() {
         ExperimentalPagerApi::class, ExperimentalAnimationApi::class,
         ExperimentalMaterialApi::class
     )
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         //splash screen
         installSplashScreen()
+        super.onCreate(savedInstanceState)
+
 
         setContent {
             CryptolizeTheme {
