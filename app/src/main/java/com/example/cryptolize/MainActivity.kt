@@ -26,7 +26,6 @@ class MainActivity : ComponentActivity() {
         installSplashScreen()
         super.onCreate(savedInstanceState)
 
-
         setContent {
             CryptolizeTheme {
                 // A surface container using the 'background' color from the theme
