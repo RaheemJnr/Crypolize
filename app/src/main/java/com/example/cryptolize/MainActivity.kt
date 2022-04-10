@@ -9,7 +9,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.cryptolize.navigation.MainScreenNavigation
 import com.example.cryptolize.ui.theme.CryptolizeTheme
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -20,14 +19,10 @@ class MainActivity : ComponentActivity() {
         ExperimentalPagerApi::class, ExperimentalAnimationApi::class,
         ExperimentalMaterialApi::class
     )
-
     override fun onCreate(savedInstanceState: Bundle?) {
-//        //splash screen
-//        val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
 
         setContent {
-//            splashScreen.setKeepOnScreenCondition { false}
             CryptolizeTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
