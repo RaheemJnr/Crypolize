@@ -3,12 +3,13 @@ package com.example.cryptolize
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 
 @SuppressLint("CustomSplashScreen")
-class SplashScreen : AppCompatActivity() {
+class SplashScreen : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         //splash screen
         val splashScreen = installSplashScreen()
