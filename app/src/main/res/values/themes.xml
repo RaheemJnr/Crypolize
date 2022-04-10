@@ -31,7 +31,7 @@
 
         <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_crypto_logo_foreground</item>
 
-        <item name="postSplashScreenTheme">@style/Theme.Cryptolize</item>
+        <item name="postSplashScreenTheme">@style/Theme.Cryptolize.NoActionBar</item>
 
         # Required.
     </style>

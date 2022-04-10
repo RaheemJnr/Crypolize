@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_crypto_logo_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.splash">
+        android:theme="@style/Theme.Cryptolize.NoActionBar">
         <activity
             android:name=".SplashScreen"
             android:exported="true"
