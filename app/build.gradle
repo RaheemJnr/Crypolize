@@ -79,7 +79,7 @@ dependencies {
     implementation "io.coil-kt:coil-compose:1.4.0"
 
     //splash screen
-    implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
+    implementation 'androidx.core:core-splashscreen:1.0.0-alpha01'
 
     //swipe to refresh
     implementation "com.google.accompanist:accompanist-swiperefresh:0.23.1"
