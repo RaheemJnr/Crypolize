@@ -119,7 +119,7 @@ fun CryptoListItems(
                 text = "${items.price_change_percentage_24h.roundPriceChange()}%",
                 fontSize = 17.sp,
                 modifier = Modifier
-                    .width(60.dp)
+                    .width(55.dp)
                     .height(35.dp)
                     .offset(x = (4).dp)
                     .padding(10.dp)

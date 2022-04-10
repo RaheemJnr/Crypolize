@@ -22,11 +22,12 @@ class MainActivity : ComponentActivity() {
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //splash screen
-        installSplashScreen()
+//        //splash screen
+//        val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
 
         setContent {
+//            splashScreen.setKeepOnScreenCondition { false}
             CryptolizeTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
@@ -36,7 +37,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
 
 @ExperimentalPagerApi
 @ExperimentalMaterialApi
