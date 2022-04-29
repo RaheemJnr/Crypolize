@@ -1,6 +1,8 @@
 package com.example.cryptolize
 
 import android.os.Bundle
+import android.view.Window
+import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
@@ -32,6 +34,8 @@ class MainActivity : ComponentActivity() {
 
         }
     }
+
+
 }
 
 @ExperimentalPagerApi

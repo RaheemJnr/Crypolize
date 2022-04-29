@@ -3,6 +3,8 @@ package com.example.cryptolize
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.Window
+import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +16,7 @@ class SplashScreen : ComponentActivity() {
         //splash screen
         val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
+        makeFullScreen()
         setContent {
             splashScreen.setKeepOnScreenCondition { false }
             val intent = Intent(this, MainActivity::class.java)
@@ -22,5 +25,14 @@ class SplashScreen : ComponentActivity() {
             finish()
         }
 
+    }
+
+    private fun makeFullScreen() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
+        actionBar?.hide()
     }
 }
