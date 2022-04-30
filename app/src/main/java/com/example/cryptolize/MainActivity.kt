@@ -1,8 +1,6 @@
 package com.example.cryptolize
 
 import android.os.Bundle
-import android.view.Window
-import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
@@ -23,7 +21,7 @@ class MainActivity : ComponentActivity() {
     )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-            //  makeFullScreen()
+        //  makeFullScreen()
         setContent {
             CryptolizeTheme {
                 // A surface container using the 'background' color from the theme
