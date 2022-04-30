@@ -143,7 +143,7 @@ fun InfoUI(coinDetail: CoinDetail) {
         )
     }
     //reference link
-    ReferenceUI()
+    ReferenceUI(coinDetail = coinDetail)
     Spacer(modifier = Modifier.height(30.dp))
 }
 

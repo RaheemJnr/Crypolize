@@ -23,11 +23,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.cryptolize.domain.models.detailModel.CoinDetail
 
 //
 @ExperimentalAnimationApi
 @Composable
-fun ReferenceUI() {
+fun ReferenceUI(
+    coinDetail: CoinDetail
+) {
     //
     var arrowDirection by rememberSaveable { mutableStateOf(true) }
     //
@@ -68,9 +71,9 @@ fun ReferenceUI() {
                 Column(
                     modifier = Modifier
                         .background(Color.White)
-                        .padding(8.dp)
+                        .padding(12.dp)
                 ) {
-                    Text(text = "heree")
+                    Text(text = "${coinDetail.links?.repos_url?.github}")
                     //divider
                     Divider(
                         color = Color.Gray,
@@ -80,7 +83,7 @@ fun ReferenceUI() {
                             .alpha(0.2f),
                         startIndent = 65.dp
                     )
-                    Text(text = "here twoo")
+                    Text(text = "${coinDetail.links?.repos_url?.bitbucket}")
 
                 }
             }
