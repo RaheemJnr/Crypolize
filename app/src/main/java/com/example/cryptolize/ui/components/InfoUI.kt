@@ -52,8 +52,8 @@ fun InfoUI(coinDetail: CoinDetail) {
                 .fillMaxWidth()
                 .padding(8.dp)
         ) {
-            LeftSIdeItem(text = "Rank")
-            RightSideItem(text = "${coinDetail.market_cap_rank}")
+            DetailsInfoLeftSIdeItem(text = "Rank")
+            DetailsInfoRightSideItem(text = "${coinDetail.market_cap_rank}")
         }
         //market cap
         Row(
@@ -63,8 +63,8 @@ fun InfoUI(coinDetail: CoinDetail) {
                 .fillMaxWidth()
                 .padding(8.dp)
         ) {
-            LeftSIdeItem(text = "Market cap")
-            RightSideItem(
+            DetailsInfoLeftSIdeItem(text = "Market cap")
+            DetailsInfoRightSideItem(
                 text = formatCurrency(
                     coinDetail.market_data?.market_cap?.usd ?: "--"
                 )
@@ -80,8 +80,8 @@ fun InfoUI(coinDetail: CoinDetail) {
                 .fillMaxWidth()
                 .padding(8.dp)
         ) {
-            LeftSIdeItem(text = "circulation Supply")
-            RightSideItem(
+            DetailsInfoLeftSIdeItem(text = "circulation Supply")
+            DetailsInfoRightSideItem(
                 text = formatWithoutCurrency(
                     coinDetail.market_data?.circulating_supply ?: "--"
                 )
@@ -95,9 +95,9 @@ fun InfoUI(coinDetail: CoinDetail) {
                 .fillMaxWidth()
                 .padding(8.dp)
         ) {
-            LeftSIdeItem(text = "Max Supply")
+            DetailsInfoLeftSIdeItem(text = "Max Supply")
             coinDetail.market_data?.max_supply?.let { formatCurrency(it) }?.let {
-                RightSideItem(
+                DetailsInfoRightSideItem(
                     text = it
                 )
             }
@@ -110,8 +110,8 @@ fun InfoUI(coinDetail: CoinDetail) {
                 .fillMaxWidth()
                 .padding(8.dp)
         ) {
-            LeftSIdeItem(text = "Total Supply")
-            RightSideItem(
+            DetailsInfoLeftSIdeItem(text = "Total Supply")
+            DetailsInfoRightSideItem(
                 text = coinDetail.market_data?.total_supply?.let { formatWithoutCurrency(it) }
             )
         }
@@ -124,8 +124,8 @@ fun InfoUI(coinDetail: CoinDetail) {
             .fillMaxWidth()
             .padding(8.dp)
     ) {
-        LeftSIdeItem(text = "ATH")
-        RightSideItem(
+        DetailsInfoLeftSIdeItem(text = "ATH")
+        DetailsInfoRightSideItem(
             text =
             formatCurrency(coinDetail.market_data?.ath?.usd ?: "--")
         )
@@ -136,7 +136,7 @@ fun InfoUI(coinDetail: CoinDetail) {
             .padding(8.dp)
     ) {
 
-        LeftSIdeItem(text = "Description")
+        DetailsInfoLeftSIdeItem(text = "Description")
         Text(
             text = "${coinDetail.description?.en}",
             style = MaterialTheme.typography.body2,
@@ -150,7 +150,7 @@ fun InfoUI(coinDetail: CoinDetail) {
 
 
 @Composable
-fun RightSideItem(text: String?) {
+fun DetailsInfoRightSideItem(text: String?) {
     if (text != null) {
         Text(
             text = text,
@@ -163,7 +163,7 @@ fun RightSideItem(text: String?) {
 }
 
 @Composable
-fun LeftSIdeItem(text: String) {
+fun DetailsInfoLeftSIdeItem(text: String) {
     Text(
         text = text,
         fontSize = 18.sp,

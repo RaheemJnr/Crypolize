@@ -20,7 +20,8 @@ import com.example.cryptolize.domain.repository.detail.DetailRepoImpl
 import com.example.cryptolize.ui.components.CoinDetailsOverView
 import com.example.cryptolize.ui.components.DetailsTopBar
 import com.example.cryptolize.ui.components.InfoUI
-import com.example.cryptolize.ui.components.LineChart
+import com.example.cryptolize.ui.components.MarginData
+import com.example.cryptolize.ui.components.charts.LineChart
 import com.example.cryptolize.ui.theme.gradientGreenColors
 import com.example.cryptolize.ui.theme.gradientRedColors
 import com.example.cryptolize.ui.viewModels.CoinDetailViewModel
@@ -86,7 +87,7 @@ fun DetailScreen(navController: NavHostController, coinId: String, coinName: Str
                         0 -> {
                             result?.let { coinDetail -> InfoUI(coinDetail) }
                         }
-                        1 -> Text("There content")
+                        1 -> result?.let { coinDetail -> MarginData(coinDetail) }
                     }
                 }
 

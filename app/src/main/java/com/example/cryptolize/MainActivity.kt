@@ -35,15 +35,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-//    private fun makeFullScreen() {
-//        requestWindowFeature(Window.FEATURE_NO_TITLE)
-//        window.setFlags(
-//            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//        )
-//        actionBar?.hide()
-//    }
-
 }
 
 @ExperimentalPagerApi
