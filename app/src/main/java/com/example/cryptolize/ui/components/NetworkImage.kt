@@ -1,4 +1,4 @@
-package com.example.cryptolize.utils
+package com.example.cryptolize.ui.components
 
 import android.net.Uri
 import androidx.compose.foundation.BorderStroke

@@ -37,25 +37,20 @@ fun LottieAnimation(showMessage: Boolean, message: String? = null, composition: 
     val progress by animateLottieCompositionAsState(
         // pass the composition created above
         composition,
-
         // Iterates Forever
         iterations = LottieConstants.IterateForever,
-
         // pass isPlaying we created above,
         // changing isPlaying will recompose
         // Lottie and pause/play
         isPlaying = isPlaying,
-
         // pass speed we created above,
         // changing speed will increase Lottie
         speed = speed,
-
         // this makes animation to restart
         // when paused and play
         // pass false to continue the animation
         // at which is was paused
         restartOnPlay = false
-
     )
     // Column Composable
     Column(
@@ -66,7 +61,6 @@ fun LottieAnimation(showMessage: Boolean, message: String? = null, composition: 
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
         // LottieAnimation
         // Pass the composition
         // and the progress state
@@ -83,7 +77,6 @@ fun LottieAnimation(showMessage: Boolean, message: String? = null, composition: 
             composition,
             progress,
             modifier = Modifier.size(400.dp),
-
             alignment = Alignment.Center
         )
 

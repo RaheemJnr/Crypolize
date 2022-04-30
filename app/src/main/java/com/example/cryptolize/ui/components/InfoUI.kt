@@ -15,7 +15,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.annotation.ExperimentalCoilApi
 import com.example.cryptolize.domain.models.detailModel.CoinDetail
-import com.example.cryptolize.utils.CoinImage
 import com.example.cryptolize.utils.Formatter.formatCurrency
 import com.example.cryptolize.utils.Formatter.formatWithoutCurrency
 import java.util.*

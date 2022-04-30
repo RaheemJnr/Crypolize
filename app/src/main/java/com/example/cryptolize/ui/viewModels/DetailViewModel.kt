@@ -6,12 +6,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.cryptolize.domain.models.detailModel.CoinDetail
 import com.example.cryptolize.domain.repository.detail.DetailRepo
+import com.example.cryptolize.utils.UIDataState
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
 
 class CoinDetailViewModel(private val repo: DetailRepo) : ViewModel() {
 
+
+    private val _getCoinWithReloadData = MutableSharedFlow<UIDataState<CoinDetail>>()
+    val getCoinWithReloadData: SharedFlow<UIDataState<CoinDetail>>
+        get() = _getCoinWithReloadData
 
     private val _getCoin = MutableSharedFlow<CoinDetail>()
     val getCoin: SharedFlow<CoinDetail>
@@ -23,14 +28,16 @@ class CoinDetailViewModel(private val repo: DetailRepo) : ViewModel() {
         )
     }
 
-
     fun getCoinDetail(coinId: String) = viewModelScope.launch {
         try {
+            _getCoinWithReloadData.emit(UIDataState.loading())
             val result = repo(coinId = coinId)
             if (result != null) {
+                _getCoinWithReloadData.emit(UIDataState.success(result))
                 _getCoin.emit(result)
             }
         } catch (e: Exception) {
+            _getCoinWithReloadData.emit(UIDataState.failed(e.localizedMessage!!))
             Log.d("details error", e.localizedMessage!!)
         }
     }
