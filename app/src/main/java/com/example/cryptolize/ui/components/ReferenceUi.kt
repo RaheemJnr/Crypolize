@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.cryptolize.domain.models.detailModel.CoinDetail
 import com.example.cryptolize.utils.openUrl
+import com.example.cryptolize.utils.showShortToast
 
 //
 @ExperimentalAnimationApi
@@ -37,7 +38,7 @@ fun ReferenceUI(
     context: Context
 ) {
     //
-    var arrowDirection by rememberSaveable { mutableStateOf(true) }
+    var arrowDirection by rememberSaveable { mutableStateOf(false) }
     //
     Column(
         modifier = Modifier
@@ -63,9 +64,11 @@ fun ReferenceUI(
                 else Icons.Filled.KeyboardArrowUp,
                 contentDescription = "",
                 tint = Color.Black.copy(alpha = 0.7f),
-                modifier = Modifier.clickable {
-                    arrowDirection = !arrowDirection
-                }
+                modifier = Modifier
+                    .clickable {
+                        arrowDirection = !arrowDirection
+                    }
+                    .size(28.dp)
             )
         }
         // items
@@ -81,45 +84,75 @@ fun ReferenceUI(
                     //homepage
                     Text(
                         text = "Homepage",
-                        modifier = Modifier.clickable {
-                            coinDetail.links?.homepage?.let { context.openUrl(it.first()) }
-                        },
+                        modifier = Modifier
+                            .clickable {
+                                coinDetail.links?.homepage.let {
+                                    if (it != null && it.isNotEmpty()) {
+                                        context.openUrl(it.first())
+                                    } else {
+                                        showShortToast(context, "cannot open link")
+                                    }
+                                }
+                            }
+                            .padding(4.dp),
                         textDecoration = TextDecoration.Underline,
                         fontWeight = FontWeight.Bold,
-                        style = TextStyle(Color.Blue)
+                        style = TextStyle(Color.Blue),
+                        fontSize = 16.sp
                     )
-                    Divider()
+                    ReferenceDivider()
                     //twitter
                     Text(
                         text = "Twitter",
-                        modifier = Modifier.clickable {
-                            coinDetail.links?.twitter_screen_name?.let { context.openUrl(it) }
-                        },
+                        modifier = Modifier
+                            .clickable {
+                                coinDetail.links?.twitter_screen_name?.let { context.openUrl(it) }
+                            }
+                            .padding(4.dp),
                         textDecoration = TextDecoration.Underline,
                         fontWeight = FontWeight.Bold,
-                        style = TextStyle(Color.Blue)
+                        style = TextStyle(Color.Blue),
+                        fontSize = 16.sp
                     )
-                    Divider()
+                    ReferenceDivider()
                     //github
                     Text(
                         text = "Github",
-                        modifier = Modifier.clickable {
-                            coinDetail.links?.repos_url?.github?.let { context.openUrl(it.first()) }
-                        },
+                        modifier = Modifier
+                            .clickable {
+                                coinDetail.links?.repos_url?.github.let {
+                                    if (it != null && it.isNotEmpty()) {
+                                        context.openUrl(it.first())
+                                    } else {
+                                        showShortToast(context, "cannot open link")
+                                    }
+                                }
+                            }
+                            .padding(4.dp),
                         textDecoration = TextDecoration.Underline,
                         fontWeight = FontWeight.Bold,
-                        style = TextStyle(Color.Blue)
+                        style = TextStyle(Color.Blue),
+                        fontSize = 16.sp
                     )
                     ReferenceDivider()
                     //bitbucket
                     Text(
                         text = "Bitbucket",
-                        modifier = Modifier.clickable {
-                            coinDetail.links?.repos_url?.bitbucket?.let { context.openUrl(it.first()) }
-                        },
+                        modifier = Modifier
+                            .clickable {
+                                coinDetail.links?.repos_url?.bitbucket.let {
+                                    if (it != null && it.isNotEmpty()) {
+                                        context.openUrl(it.first())
+                                    } else {
+                                        showShortToast(context, "cannot open link")
+                                    }
+                                }
+                            }
+                            .padding(4.dp),
                         textDecoration = TextDecoration.Underline,
                         fontWeight = FontWeight.Bold,
-                        style = TextStyle(Color.Blue)
+                        style = TextStyle(Color.Blue),
+                        fontSize = 16.sp
                     )
 
                 }
@@ -132,6 +165,18 @@ fun ReferenceUI(
 
 }
 
+//@Composable
+//fun LinkText(linkTitle: String, link: String, context: Context) {
+//    Text(
+//        text = linkTitle,
+//        modifier = Modifier.clickable {
+//            context.openUrl(link)
+//        },
+//        textDecoration = TextDecoration.Underline,
+//        fontWeight = FontWeight.Bold,
+//        style = TextStyle(Color.Blue)
+//    )
+//}
 
 @Composable
 fun ReferenceDivider() {
@@ -142,6 +187,6 @@ fun ReferenceDivider() {
             .fillMaxWidth()
             .width(0.5.dp)
             .alpha(0.2f),
-        startIndent = 65.dp
+        startIndent = 40.dp
     )
 }

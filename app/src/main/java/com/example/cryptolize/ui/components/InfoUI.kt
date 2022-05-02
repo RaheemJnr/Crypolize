@@ -116,38 +116,37 @@ fun InfoUI(coinDetail: CoinDetail, context: Context) {
                 text = coinDetail.market_data?.total_supply?.let { formatWithoutCurrency(it) }
             )
         }
-    }
-    //Ath
-    Row(
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp)
-    ) {
-        DetailsInfoLeftSIdeItem(text = "ATH")
-        DetailsInfoRightSideItem(
-            text =
-            formatCurrency(coinDetail.market_data?.ath?.usd ?: "--")
-        )
-    }
-    //description
-    Column(
-        modifier = Modifier
-            .padding(8.dp)
-    ) {
+        //Ath
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+        ) {
+            DetailsInfoLeftSIdeItem(text = "ATH")
+            DetailsInfoRightSideItem(
+                text =
+                formatCurrency(coinDetail.market_data?.ath?.usd ?: "--")
+            )
+        }
+        //description
+        Column(
+            modifier = Modifier
+                .padding(8.dp)
+        ) {
 
-        DetailsInfoLeftSIdeItem(text = "Description")
-        Text(
-            text = "${coinDetail.description?.en}",
-            style = MaterialTheme.typography.body2,
-            textAlign = TextAlign.Start
-        )
+            DetailsInfoLeftSIdeItem(text = "Description")
+            Text(
+                text = "${coinDetail.description?.en}",
+                style = MaterialTheme.typography.body2,
+                textAlign = TextAlign.Start
+            )
+        }
+        //reference link
+        ReferenceUI(coinDetail = coinDetail, context = context)
+        Spacer(modifier = Modifier.height(30.dp))
     }
-    //reference link
-    ReferenceUI(coinDetail = coinDetail, context = context)
-    Spacer(modifier = Modifier.height(30.dp))
-
 }
 
 
