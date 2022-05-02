@@ -7,7 +7,7 @@ import java.util.*
 
 object Formatter {
     //
-    private val formatter1 = DecimalFormat("#.##")
+    private val formatter1 = DecimalFormat("#.#")
     private val formatter2 = DecimalFormat("##.##")
     private val formatter3 = DecimalFormat("##.###")
     fun Double.roundToTwoDecimals() = formatter2.format(this).toString()
@@ -24,9 +24,7 @@ object Formatter {
 
 
     fun formatWithoutCurrency(value: Any): String {
-        val numberFormat = NumberFormat.getCurrencyInstance()
-        numberFormat.minimumFractionDigits = 2
-        return numberFormat.format(value).replace("[^0123456789.,()-]", "")
-//        ("[^0123456789.,]", "")
+        val numberFormat = NumberFormat.getInstance()
+        return numberFormat.format(value)
     }
 }

@@ -3,6 +3,7 @@ package com.example.cryptolize.ui.components
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -13,6 +14,7 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -65,10 +67,10 @@ fun CryptoListItems(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(18.dp)
             .clickable {
                 onClick()
             }
+            .padding(12.dp)
     ) {
         // name/pair
         Column {
@@ -117,12 +119,12 @@ fun CryptoListItems(
         ) {
             Text(
                 text = "${items.price_change_percentage_24h.roundPriceChange()}%",
-                fontSize = 17.sp,
+                style = MaterialTheme.typography.subtitle2,
                 modifier = Modifier
                     .width(55.dp)
                     .height(35.dp)
-                    .offset(x = (4).dp)
-                    .padding(10.dp)
+                    .padding(10.dp),
+                textAlign = TextAlign.Center
             )
         }
 

@@ -97,7 +97,7 @@ fun InfoUI(coinDetail: CoinDetail, context: Context) {
                 .padding(8.dp)
         ) {
             DetailsInfoLeftSIdeItem(text = "Max Supply")
-            coinDetail.market_data?.max_supply?.let { formatCurrency(it) }?.let {
+            coinDetail.market_data?.max_supply?.let { formatWithoutCurrency(it) }?.let {
                 DetailsInfoRightSideItem(
                     text = it
                 )
