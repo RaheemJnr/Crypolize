@@ -1,5 +1,6 @@
 package com.example.cryptolize.ui.components
 
+import android.content.Context
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.background
@@ -19,17 +20,21 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.cryptolize.domain.models.detailModel.CoinDetail
+import com.example.cryptolize.utils.openUrl
 
 //
 @ExperimentalAnimationApi
 @Composable
 fun ReferenceUI(
-    coinDetail: CoinDetail
+    coinDetail: CoinDetail,
+    context: Context
 ) {
     //
     var arrowDirection by rememberSaveable { mutableStateOf(true) }
@@ -73,17 +78,49 @@ fun ReferenceUI(
                         .background(Color.White)
                         .padding(12.dp)
                 ) {
-                    Text(text = "${coinDetail.links?.repos_url?.github}")
-                    //divider
-                    Divider(
-                        color = Color.Gray,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .width(0.5.dp)
-                            .alpha(0.2f),
-                        startIndent = 65.dp
+                    //homepage
+                    Text(
+                        text = "Homepage",
+                        modifier = Modifier.clickable {
+                            coinDetail.links?.homepage?.let { context.openUrl(it.first()) }
+                        },
+                        textDecoration = TextDecoration.Underline,
+                        fontWeight = FontWeight.Bold,
+                        style = TextStyle(Color.Blue)
                     )
-                    Text(text = "${coinDetail.links?.repos_url?.bitbucket}")
+                    Divider()
+                    //twitter
+                    Text(
+                        text = "Twitter",
+                        modifier = Modifier.clickable {
+                            coinDetail.links?.twitter_screen_name?.let { context.openUrl(it) }
+                        },
+                        textDecoration = TextDecoration.Underline,
+                        fontWeight = FontWeight.Bold,
+                        style = TextStyle(Color.Blue)
+                    )
+                    Divider()
+                    //github
+                    Text(
+                        text = "Github",
+                        modifier = Modifier.clickable {
+                            coinDetail.links?.repos_url?.github?.let { context.openUrl(it.first()) }
+                        },
+                        textDecoration = TextDecoration.Underline,
+                        fontWeight = FontWeight.Bold,
+                        style = TextStyle(Color.Blue)
+                    )
+                    ReferenceDivider()
+                    //bitbucket
+                    Text(
+                        text = "Bitbucket",
+                        modifier = Modifier.clickable {
+                            coinDetail.links?.repos_url?.bitbucket?.let { context.openUrl(it.first()) }
+                        },
+                        textDecoration = TextDecoration.Underline,
+                        fontWeight = FontWeight.Bold,
+                        style = TextStyle(Color.Blue)
+                    )
 
                 }
             }
@@ -92,4 +129,19 @@ fun ReferenceUI(
 
     }
 
+
+}
+
+
+@Composable
+fun ReferenceDivider() {
+    //divider
+    Divider(
+        color = Color.Gray,
+        modifier = Modifier
+            .fillMaxWidth()
+            .width(0.5.dp)
+            .alpha(0.2f),
+        startIndent = 65.dp
+    )
 }

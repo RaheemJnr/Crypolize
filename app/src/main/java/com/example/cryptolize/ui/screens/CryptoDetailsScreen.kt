@@ -113,7 +113,7 @@ fun DetailScreen(navController: NavHostController, coinId: String, coinName: Str
                     }
                     when (tabIndex) {
                         0 -> {
-                            result?.let { coinDetail -> InfoUI(coinDetail) }
+                            result?.let { coinDetail -> InfoUI(coinDetail, context = context) }
                         }
                         1 -> {
                             result?.let { coinDetail -> MarginData(coinDetail) }

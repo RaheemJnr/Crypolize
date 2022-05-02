@@ -1,5 +1,6 @@
 package com.example.cryptolize.ui.components
 
+import android.content.Context
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
@@ -8,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -21,7 +23,7 @@ import java.util.*
 
 @OptIn(ExperimentalAnimationApi::class, ExperimentalCoilApi::class)
 @Composable
-fun InfoUI(coinDetail: CoinDetail) {
+fun InfoUI(coinDetail: CoinDetail, context: Context) {
     Column(
         modifier = Modifier.padding(8.dp)
     ) {
@@ -143,8 +145,9 @@ fun InfoUI(coinDetail: CoinDetail) {
         )
     }
     //reference link
-    ReferenceUI(coinDetail = coinDetail)
+    ReferenceUI(coinDetail = coinDetail, context = context)
     Spacer(modifier = Modifier.height(30.dp))
+
 }
 
 
@@ -174,5 +177,5 @@ fun DetailsInfoLeftSIdeItem(text: String) {
 @Preview
 @Composable
 fun InfoUIPrev() {
-    InfoUI(coinDetail = CoinDetail())
+    InfoUI(coinDetail = CoinDetail(), LocalContext.current)
 }
