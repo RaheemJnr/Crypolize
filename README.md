@@ -1,8 +1,5 @@
 # CRYPTOLIZE ⛓️
 
-![Deploy (API)](https://github.com/RaheemJnr/Crypolize/workflows/Deploy%20(API)/badge.svg)
-![Build (Android)](https://github.com/RaheemJnr/Crypolize/workflows/Build%20(Android)/badge.svg)
-
 
 [![GitHub stars](https://img.shields.io/github/stars/RaheemJnr/Crypolize?style=social)](https://github.com/RaheemJnr/Crypolize/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/RaheemJnr/Crypolize?style=social)](https://github.com/RaheemJnr/Crypolize/network/members)
