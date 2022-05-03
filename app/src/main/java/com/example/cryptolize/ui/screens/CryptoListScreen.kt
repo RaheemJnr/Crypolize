@@ -32,6 +32,7 @@ import com.example.cryptolize.ui.components.CryptoListItems
 import com.example.cryptolize.ui.components.ListCarousel
 import com.example.cryptolize.ui.components.ListHeader
 import com.example.cryptolize.ui.components.ListTopAppbar
+import com.example.cryptolize.ui.theme.CryptolizeTheme
 import com.example.cryptolize.ui.viewModels.CryptoListViewModel
 import com.example.cryptolize.utils.LottieAnimation
 import com.example.cryptolize.utils.openUrl
@@ -53,127 +54,130 @@ fun CryptoListScreen(navController: NavController) {
     val pagingItems = viewModel.getCryptoList().collectAsLazyPagingItems()
     val lazyListState = rememberLazyListState()
 
-    Scaffold(
-        topBar = {
-            ListTopAppbar()
-        }
-    ) {
-        Column {
-            ListCarousel(
-                onClick = {
-                    context.openUrl(url = "https://github.com/RaheemJnr")
-                }
-            )
-            Spacer(modifier = Modifier.height(10.dp))
-            // list header
-            ListHeader()
-            //
-            Surface {
-                //
-                SwipeRefresh(
-                    state = rememberSwipeRefreshState(isRefreshing = isRefreshing.value),
-                    onRefresh = {
-                        viewModel.refresh()
+    CryptolizeTheme() {
+        Scaffold(
+            topBar = {
+                ListTopAppbar()
+            }
+        ) {
+            Column {
+                ListCarousel(
+                    onClick = {
+                        context.openUrl(url = "https://github.com/RaheemJnr")
                     }
-                ) {
-                    LazyColumn(state = lazyListState) {
-                        items(items = pagingItems,
-                            key = { crypto ->
-                                crypto.id.toString()
-                            }
-                        ) { item ->
-                            item?.let {
-                                Column {
-                                    CryptoListItems(
-                                        items = item,
-                                        onClick = {
-                                            navController.navigate(
-                                                route =
-                                                "${MainScreen.DetailScreen.route}/${item.id}/${item.symbol}"
-                                            )
-                                        }
-                                    )
+                )
+                Spacer(modifier = Modifier.height(10.dp))
+                // list header
+                ListHeader()
+                //
+                Surface {
+                    //
+                    SwipeRefresh(
+                        state = rememberSwipeRefreshState(isRefreshing = isRefreshing.value),
+                        onRefresh = {
+                            viewModel.refresh()
+                        }
+                    ) {
+                        LazyColumn(state = lazyListState) {
+                            items(items = pagingItems,
+                                key = { crypto ->
+                                    crypto.id.toString()
+                                }
+                            ) { item ->
+                                item?.let {
+                                    Column {
+                                        CryptoListItems(
+                                            items = item,
+                                            onClick = {
+                                                navController.navigate(
+                                                    route =
+                                                    "${MainScreen.DetailScreen.route}/${item.id}/${item.symbol}"
+                                                )
+                                            }
+                                        )
+                                    }
                                 }
                             }
-                        }
-                        pagingItems.apply {
-                            when {
-                                //refresh list
-                                loadState.refresh is LoadState.Loading -> item {
-                                    Dialog(
-                                        onDismissRequest = {},
-                                        DialogProperties(
-                                            dismissOnBackPress = false,
-                                            dismissOnClickOutside = false
-                                        )
-                                    ) {
-                                        Box(
-                                            modifier = Modifier
-                                                .size(55.dp)
-                                                .background(
-                                                    Color.Transparent,
-                                                    shape = RoundedCornerShape(8.dp)
-                                                )
+                            pagingItems.apply {
+                                when {
+                                    //refresh list
+                                    loadState.refresh is LoadState.Loading -> item {
+                                        Dialog(
+                                            onDismissRequest = {},
+                                            DialogProperties(
+                                                dismissOnBackPress = false,
+                                                dismissOnClickOutside = false
+                                            )
                                         ) {
+                                            Box(
+                                                modifier = Modifier
+                                                    .size(55.dp)
+                                                    .background(
+                                                        Color.Transparent,
+                                                        shape = RoundedCornerShape(8.dp)
+                                                    )
+                                            ) {
+                                                val composition by rememberLottieComposition(
+                                                    LottieCompositionSpec
+                                                        // here `code` is the file name of lottie file
+                                                        // use it accordingly
+                                                        .RawRes(R.raw.cryptolize_loading_anim)
+                                                )
+                                                composition?.let { lottieComposition ->
+                                                    LottieAnimation(
+                                                        showMessage = false,
+                                                        composition = lottieComposition
+                                                    )
+                                                }
+                                            }
+                                        }
+                                    }
+                                    //add to the already available list
+                                    loadState.append is LoadState.Loading -> item {
+                                        val composition by rememberLottieComposition(
+
+                                            LottieCompositionSpec
+                                                // here `code` is the file name of lottie file
+                                                // use it accordingly
+                                                .RawRes(R.raw.cryptolize_loading_anim)
+                                        )
+                                        composition?.let { lottieComposition ->
+                                            LottieAnimation(
+                                                showMessage = true,
+                                                message = "Loading",
+                                                composition = lottieComposition
+                                            )
+                                        }
+                                    }
+                                    loadState.refresh is LoadState.Error -> item {
+                                        Box(
+                                            modifier = Modifier.fillMaxSize(),
+                                            contentAlignment = Alignment.BottomCenter,
+
+                                            ) {
                                             val composition by rememberLottieComposition(
                                                 LottieCompositionSpec
-                                                    // here `code` is the file name of lottie file
-                                                    // use it accordingly
-                                                    .RawRes(R.raw.cryptolize_loading_anim)
+                                                    .RawRes(R.raw.cryptolize_error)
                                             )
                                             composition?.let { lottieComposition ->
                                                 LottieAnimation(
-                                                    showMessage = false,
+                                                    showMessage = true,
+                                                    message = "Some Error Occur",
                                                     composition = lottieComposition
                                                 )
                                             }
                                         }
                                     }
                                 }
-                                //add to the already available list
-                                loadState.append is LoadState.Loading -> item {
-                                    val composition by rememberLottieComposition(
-
-                                        LottieCompositionSpec
-                                            // here `code` is the file name of lottie file
-                                            // use it accordingly
-                                            .RawRes(R.raw.cryptolize_loading_anim)
-                                    )
-                                    composition?.let { lottieComposition ->
-                                        LottieAnimation(
-                                            showMessage = true,
-                                            message = "Loading",
-                                            composition = lottieComposition
-                                        )
-                                    }
-                                }
-                                loadState.refresh is LoadState.Error -> item {
-                                    Box(
-                                        modifier = Modifier.fillMaxSize(),
-                                        contentAlignment = Alignment.BottomCenter,
-
-                                        ) {
-                                        val composition by rememberLottieComposition(
-                                            LottieCompositionSpec
-                                                .RawRes(R.raw.cryptolize_error)
-                                        )
-                                        composition?.let { lottieComposition ->
-                                            LottieAnimation(
-                                                showMessage = true,
-                                                message = "Some Error Occur",
-                                                composition = lottieComposition
-                                            )
-                                        }
-                                    }
-                                }
                             }
                         }
                     }
-                }
 
+                }
             }
         }
     }
+
 }
 
 

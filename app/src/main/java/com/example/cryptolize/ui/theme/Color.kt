@@ -5,10 +5,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.compositeOver
 
-val Purple200 = Color(0xFFBB86FC)
-val Purple500 = Color(0xFF6200EE)
-val Purple700 = Color(0xFF3700B3)
-val Teal200 = Color(0xFF03DAC5)
+val PrimaryColor = Color(0xFFffffff)
+val PrimaryLightColor = Color(0xFFffffff)
+val PrimaryDarkColor = Color(0xFFcccccc)
+val PrimaryTextColor = Color(0xFF000000)
+//
+val SecondaryColor = Color(0xFFffd700)
+val SecondaryLightColor = Color(0xFFffff52)
+val SecondaryDarkColor = Color(0xFFc7a600)
+val SecondaryTextColor = Color(0xFF000000)
+
 
 
 //
