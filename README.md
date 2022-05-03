@@ -1,14 +1,14 @@
 # CRYPTOLIZE ⛓️
 
-![Deploy (API)](https://github.com/PatilShreyas/NotyKT/workflows/Deploy%20(API)/badge.svg)
-![Build (Android)](https://github.com/PatilShreyas/NotyKT/workflows/Build%20(Android)/badge.svg)
+![Deploy (API)](https://github.com/RaheemJnr/Crypolize/workflows/Deploy%20(API)/badge.svg)
+![Build (Android)](https://github.com/RaheemJnr/Crypolize/workflows/Build%20(Android)/badge.svg)
 
 
 [![GitHub license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
-[![GitHub stars](https://img.shields.io/github/stars/PatilShreyas/NotyKT?style=social)](https://github.com/RaheemJnr/Crypolize/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/PatilShreyas/NotyKT?style=social)](https://github.com/RaheemJnr/Crypolize/network/members)
-[![GitHub watchers](https://img.shields.io/github/watchers/PatilShreyas/NotyKT?style=social)](https://github.com/RaheemJnr/Crypolize/watchers)
+[![GitHub stars](https://img.shields.io/github/stars/RaheemJnr/Crypolize?style=social)](https://github.com/RaheemJnr/Crypolize/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/RaheemJnr/Crypolize?style=social)](https://github.com/RaheemJnr/Crypolize/network/members)
+[![GitHub watchers](https://img.shields.io/github/watchers/RaheemJnr/Crypolize?style=social)](https://github.com/RaheemJnr/Crypolize/watchers)
 
 
 **CRYPOTIZE** is an Android app📱 built to display all the price of crypto currency assets available in the world built with ❤️ and jetpack compose.
