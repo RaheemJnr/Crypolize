@@ -27,7 +27,7 @@ Have any questions, doubts or want to present your opinions, views? You're alway
 See [contributors](https://github.com/RaheemJnr/Crypolize/graphs/contributors)
 
 
-## License
+## License_
 
 ```
 Copyright 2022 Raheem Jnr
