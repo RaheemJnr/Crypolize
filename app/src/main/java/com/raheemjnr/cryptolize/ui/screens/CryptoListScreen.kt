@@ -1,6 +1,7 @@
 package com.raheemjnr.cryptolize.ui.screens
 
 import androidx.compose.foundation.background
+import com.raheemjnr.cryptolize.R
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -24,21 +25,20 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
-import com.example.cryptolize.R
-import com.example.cryptolize.domain.mappers.ListDTOMapper
-import com.example.cryptolize.domain.repository.list.ListRepoImpl
-import com.example.cryptolize.navigation.MainScreen
-import com.example.cryptolize.ui.components.CryptoListItems
-import com.example.cryptolize.ui.components.ListCarousel
-import com.example.cryptolize.ui.components.ListHeader
-import com.example.cryptolize.ui.components.ListTopAppbar
-import com.example.cryptolize.ui.theme.CryptolizeTheme
-import com.example.cryptolize.ui.viewModels.CryptoListViewModel
-import com.example.cryptolize.utils.LottieAnimation
-import com.example.cryptolize.utils.openUrl
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
+import com.raheemjnr.cryptolize.domain.mappers.ListDTOMapper
+import com.raheemjnr.cryptolize.domain.repository.list.ListRepoImpl
+import com.raheemjnr.cryptolize.navigation.MainScreen
+import com.raheemjnr.cryptolize.ui.components.CryptoListItems
+import com.raheemjnr.cryptolize.ui.components.ListCarousel
+import com.raheemjnr.cryptolize.ui.components.ListHeader
+import com.raheemjnr.cryptolize.ui.components.ListTopAppbar
+import com.raheemjnr.cryptolize.ui.theme.CryptolizeTheme
+import com.raheemjnr.cryptolize.ui.viewModels.CryptoListViewModel
+import com.raheemjnr.cryptolize.utils.LottieAnimation
+import com.raheemjnr.cryptolize.utils.openUrl
 
 @ExperimentalPagerApi
 @Composable

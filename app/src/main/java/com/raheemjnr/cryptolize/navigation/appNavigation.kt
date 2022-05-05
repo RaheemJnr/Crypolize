@@ -8,9 +8,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.cryptolize.ui.screens.CryptoListScreen
-import com.example.cryptolize.ui.screens.DetailScreen
 import com.google.accompanist.pager.ExperimentalPagerApi
+import com.raheemjnr.cryptolize.ui.screens.CryptoListScreen
+import com.raheemjnr.cryptolize.ui.screens.DetailScreen
 
 /** nav graph to navigate to respective screens */
 @ExperimentalPagerApi

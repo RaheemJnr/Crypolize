@@ -1,4 +1,4 @@
-package com.example.cryptolize
+package com.raheemjnr.cryptolize
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

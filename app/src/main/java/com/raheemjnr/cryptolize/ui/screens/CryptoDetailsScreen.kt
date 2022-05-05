@@ -18,20 +18,20 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
-import com.example.cryptolize.R
-import com.example.cryptolize.domain.mappers.DetailDTOMapper
-import com.example.cryptolize.domain.repository.detail.DetailRepoImpl
-import com.example.cryptolize.ui.components.CoinDetailsOverView
-import com.example.cryptolize.ui.components.DetailsTopBar
-import com.example.cryptolize.ui.components.InfoUI
-import com.example.cryptolize.ui.components.MarginData
-import com.example.cryptolize.ui.components.charts.LineChart
-import com.example.cryptolize.ui.theme.gradientGreenColors
-import com.example.cryptolize.ui.theme.gradientRedColors
-import com.example.cryptolize.ui.viewModels.CoinDetailViewModel
-import com.example.cryptolize.utils.LottieAnimation
-import com.example.cryptolize.utils.UIDataState
-import com.example.cryptolize.utils.showShortToast
+import com.raheemjnr.cryptolize.R
+import com.raheemjnr.cryptolize.domain.mappers.DetailDTOMapper
+import com.raheemjnr.cryptolize.domain.repository.detail.DetailRepoImpl
+import com.raheemjnr.cryptolize.ui.components.CoinDetailsOverView
+import com.raheemjnr.cryptolize.ui.components.DetailsTopBar
+import com.raheemjnr.cryptolize.ui.components.InfoUI
+import com.raheemjnr.cryptolize.ui.components.MarginData
+import com.raheemjnr.cryptolize.ui.components.charts.LineChart
+import com.raheemjnr.cryptolize.ui.theme.gradientGreenColors
+import com.raheemjnr.cryptolize.ui.theme.gradientRedColors
+import com.raheemjnr.cryptolize.ui.viewModels.CoinDetailViewModel
+import com.raheemjnr.cryptolize.utils.LottieAnimation
+import com.raheemjnr.cryptolize.utils.UIDataState
+import com.raheemjnr.cryptolize.utils.showShortToast
 import java.util.*
 
 @OptIn(ExperimentalAnimationApi::class)

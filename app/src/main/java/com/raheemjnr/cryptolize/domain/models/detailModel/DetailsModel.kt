@@ -1,9 +1,9 @@
 package com.raheemjnr.cryptolize.domain.models.detailModel
 
-import com.example.cryptolize.data.model.detailsDto.Description
-import com.example.cryptolize.data.model.detailsDto.Image
-import com.example.cryptolize.data.model.detailsDto.Links
-import com.example.cryptolize.data.model.detailsDto.MarketData
+import com.raheemjnr.cryptolize.data.model.detailsDto.Description
+import com.raheemjnr.cryptolize.data.model.detailsDto.Image
+import com.raheemjnr.cryptolize.data.model.detailsDto.Links
+import com.raheemjnr.cryptolize.data.model.detailsDto.MarketData
 
 
 data class CoinDetail(

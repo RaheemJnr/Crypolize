@@ -7,9 +7,9 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
-import com.example.cryptolize.domain.models.Crypto
-import com.example.cryptolize.domain.repository.ListRepo
-import com.example.cryptolize.utils.PageNumSource
+import com.raheemjnr.cryptolize.domain.repository.list.ListRepo
+import com.raheemjnr.cryptolize.domain.models.Crypto
+import com.raheemjnr.cryptolize.utils.PageNumSource
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

@@ -6,10 +6,10 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.cryptolize.domain.models.detailModel.CoinDetail
-import com.example.cryptolize.ui.components.charts.BarCharts
-import com.example.cryptolize.ui.theme.gradientGreenColors
-import com.example.cryptolize.ui.theme.gradientRedColors
+import com.raheemjnr.cryptolize.domain.models.detailModel.CoinDetail
+import com.raheemjnr.cryptolize.ui.components.charts.BarCharts
+import com.raheemjnr.cryptolize.ui.theme.gradientGreenColors
+import com.raheemjnr.cryptolize.ui.theme.gradientRedColors
 
 @Composable
 fun MarginData(coinDetail: CoinDetail) {

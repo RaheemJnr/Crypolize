@@ -9,8 +9,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.cryptolize.domain.models.detailModel.CoinDetail
-import com.example.cryptolize.utils.Formatter.formatCurrency
+import com.raheemjnr.cryptolize.domain.models.detailModel.CoinDetail
+import com.raheemjnr.cryptolize.utils.Formatter.formatCurrency
 import java.util.*
 
 @Composable

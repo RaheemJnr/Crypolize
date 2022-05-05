@@ -26,9 +26,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.cryptolize.domain.models.detailModel.CoinDetail
-import com.example.cryptolize.utils.openUrl
-import com.example.cryptolize.utils.showShortToast
+import com.raheemjnr.cryptolize.domain.models.detailModel.CoinDetail
+import com.raheemjnr.cryptolize.utils.openUrl
+import com.raheemjnr.cryptolize.utils.showShortToast
 
 //
 @ExperimentalAnimationApi

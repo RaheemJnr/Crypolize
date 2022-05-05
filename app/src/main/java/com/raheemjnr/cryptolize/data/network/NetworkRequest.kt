@@ -1,8 +1,8 @@
 package com.raheemjnr.cryptolize.data.network
 
-import com.example.cryptolize.data.model.CryptoListDTO
-import com.example.cryptolize.data.model.detailsDto.DetailsDTO
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.raheemjnr.cryptolize.data.model.CryptoListDTO
+import com.raheemjnr.cryptolize.data.model.detailsDto.DetailsDTO
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Response

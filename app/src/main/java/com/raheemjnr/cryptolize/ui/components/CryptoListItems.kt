@@ -19,11 +19,11 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.cryptolize.domain.models.Crypto
-import com.example.cryptolize.utils.Formatter.formatCurrency
-import com.example.cryptolize.utils.Formatter.roundPriceChange
-import com.example.cryptolize.utils.Formatter.roundToThreeDecimals
-import com.example.cryptolize.utils.Formatter.roundToTwoDecimals
+import com.raheemjnr.cryptolize.domain.models.Crypto
+import com.raheemjnr.cryptolize.utils.Formatter.formatCurrency
+import com.raheemjnr.cryptolize.utils.Formatter.roundPriceChange
+import com.raheemjnr.cryptolize.utils.Formatter.roundToThreeDecimals
+import com.raheemjnr.cryptolize.utils.Formatter.roundToTwoDecimals
 import java.util.*
 
 @Composable

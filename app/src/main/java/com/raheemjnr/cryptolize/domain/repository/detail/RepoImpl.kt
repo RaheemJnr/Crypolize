@@ -1,9 +1,9 @@
 package com.raheemjnr.cryptolize.domain.repository.detail
 
 import androidx.annotation.WorkerThread
-import com.example.cryptolize.domain.mappers.DetailDTOMapper
-import com.example.cryptolize.data.network.CryptolizeApiCall
-import com.example.cryptolize.domain.models.detailModel.CoinDetail
+import com.raheemjnr.cryptolize.data.network.CryptolizeApiCall
+import com.raheemjnr.cryptolize.domain.mappers.DetailDTOMapper
+import com.raheemjnr.cryptolize.domain.models.detailModel.CoinDetail
 
 class DetailRepoImpl(private val mapper: DetailDTOMapper) : DetailRepo {
     @WorkerThread

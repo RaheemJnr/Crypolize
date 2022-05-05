@@ -1,7 +1,8 @@
 package com.raheemjnr.cryptolize.domain.mappers
 
-import com.example.cryptolize.data.model.CryptoListDTO
-import com.example.cryptolize.domain.models.Crypto
+import com.raheemjnr.cryptolize.data.model.CryptoListDTO
+import com.raheemjnr.cryptolize.domain.models.Crypto
+
 
 /**
  * we use #DomainMapper interface to map our domain model to network DTO

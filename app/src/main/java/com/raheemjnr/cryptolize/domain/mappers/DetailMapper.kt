@@ -1,7 +1,8 @@
 package com.raheemjnr.cryptolize.domain.mappers
 
-import com.example.cryptolize.data.model.detailsDto.DetailsDTO
-import com.example.cryptolize.domain.models.detailModel.CoinDetail
+import com.raheemjnr.cryptolize.data.model.detailsDto.DetailsDTO
+import com.raheemjnr.cryptolize.domain.models.detailModel.CoinDetail
+
 
 class DetailDTOMapper : DomainMapper<DetailsDTO, CoinDetail> {
 

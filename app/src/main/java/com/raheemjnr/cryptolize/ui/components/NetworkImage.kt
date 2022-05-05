@@ -19,8 +19,8 @@ import androidx.compose.ui.unit.dp
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.ImagePainter
 import coil.compose.rememberImagePainter
-import com.example.cryptolize.R
-import com.example.cryptolize.ui.theme.compositedOnSurface
+import com.raheemjnr.cryptolize.R
+import com.raheemjnr.cryptolize.ui.theme.compositedOnSurface
 
 /**
 function to display user profile image

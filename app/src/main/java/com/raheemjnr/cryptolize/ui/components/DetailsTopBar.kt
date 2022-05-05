@@ -16,10 +16,10 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.cryptolize.R
+import com.raheemjnr.cryptolize.R
 
 @Composable
-fun DetailsTopBar(navController: NavController, coinName:String) {
+fun DetailsTopBar(navController: NavController, coinName: String) {
     Surface(color = MaterialTheme.colors.primarySurface) {
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,

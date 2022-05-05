@@ -1,6 +1,7 @@
-package com.example.cryptolize.domain.repository
+package com.raheemjnr.cryptolize.domain.repository.list
 
-import com.example.cryptolize.domain.models.Crypto
+import com.raheemjnr.cryptolize.domain.models.Crypto
+
 
 /**
  * interface to get our data

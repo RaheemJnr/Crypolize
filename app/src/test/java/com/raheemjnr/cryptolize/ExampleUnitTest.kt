@@ -1,4 +1,4 @@
-package com.example.cryptolize
+package com.raheemjnr.cryptolize
 
 import org.junit.Test
 

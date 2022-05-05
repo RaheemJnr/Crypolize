@@ -9,9 +9,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.cryptolize.navigation.MainScreenNavigation
-import com.example.cryptolize.ui.theme.CryptolizeTheme
 import com.google.accompanist.pager.ExperimentalPagerApi
+import com.raheemjnr.cryptolize.navigation.MainScreenNavigation
+import com.raheemjnr.cryptolize.ui.theme.CryptolizeTheme
 
 class MainActivity : ComponentActivity() {
 

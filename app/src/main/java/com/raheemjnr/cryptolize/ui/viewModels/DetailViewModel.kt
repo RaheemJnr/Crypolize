@@ -4,9 +4,9 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.cryptolize.domain.models.detailModel.CoinDetail
-import com.example.cryptolize.domain.repository.detail.DetailRepo
-import com.example.cryptolize.utils.UIDataState
+import com.raheemjnr.cryptolize.domain.models.detailModel.CoinDetail
+import com.raheemjnr.cryptolize.domain.repository.detail.DetailRepo
+import com.raheemjnr.cryptolize.utils.UIDataState
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
