@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.cryptolize">
+    package="com.RaheemJnr.cryptolize">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cryptolize.NoActionBar">
         <activity
-            android:name=".SplashScreen"
+            android:name="com.raheemjnr.cryptolize.SplashScreen"
             android:exported="true"
             android:theme="@style/Theme.splash">
             <intent-filter>
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.raheemjnr.cryptolize.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Cryptolize.NoActionBar">
 
