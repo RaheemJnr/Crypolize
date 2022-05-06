@@ -9,7 +9,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -17,7 +16,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.annotation.ExperimentalCoilApi
-
 import com.raheemjnr.cryptolize.domain.models.detailModel.CoinDetail
 import com.raheemjnr.cryptolize.utils.Formatter.formatCurrency
 import com.raheemjnr.cryptolize.utils.Formatter.formatWithoutCurrency
@@ -84,7 +82,7 @@ fun InfoUI(coinDetail: CoinDetail, context: Context) {
                     .fillMaxWidth()
                     .padding(8.dp)
             ) {
-                DetailsInfoLeftSIdeItem(text = "circulation Supply")
+                DetailsInfoLeftSIdeItem(text = "Circulation Supply")
                 DetailsInfoRightSideItem(
                     text = formatWithoutCurrency(
                         coinDetail.market_data?.circulating_supply ?: "--"
@@ -143,7 +141,8 @@ fun InfoUI(coinDetail: CoinDetail, context: Context) {
                 Text(
                     text = "${coinDetail.description?.en}",
                     style = MaterialTheme.typography.body2,
-                    textAlign = TextAlign.Start
+                    textAlign = TextAlign.Start,
+                    color = MaterialTheme.colors.primary
                 )
             }
             //reference link
@@ -156,25 +155,35 @@ fun InfoUI(coinDetail: CoinDetail, context: Context) {
 
 @Composable
 fun DetailsInfoRightSideItem(text: String?) {
-    if (text != null) {
-        Text(
-            text = text,
-            style = MaterialTheme.typography.body1,
-            textAlign = TextAlign.Center,
-            fontWeight = FontWeight.Bold,
-            color = Color.Black
-        )
+    Surface(
+        color = MaterialTheme.colors.surface,
+        contentColor = MaterialTheme.colors.onSurface
+    ) {
+        if (text != null) {
+            Text(
+                text = text,
+                style = MaterialTheme.typography.body1,
+                textAlign = TextAlign.Center,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colors.primary
+            )
+        }
     }
 }
 
 @Composable
 fun DetailsInfoLeftSIdeItem(text: String) {
-    Text(
-        text = text,
-        fontSize = 18.sp,
-        fontWeight = FontWeight.Bold,
-        color = Color.Black.copy(alpha = 0.5f)
-    )
+    Surface(
+        color = MaterialTheme.colors.surface,
+        contentColor = MaterialTheme.colors.onSurface
+    ) {
+        Text(
+            text = text,
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colors.primary.copy(alpha = 0.5f)
+        )
+    }
 }
 
 @Preview

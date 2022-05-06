@@ -5,23 +5,31 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 
 private val DarkColorPalette = darkColors(
     primary = PrimaryColor,
     primaryVariant = PrimaryDarkColor,
-    onPrimary = PrimaryTextColor,
+    onPrimary = PrimaryColor,
     secondary = SecondaryColor,
     secondaryVariant = SecondaryLightColor,
-    onSecondary = SecondaryTextColor
+    onSecondary = PrimaryColor,
+    onError = Color.Red,
+    onBackground = Color.White,
+    onSurface = Color.White
 )
 
 private val LightColorPalette = lightColors(
-    primary = PrimaryColor,
+    primary = PrimaryTextColor,
     primaryVariant = PrimaryDarkColor,
     onPrimary = PrimaryTextColor,
     secondary = SecondaryColor,
     secondaryVariant = SecondaryLightColor,
-    onSecondary = SecondaryTextColor
+    onSecondary = SecondaryTextColor,
+    onError = Color.Red,
+    onBackground = Color.Black,
+    onSurface = Color.Black
+
 
     /* Other default colors to override
     background = Color.White,
@@ -34,7 +42,10 @@ private val LightColorPalette = lightColors(
 )
 
 @Composable
-fun CryptolizeTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
+fun CryptolizeTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable() () -> Unit
+) {
     val colors = if (darkTheme) {
         DarkColorPalette
     } else {

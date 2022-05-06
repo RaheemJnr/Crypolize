@@ -5,10 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Tab
-import androidx.compose.material.TabRow
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -107,7 +104,12 @@ fun DetailScreen(navController: NavHostController, coinId: String, coinName: Str
                             Tab(
                                 selected = tabIndex == index,
                                 onClick = { tabIndex = index },
-                                text = { Text(text = title) }
+                                text = {
+                                    Text(
+                                        text = title,
+                                        style = MaterialTheme.typography.h6
+                                    )
+                                }
                             )
                         }
                     }

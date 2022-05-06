@@ -8,6 +8,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
@@ -53,7 +54,7 @@ fun ReferenceUI(
             Text(
                 text = "Reference Links",
                 fontWeight = FontWeight.Bold,
-                color = Color.Black.copy(alpha = 0.5f),
+                color = MaterialTheme.colors.onPrimary.copy(alpha = 0.5f),
                 modifier = Modifier,
                 textAlign = TextAlign.Center,
                 fontSize = 18.sp
@@ -63,7 +64,7 @@ fun ReferenceUI(
                 imageVector = if (arrowDirection) Icons.Filled.KeyboardArrowDown
                 else Icons.Filled.KeyboardArrowUp,
                 contentDescription = "",
-                tint = Color.Black.copy(alpha = 0.7f),
+                tint = MaterialTheme.colors.onPrimary.copy(alpha = 0.7f),
                 modifier = Modifier
                     .clickable {
                         arrowDirection = !arrowDirection
@@ -97,8 +98,8 @@ fun ReferenceUI(
                             .padding(4.dp),
                         textDecoration = TextDecoration.Underline,
                         fontWeight = FontWeight.Bold,
-                        style = TextStyle(Color.Blue),
-                        fontSize = 16.sp
+                        style = MaterialTheme.typography.body1,
+                        color = MaterialTheme.colors.secondary
                     )
                     ReferenceDivider()
                     //twitter
@@ -111,8 +112,8 @@ fun ReferenceUI(
                             .padding(4.dp),
                         textDecoration = TextDecoration.Underline,
                         fontWeight = FontWeight.Bold,
-                        style = TextStyle(Color.Blue),
-                        fontSize = 16.sp
+                        style = MaterialTheme.typography.body1,
+                        color = MaterialTheme.colors.secondary
                     )
                     ReferenceDivider()
                     //github
@@ -131,8 +132,8 @@ fun ReferenceUI(
                             .padding(4.dp),
                         textDecoration = TextDecoration.Underline,
                         fontWeight = FontWeight.Bold,
-                        style = TextStyle(Color.Blue),
-                        fontSize = 16.sp
+                        style = MaterialTheme.typography.body1,
+                        color = MaterialTheme.colors.secondary
                     )
                     ReferenceDivider()
                     //bitbucket
@@ -151,32 +152,14 @@ fun ReferenceUI(
                             .padding(4.dp),
                         textDecoration = TextDecoration.Underline,
                         fontWeight = FontWeight.Bold,
-                        style = TextStyle(Color.Blue),
-                        fontSize = 16.sp
+                        style = MaterialTheme.typography.body1,
+                        color = MaterialTheme.colors.secondary
                     )
-
                 }
             }
-
         }
-
     }
-
-
 }
-
-//@Composable
-//fun LinkText(linkTitle: String, link: String, context: Context) {
-//    Text(
-//        text = linkTitle,
-//        modifier = Modifier.clickable {
-//            context.openUrl(link)
-//        },
-//        textDecoration = TextDecoration.Underline,
-//        fontWeight = FontWeight.Bold,
-//        style = TextStyle(Color.Blue)
-//    )
-//}
 
 @Composable
 fun ReferenceDivider() {
