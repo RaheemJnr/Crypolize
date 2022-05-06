@@ -2,17 +2,18 @@ package com.raheemjnr.cryptolize.ui.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
@@ -20,7 +21,9 @@ import com.raheemjnr.cryptolize.R
 
 @Composable
 fun DetailsTopBar(navController: NavController, coinName: String) {
-    Surface(color = MaterialTheme.colors.primarySurface) {
+    Surface(
+        color = MaterialTheme.colors.surface
+    ) {
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
@@ -30,9 +33,9 @@ fun DetailsTopBar(navController: NavController, coinName: String) {
             Icon(
                 imageVector = Icons.Filled.ArrowBack,
                 contentDescription = "back arrow",
-                tint = Color.Black,
+                tint = MaterialTheme.colors.secondary,
                 modifier = Modifier
-                    .size(24.dp)
+                    .size(26.dp)
                     .clickable {
                         navController.popBackStack()
                     }
@@ -43,7 +46,7 @@ fun DetailsTopBar(navController: NavController, coinName: String) {
                 Icon(
                     painterResource(id = R.drawable.pair_swap),
                     contentDescription = "swap pair",
-                    tint = Color.Black,
+                    tint = MaterialTheme.colors.secondary,
                     modifier = Modifier
                         .size(26.dp)
                         .constrainAs(swapIcon) {
@@ -54,7 +57,8 @@ fun DetailsTopBar(navController: NavController, coinName: String) {
                 )
                 Text(
                     text = "${coinName}/USDT",
-                    fontSize = 22.sp,
+                    style = MaterialTheme.typography.h6,
+                    color = MaterialTheme.colors.primary,
                     modifier = Modifier
                         .constrainAs(pairText) {
                             top.linkTo(swapIcon.top)
@@ -67,9 +71,9 @@ fun DetailsTopBar(navController: NavController, coinName: String) {
                 imageVector = Icons.Filled.Favorite,
                 contentDescription = "notification",
                 modifier = Modifier
-                    .size(24.dp)
-                    .padding(end = 8.dp)
-
+                    .size(26.dp)
+                    .padding(end = 8.dp),
+                tint = MaterialTheme.colors.secondary
             )
         }
     }

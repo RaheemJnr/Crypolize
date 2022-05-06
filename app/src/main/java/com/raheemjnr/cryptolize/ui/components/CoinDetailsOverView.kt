@@ -42,7 +42,7 @@ fun CoinDetailsOverView(coinDetail: CoinDetail) {
                     Text(
                         text = formatCurrency(coinDetail.market_data?.current_price?.usd ?: "--"),
                         fontSize = 22.sp,
-                        color = MaterialTheme.colors.secondary.copy(alpha = 0.5f)
+                        color = MaterialTheme.colors.secondary.copy(alpha = 0.7f)
                     )
                 }
             }

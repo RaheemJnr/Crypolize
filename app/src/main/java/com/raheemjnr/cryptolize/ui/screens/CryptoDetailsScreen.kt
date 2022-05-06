@@ -96,8 +96,8 @@ fun DetailScreen(navController: NavHostController, coinId: String, coinName: Str
                 Column {
                     TabRow(
                         selectedTabIndex = tabIndex,
-                        backgroundColor = Color(0xFFf2f2f6),
-                        contentColor = Color.Black,
+                        backgroundColor = MaterialTheme.colors.secondary,
+                        contentColor = MaterialTheme.colors.primary,
                         modifier = Modifier
                     ) {
                         titles.forEachIndexed { index, title ->
