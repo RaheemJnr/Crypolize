@@ -71,8 +71,8 @@ fun DetailsTopBar(navController: NavController, coinName: String) {
                 imageVector = Icons.Filled.Favorite,
                 contentDescription = "notification",
                 modifier = Modifier
-                    .size(26.dp)
-                    .padding(end = 8.dp),
+                    .padding(end = 8.dp)
+                    .size(26.dp),
                 tint = MaterialTheme.colors.secondary
             )
         }

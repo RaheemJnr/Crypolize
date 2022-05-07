@@ -21,7 +21,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 fun ListTopAppbar() {
 
     Surface(
-        color = MaterialTheme.colors.primarySurface,
+        color = MaterialTheme.colors.surface,
 
         ) {
         ConstraintLayout(
@@ -33,11 +33,10 @@ fun ListTopAppbar() {
             Icon(
                 imageVector = Icons.Filled.Person,
                 contentDescription = "profile icon",
-                tint = Color.White,
+                tint = MaterialTheme.colors.secondary,
                 modifier = Modifier
                     .clip(RoundedCornerShape(32.dp))
-                    .background(Color.Black)
-                    .size(32.dp)
+                    .size(26.dp)
                     .constrainAs(profileIcon) {
                         start.linkTo(parent.start, margin = 8.dp)
                         top.linkTo(parent.top, margin = 8.dp)
@@ -56,19 +55,21 @@ fun ListTopAppbar() {
                 imageVector = Icons.Filled.MoreVert,
                 contentDescription = "more vert",
                 modifier = Modifier
-                    .size(28.dp)
+                    .size(26.dp)
                     .constrainAs(moreVertIcon) {
                         end.linkTo(parent.end, margin = 8.dp)
                         top.linkTo(parent.top, margin = 4.dp)
                         bottom.linkTo(parent.bottom, margin = 4.dp)
-                    }
+                    },
+                tint = MaterialTheme.colors.secondary
             )
             //notification
             Icon(
                 imageVector = Icons.Filled.Notifications,
                 contentDescription = "notification",
+                tint = MaterialTheme.colors.secondary,
                 modifier = Modifier
-                    .size(28.dp)
+                    .size(26.dp)
                     .constrainAs(notificationIcon) {
                         end.linkTo(moreVertIcon.start, margin = 8.dp)
                         top.linkTo(parent.top)

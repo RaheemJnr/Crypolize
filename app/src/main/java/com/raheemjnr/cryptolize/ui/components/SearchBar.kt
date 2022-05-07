@@ -3,13 +3,11 @@ package com.raheemjnr.cryptolize.ui.components
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
@@ -19,7 +17,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun CryptoListSearch(
-    modifier: androidx.compose.ui.Modifier
+    modifier: Modifier
 ) {
     val focusManager = LocalFocusManager.current
     var searchValue by remember { mutableStateOf("") }
@@ -27,7 +25,7 @@ fun CryptoListSearch(
         modifier = modifier
     ) {
         OutlinedTextField(
-            modifier = androidx.compose.ui.Modifier
+            modifier = Modifier
                 .wrapContentSize()
                 .requiredHeight(60.dp)
                 .requiredWidth(255.dp)
@@ -42,8 +40,8 @@ fun CryptoListSearch(
             leadingIcon = {
                 Icon(
                     Icons.Filled.Search, contentDescription = "search icon",
-                    tint = MaterialTheme.colors.onSurface,
-                    modifier = androidx.compose.ui.Modifier.size(16.dp)
+                    tint = MaterialTheme.colors.secondary,
+                    modifier = Modifier.size(16.dp)
                 )
             },
             keyboardOptions = KeyboardOptions.Default.copy(
@@ -57,12 +55,18 @@ fun CryptoListSearch(
                 }
             ),
             textStyle = TextStyle(
-//                color = MaterialTheme.colors.onSurface,
-//               background = MaterialTheme.colors.surface
+                color = MaterialTheme.colors.onSurface,
+                background = MaterialTheme.colors.surface
+            ),
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = MaterialTheme.colors.primary,
+                unfocusedBorderColor = MaterialTheme.colors.secondary,
+                unfocusedLabelColor = MaterialTheme.colors.secondary,
+                focusedLabelColor = MaterialTheme.colors.primary
+
             )
         )
     }
-
 }
 
 @Preview

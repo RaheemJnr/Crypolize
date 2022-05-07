@@ -35,7 +35,8 @@ fun CryptoListItems(
         withStyle(
             style = SpanStyle(
                 fontWeight = FontWeight.SemiBold,
-                fontSize = 18.sp
+                fontSize = 18.sp,
+                color = MaterialTheme.colors.primary
             )
         ) {
             append("${items.symbol?.uppercase(Locale.ROOT)} ")
@@ -45,7 +46,7 @@ fun CryptoListItems(
                 fontSize = 18.sp,
                 fontStyle = FontStyle.Italic,
                 fontWeight = FontWeight.Normal,
-                color = Color.Black.copy(alpha = 0.5f)
+                color = MaterialTheme.colors.primary
             )
         ) {
             append("/")
@@ -54,7 +55,7 @@ fun CryptoListItems(
             style = SpanStyle(
                 fontWeight = FontWeight.Normal,
                 fontSize = 16.sp,
-                color = Color.Black.copy(alpha = 0.5f)
+                color = MaterialTheme.colors.primary
             )
         ) {
             append("USDT")
@@ -85,7 +86,7 @@ fun CryptoListItems(
                     )
                 }",
                 fontSize = 14.sp,
-                color = Color.Black.copy(alpha = 0.5f)
+                color = MaterialTheme.colors.secondary
             )
 
         }
@@ -97,11 +98,12 @@ fun CryptoListItems(
             Text(
                 text = formatCurrency(items.current_price!!.roundToTwoDecimals().toDouble()),
                 fontSize = 18.sp,
+                color = MaterialTheme.colors.primary
             )
             Text(
                 text = formatCurrency(items.current_price.roundToThreeDecimals().toDouble()),
                 fontSize = 14.sp,
-                color = Color.Black.copy(alpha = 0.5f)
+                color = MaterialTheme.colors.secondary
             )
         }
         // 24h change
