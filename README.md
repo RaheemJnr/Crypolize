@@ -6,12 +6,12 @@
 [![GitHub watchers](https://img.shields.io/github/watchers/RaheemJnr/Crypolize?style=social)](https://github.com/RaheemJnr/Crypolize/watchers)
 
 
-**CRYPOTIZE** is an Android app📱 built to display all the price of crypto currency assets available in the world built with ❤️ and jetpack compose.
+**CRYPOTOLIZE** is an Android app📱 built to display all the price of crypto currency assets available in the world built with ❤️ and jetpack compose.
 
 
 ## 💡 About the Project
 
-### 🔹 [Android Application]()
+### 🔹 Android Application
 
 This is an Android application which uses uses the Compose Navigation and the entire UI is built with Jetpack Compose.
 
