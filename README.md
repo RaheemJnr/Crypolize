@@ -15,19 +15,32 @@
 
 This is an Android application which uses uses the Compose Navigation and the entire UI is built with Jetpack Compose.
 
-## Want to Contribute 🙋‍♂️?
+## 🔹  Note
+#### 🚧🚧🚧 THIS PROJECT IS STILL UNDER CONSTRUCTION🚧🚧🚧
+List of improvements to be added
++ Room DB (Offline caching)
++ Hilt/Dagger (for dependency injection)
+- General Code improvement
+- Others
+
+##  🔹 Data Source
+The Api for the data source is from [CoinGecko](https://api.coingecko.com/api/v3/)
+
+
+## 🔹 Want to Contribute 🙋‍♂️?
 
 Awesome! If you want to contribute to this project, you're always welcome! Just take a dive!!
-## Want to discuss? 💬
+
+## 🔹 Want to discuss? 💬
 
 Have any questions, doubts or want to present your opinions, views? You're always welcome. You can [start discussions](https://github.com/RaheemJnr/Crypolize/discussions).
 
-## Contributors
+## 🔹  Contributors
 
 See [contributors](https://github.com/RaheemJnr/Crypolize/graphs/contributors)
 
 
-## License
+##  🔹 License
 
 ```
 Copyright 2022 Raheem Jnr
@@ -43,5 +56,3 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-```
-
