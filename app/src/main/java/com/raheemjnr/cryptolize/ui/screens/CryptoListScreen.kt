@@ -28,7 +28,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.raheemjnr.cryptolize.R
-import com.raheemjnr.cryptolize.domain.mappers.ListDTOMapper
+import com.raheemjnr.cryptolize.domain.mappers.MapDTOtoDbEntity
 import com.raheemjnr.cryptolize.domain.repository.list.ListRepoImpl
 import com.raheemjnr.cryptolize.navigation.MainScreen
 import com.raheemjnr.cryptolize.ui.components.CryptoListItems
@@ -44,7 +44,7 @@ import com.raheemjnr.cryptolize.utils.openUrl
 fun CryptoListScreen(navController: NavController) {
     //viewModel
     val viewModel: CryptoListViewModel = viewModel(
-        factory = CryptoListViewModel.CryptoListViewModelFactory(ListRepoImpl(ListDTOMapper()))
+        factory = CryptoListViewModel.CryptoListViewModelFactory(ListRepoImpl(MapDTOtoDbEntity()))
     )
     //
     val context = LocalContext.current
@@ -79,7 +79,7 @@ fun CryptoListScreen(navController: NavController) {
                     LazyColumn(state = lazyListState) {
                         items(items = pagingItems,
                             key = { crypto ->
-                                crypto.id.toString()
+                                crypto.symbol.toString()
                             }
                         ) { item ->
                             item?.let {

@@ -6,16 +6,16 @@ import com.raheemjnr.cryptolize.domain.models.detailModel.CoinDetail
 
 class DetailDTOMapper : DomainMapper<DetailsDTO, CoinDetail> {
 
-    override fun mapToDomainModel(dtoModel: DetailsDTO) =
+    override fun mapToDomainModel(model: DetailsDTO) =
         CoinDetail(
-            id = dtoModel.id,
-            symbol = dtoModel.symbol,
-            name = dtoModel.name,
-            description = dtoModel.description,
-            links = dtoModel.links,
-            image = dtoModel.image,
-            market_cap_rank = dtoModel.market_cap_rank,
-            market_data = dtoModel.market_data
+            id = model.id,
+            symbol = model.symbol,
+            name = model.name,
+            description = model.description,
+            links = model.links,
+            image = model.image,
+            market_cap_rank = model.market_cap_rank,
+            market_data = model.market_data
         )
 
 

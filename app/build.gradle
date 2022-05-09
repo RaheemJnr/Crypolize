@@ -52,7 +52,7 @@ dependencies {
     //core android
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'com.google.android.material:material:1.6.0'
 
     //compose
     implementation "androidx.compose.ui:ui:$compose_version"
@@ -66,14 +66,13 @@ dependencies {
     //paging
     implementation "androidx.paging:paging-compose:1.0.0-alpha14"
     //compose navigation
-    implementation 'androidx.navigation:navigation-compose:2.5.0-alpha02'
+    implementation 'androidx.navigation:navigation-compose:2.5.0-beta01'
 
     // Retrofit for networking
     // Retrofit with Moshi Converter for parsing data
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
-
     // Moshi for parsing the JSON format
     implementation "com.squareup.moshi:moshi-kotlin:1.13.0"
 
@@ -81,18 +80,25 @@ dependencies {
     implementation "io.coil-kt:coil-compose:1.4.0"
 
     //splash screen
-    implementation 'androidx.core:core-splashscreen:1.0.0-beta01'
+    implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
 
 
     //swipe to refresh
     implementation "com.google.accompanist:accompanist-swiperefresh:0.23.1"
-
 
     //lottie animation
     implementation "com.airbnb.android:lottie-compose:5.0.3"
 
     //carousel pager
     implementation "com.google.accompanist:accompanist-pager:0.23.0"
+
+    //room database for offline caching
+    def room_version = "2.4.2"
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+
 
     //test
     testImplementation 'junit:junit:4.13.2'

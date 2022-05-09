@@ -1,4 +1,4 @@
-package com.raheemjnr.cryptolize.data.network
+package com.raheemjnr.cryptolize.data.repository.network
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.raheemjnr.cryptolize.data.model.CryptoListDTO

@@ -1,7 +1,7 @@
 package com.raheemjnr.cryptolize.domain.repository.detail
 
 import androidx.annotation.WorkerThread
-import com.raheemjnr.cryptolize.data.network.CryptolizeApiCall
+import com.raheemjnr.cryptolize.data.repository.network.CryptolizeApiCall
 import com.raheemjnr.cryptolize.domain.mappers.DetailDTOMapper
 import com.raheemjnr.cryptolize.domain.models.detailModel.CoinDetail
 

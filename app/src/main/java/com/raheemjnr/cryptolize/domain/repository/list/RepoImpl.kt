@@ -1,12 +1,12 @@
 package com.raheemjnr.cryptolize.domain.repository.list
 
 import androidx.annotation.WorkerThread
-import com.raheemjnr.cryptolize.data.network.CryptolizeApiCall
-import com.raheemjnr.cryptolize.domain.mappers.ListDTOMapper
+import com.raheemjnr.cryptolize.data.repository.network.CryptolizeApiCall
+import com.raheemjnr.cryptolize.domain.mappers.MapDTOtoDbEntity
 import com.raheemjnr.cryptolize.domain.models.Crypto
 
 
-class ListRepoImpl(private val mapper: ListDTOMapper) : ListRepo {
+class ListRepoImpl(private val mapper: MapDTOtoDbEntity) : ListRepo {
 
     @WorkerThread
     override suspend fun getCryptoList(

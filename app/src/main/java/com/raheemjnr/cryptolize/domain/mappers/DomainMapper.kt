@@ -6,7 +6,7 @@ package com.raheemjnr.cryptolize.domain.mappers
  */
 interface DomainMapper<T, DomainModel> {
 
-    fun mapToDomainModel(dtoModel: T): DomainModel
+    fun mapToDomainModel(model: T): DomainModel
 
     fun mapFromDomainModel(domainModel: DomainModel): T
 }
