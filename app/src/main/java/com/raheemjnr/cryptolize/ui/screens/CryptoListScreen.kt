@@ -59,11 +59,9 @@ fun CryptoListScreen(navController: NavController) {
         }
     ) {
         Column {
-            ListCarousel(
-                onClick = {
-                    context.openUrl(url = "https://github.com/RaheemJnr")
-                }
-            )
+            ListCarousel {
+                context.openUrl(url = "https://github.com/RaheemJnr")
+            }
             Spacer(modifier = Modifier.height(10.dp))
             // list header
             ListHeader()
