@@ -16,16 +16,16 @@ class PageNumSource<Value : Any>(
         return try {
             // Start refresh at page 1 if undefined.
             val page = params.key ?: 1
-            //获取网络数据
+            //get network data
             val result = loadPage(page, params.loadSize)
                 ?: return LoadResult.Error(EOFException("No more data!"))
 
             LoadResult.Page(
-                //需要加载的数据
+                // data to be loaded
                 data = result,
-                //如果可以往上加载更多就设置该参数，否则不设置
+                //Set this parameter if you can load more up, otherwise don't set it
                 prevKey = if (page == 1) null else page - 1,
-                //加载下一页的key 如果传null就说明到底了
+                //Load the key of the next page. If you pass null, it means the end
                 nextKey = page.plus(1)
             )
         } catch (e: IOException) {
