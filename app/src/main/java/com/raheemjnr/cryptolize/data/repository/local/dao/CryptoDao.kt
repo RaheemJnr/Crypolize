@@ -11,14 +11,14 @@ interface CryptoDao {
     @Query("SELECT * FROM local_crypto_table")
     fun getAllCrypto(): PagingSource<Int, CryptoEntity>
 
-    @Query(
-        """
-            SELECT * FROM local_crypto_table
-            WHERE LOWER(id) LIKE '%' || LOWER(:query) || '%' OR
-            UPPER(:query) == symbol
-        """
-    )
-    suspend fun searchCrypto(query: String): PagingSource<Int, CryptoEntity>
+//    @Query(
+//        """
+//            SELECT * FROM local_crypto_table
+//            WHERE LOWER(id) LIKE '%' || LOWER(:query) || '%' OR
+//            UPPER(:query) == symbol
+//        """
+//    )
+//    suspend fun searchCrypto(query: String): PagingSource<Int, CryptoEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllCrypto(cryptoEntity: List<CryptoEntity>)

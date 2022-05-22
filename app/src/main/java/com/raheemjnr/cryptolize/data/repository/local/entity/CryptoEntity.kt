@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "local_crypto_table")
 data class CryptoEntity(
     @PrimaryKey
-    val id: String?,
+    val id: String,
     val symbol: String?,
     val image: String?,
     val current_price: Double?,

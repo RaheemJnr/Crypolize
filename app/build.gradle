@@ -69,7 +69,7 @@ dependencies {
     //paging
     implementation "androidx.paging:paging-compose:1.0.0-alpha14"
     //compose navigation
-    implementation 'androidx.navigation:navigation-compose:2.5.0-rc01'
+    implementation 'androidx.navigation:navigation-compose:2.5.0-beta01'
 
     // Retrofit for networking
     // Retrofit with Moshi Converter for parsing data

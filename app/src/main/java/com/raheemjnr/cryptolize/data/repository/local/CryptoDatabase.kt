@@ -7,8 +7,9 @@ import androidx.room.RoomDatabase
 import com.raheemjnr.cryptolize.data.repository.local.dao.CryptoDao
 import com.raheemjnr.cryptolize.data.repository.local.dao.CryptoKeysDao
 import com.raheemjnr.cryptolize.data.repository.local.entity.CryptoEntity
+import com.raheemjnr.cryptolize.data.repository.local.entity.CryptoKeysEntity
 
-@Database(entities = [CryptoEntity::class], version = 1)
+@Database(entities = [CryptoEntity::class,CryptoKeysEntity::class], version = 1)
 abstract class CryptoDatabase() : RoomDatabase() {
 
     //dao
