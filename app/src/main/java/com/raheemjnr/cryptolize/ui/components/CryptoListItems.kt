@@ -1,5 +1,8 @@
 package com.raheemjnr.cryptolize.ui.components
 
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -7,9 +10,12 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
@@ -32,6 +38,13 @@ fun CryptoListItems(
     items: CryptoEntity?,
     onClick: () -> Unit,
 ) {
+    val animatedProgress = remember { Animatable(initialValue = 0.8f) }
+    LaunchedEffect(Unit) {
+        animatedProgress.animateTo(
+            targetValue = 1f,
+            animationSpec = tween(300, easing = LinearEasing)
+        )
+    }
     val annotatedText = buildAnnotatedString {
         withStyle(
             style = SpanStyle(
@@ -73,6 +86,7 @@ fun CryptoListItems(
                 onClick()
             }
             .padding(12.dp)
+            .graphicsLayer(scaleY = animatedProgress.value, scaleX = animatedProgress.value)
     ) {
         // name/pair
         Column {
