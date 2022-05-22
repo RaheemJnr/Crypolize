@@ -13,12 +13,11 @@
 
 ### 🔹 Android Application
 
-This is an Android application which uses uses the Compose Navigation and the entire UI is built with Jetpack Compose.
+This is an Android application which uses uses the Compose Navigation, Room Database for offline caching and the entire UI is built with Jetpack Compose.
 
 ## 🔹  Note
 #### 🚧🚧🚧 THIS PROJECT IS STILL UNDER CONSTRUCTION🚧🚧🚧
 List of improvements to be added
-+ Room DB (Offline caching)
 + Hilt/Dagger (for dependency injection)
 - General Code improvement
 - Others

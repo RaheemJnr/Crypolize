@@ -2,6 +2,7 @@ package com.raheemjnr.cryptolize.utils
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -9,6 +10,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -57,7 +59,8 @@ fun LottieAnimation(showMessage: Boolean, message: String? = null, composition: 
         Modifier
             .background(Color.White)
             .fillMaxWidth()
-            .requiredSize(100.dp),
+            .requiredSize(100.dp)
+            .clip(RoundedCornerShape(8.dp)),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -76,7 +79,8 @@ fun LottieAnimation(showMessage: Boolean, message: String? = null, composition: 
         LottieAnimation(
             composition,
             progress,
-            modifier = Modifier.size(400.dp),
+            modifier = Modifier.size(400.dp)
+                .height(150.dp),
             alignment = Alignment.Center
         )
 

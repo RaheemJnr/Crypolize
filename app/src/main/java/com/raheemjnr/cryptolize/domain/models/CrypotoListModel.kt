@@ -8,4 +8,3 @@ data class Crypto(
     val price_change_percentage_24h: Double? = null,
     val total_volume: Double,
 )
-

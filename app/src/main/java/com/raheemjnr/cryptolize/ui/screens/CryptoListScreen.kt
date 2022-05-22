@@ -28,7 +28,6 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.raheemjnr.cryptolize.R
-import com.raheemjnr.cryptolize.domain.mappers.ListDTOMapper
 import com.raheemjnr.cryptolize.domain.repository.list.ListRepoImpl
 import com.raheemjnr.cryptolize.navigation.MainScreen
 import com.raheemjnr.cryptolize.ui.components.CryptoListItems
@@ -42,12 +41,13 @@ import com.raheemjnr.cryptolize.utils.openUrl
 @ExperimentalPagerApi
 @Composable
 fun CryptoListScreen(navController: NavController) {
-    //viewModel
-    val viewModel: CryptoListViewModel = viewModel(
-        factory = CryptoListViewModel.CryptoListViewModelFactory(ListRepoImpl(ListDTOMapper()))
-    )
     //
     val context = LocalContext.current
+    //viewModel
+    val viewModel: CryptoListViewModel = viewModel(
+        factory = CryptoListViewModel
+            .CryptoListViewModelFactory(ListRepoImpl(context = context))
+    )
     //
     val isRefreshing = viewModel.isRefreshing.collectAsState()
     val pagingItems = viewModel.getCryptoList().collectAsLazyPagingItems()
@@ -59,11 +59,9 @@ fun CryptoListScreen(navController: NavController) {
         }
     ) {
         Column {
-            ListCarousel(
-                onClick = {
-                    context.openUrl(url = "https://github.com/RaheemJnr")
-                }
-            )
+            ListCarousel {
+                context.openUrl(url = "https://github.com/RaheemJnr")
+            }
             Spacer(modifier = Modifier.height(10.dp))
             // list header
             ListHeader()
@@ -79,20 +77,20 @@ fun CryptoListScreen(navController: NavController) {
                     LazyColumn(state = lazyListState) {
                         items(items = pagingItems,
                             key = { crypto ->
-                                crypto.id.toString()
+                                crypto.id
                             }
                         ) { item ->
                             item?.let {
                                 Column {
                                     CryptoListItems(
-                                        items = item,
-                                        onClick = {
-                                            navController.navigate(
-                                                route =
-                                                "${MainScreen.DetailScreen.route}/${item.id}/${item.symbol}"
-                                            )
-                                        }
-                                    )
+                                        items = item
+                                    ) {
+                                        //on item click
+                                        navController.navigate(
+                                            route =
+                                            "${MainScreen.DetailScreen.route}/${item.id}/${item.symbol}"
+                                        )
+                                    }
                                 }
                             }
                         }
