@@ -1,6 +1,5 @@
 package com.raheemjnr.cryptolize.ui.viewModels
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -22,21 +21,17 @@ class CryptoListViewModel(private val repo: ListRepo) : ViewModel() {
         get() = _isRefreshing.asStateFlow()
 
 
+    fun getCryptoList(): Flow<PagingData<CryptoEntity>> {
+        return repo.getCryptoList()
+    }
+
+    // swipe to refresh
     fun refresh() {
         viewModelScope.launch {
             _isRefreshing.emit(true)
-            try {
-                repo.getCryptoList()
-            } catch (e: Exception) {
-                Log.d("refresh log", e.localizedMessage!!)
-            }
+            getCryptoList()
             _isRefreshing.emit(false)
         }
-    }
-
-
-    fun getCryptoList(): Flow<PagingData<CryptoEntity>> {
-        return repo.getCryptoList()
     }
 
 
