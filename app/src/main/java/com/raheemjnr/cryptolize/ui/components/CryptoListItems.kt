@@ -40,7 +40,7 @@ fun CryptoListItems(
                 color = MaterialTheme.colors.primary
             )
         ) {
-            append("${items.symbol?.uppercase(Locale.ROOT)} ")
+            append("${items?.symbol?.uppercase(Locale.ROOT)} ")
         }
         withStyle(
             style = SpanStyle(
@@ -82,9 +82,11 @@ fun CryptoListItems(
             //
             Text(
                 text = "Vol ${
-                    formatCurrency(
-                        items.total_volume.toInt()
-                    )
+                    items?.total_volume?.let {
+                        formatCurrency(
+                            it.toInt()
+                        )
+                    }
                 }",
                 fontSize = 14.sp,
                 color = MaterialTheme.colors.secondary
@@ -97,7 +99,7 @@ fun CryptoListItems(
         ) {
             //
             Text(
-                text = formatCurrency(items.current_price!!.roundToTwoDecimals().toDouble()),
+                text = formatCurrency(items?.current_price!!.roundToTwoDecimals().toDouble()),
                 fontSize = 18.sp,
                 color = MaterialTheme.colors.primary
             )
@@ -110,7 +112,7 @@ fun CryptoListItems(
         // 24h change
         Surface(
             color = when {
-                items.price_change_percentage_24h!! > 0 -> Color(0xff32a852)
+                items?.price_change_percentage_24h!! > 0 -> Color(0xff32a852)
                 items.price_change_percentage_24h.equals(0.0) -> Color.Gray
                 else -> {
                     Color.Red
@@ -139,7 +141,7 @@ fun CryptoListItems(
 @Composable
 fun CryptoListItemsPreview() {
     CryptoListItems(
-        items = Crypto(
+        items = CryptoEntity(
             id = "BTC", symbol = "BTC",
             image = "", current_price = 42205.3,
             price_change_percentage_24h = null, total_volume = 22.4
