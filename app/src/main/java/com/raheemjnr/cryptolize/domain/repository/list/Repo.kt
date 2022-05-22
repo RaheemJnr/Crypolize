@@ -1,6 +1,8 @@
 package com.raheemjnr.cryptolize.domain.repository.list
 
-import com.raheemjnr.cryptolize.domain.models.Crypto
+import androidx.paging.PagingData
+import com.raheemjnr.cryptolize.data.repository.local.entity.CryptoEntity
+import kotlinx.coroutines.flow.Flow
 
 
 /**
@@ -8,6 +10,6 @@ import com.raheemjnr.cryptolize.domain.models.Crypto
  */
 interface ListRepo {
     //list
-    suspend fun getCryptoList(page: Int, pageSize: Int): List<Crypto>
+     fun getCryptoList(): Flow<PagingData<CryptoEntity>>
 
 }

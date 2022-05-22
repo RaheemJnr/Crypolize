@@ -1,7 +1,7 @@
 package com.raheemjnr.cryptolize.domain.mappers
 
 import com.raheemjnr.cryptolize.data.model.CryptoListDTO
-import com.raheemjnr.cryptolize.data.repository.local.CryptoEntity
+import com.raheemjnr.cryptolize.data.repository.local.entity.CryptoEntity
 import com.raheemjnr.cryptolize.domain.models.Crypto
 
 

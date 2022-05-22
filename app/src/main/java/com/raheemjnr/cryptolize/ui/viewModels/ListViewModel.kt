@@ -4,12 +4,10 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.cachedIn
+import androidx.paging.PagingData
+import com.raheemjnr.cryptolize.data.repository.local.entity.CryptoEntity
 import com.raheemjnr.cryptolize.domain.repository.list.ListRepo
-import com.raheemjnr.cryptolize.domain.models.Crypto
-import com.raheemjnr.cryptolize.utils.PageNumSource
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -23,32 +21,26 @@ class CryptoListViewModel(private val repo: ListRepo) : ViewModel() {
     val isRefreshing: StateFlow<Boolean>
         get() = _isRefreshing.asStateFlow()
 
-    private suspend fun repo(pageNum: Int, pageSize: Int): List<Crypto> {
-        return repo.getCryptoList(
-            pageNum, pageSize
-        )
+    private fun repo(): Flow<PagingData<CryptoEntity>> {
+        return repo.getCryptoList()
     }
 
-    fun refresh(pageSize: Int = 20) {
+    fun refresh() {
         viewModelScope.launch {
             _isRefreshing.emit(true)
             try {
-                repo(pageSize, pageSize)
+                repo()
             } catch (e: Exception) {
                 Log.d("refresh log", e.localizedMessage!!)
             }
             _isRefreshing.emit(false)
-
         }
     }
 
 
-    fun getCryptoList(pageSize: Int = 20) =
-        Pager(config = PagingConfig(pageSize = pageSize, initialLoadSize = pageSize)) {
-            PageNumSource { pageNum, pageSize ->
-                repo(pageNum, pageSize)
-            }
-        }.flow.cachedIn(viewModelScope)
+    fun getCryptoList(): Flow<PagingData<CryptoEntity>> {
+        return repo.getCryptoList()
+    }
 
 
     /** viewModel Factory

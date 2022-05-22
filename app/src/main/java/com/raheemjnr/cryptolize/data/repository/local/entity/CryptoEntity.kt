@@ -1,4 +1,4 @@
-package com.raheemjnr.cryptolize.data.repository.local
+package com.raheemjnr.cryptolize.data.repository.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
