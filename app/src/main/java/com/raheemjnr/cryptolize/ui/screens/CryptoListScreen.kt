@@ -77,7 +77,7 @@ fun CryptoListScreen(navController: NavController) {
                     LazyColumn(state = lazyListState) {
                         items(items = pagingItems,
                             key = { crypto ->
-                                crypto.symbol.toString()
+                                crypto.id
                             }
                         ) { item ->
                             item?.let {
@@ -85,6 +85,7 @@ fun CryptoListScreen(navController: NavController) {
                                     CryptoListItems(
                                         items = item
                                     ) {
+                                        //on item click
                                         navController.navigate(
                                             route =
                                             "${MainScreen.DetailScreen.route}/${item.id}/${item.symbol}"

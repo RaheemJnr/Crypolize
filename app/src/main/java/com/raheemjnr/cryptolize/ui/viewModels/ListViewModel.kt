@@ -21,15 +21,12 @@ class CryptoListViewModel(private val repo: ListRepo) : ViewModel() {
     val isRefreshing: StateFlow<Boolean>
         get() = _isRefreshing.asStateFlow()
 
-    private fun repo(): Flow<PagingData<CryptoEntity>> {
-        return repo.getCryptoList()
-    }
 
     fun refresh() {
         viewModelScope.launch {
             _isRefreshing.emit(true)
             try {
-                repo()
+                repo.getCryptoList()
             } catch (e: Exception) {
                 Log.d("refresh log", e.localizedMessage!!)
             }
