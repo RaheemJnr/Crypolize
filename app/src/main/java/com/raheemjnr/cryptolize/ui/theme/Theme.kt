@@ -30,16 +30,6 @@ private val LightColorPalette = lightColors(
     onError = Color.Red,
     onBackground = Color.Black,
     surface = PrimaryColor
-
-
-    /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
-    onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
-    */
 )
 
 @Composable
