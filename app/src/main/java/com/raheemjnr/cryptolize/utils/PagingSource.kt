@@ -2,23 +2,24 @@ package com.raheemjnr.cryptolize.utils
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.raheemjnr.cryptolize.data.repository.local.CryptoDatabase
+import com.raheemjnr.cryptolize.data.repository.local.entity.CryptoEntity
 import retrofit2.HttpException
-import java.io.EOFException
 import java.io.IOException
 
 
 //from compose cookbook
-class PageNumSource<Value : Any>(
-    private val loadPage: suspend (pageNum: Int, pageSize: Int) -> List<Value>?
-) : PagingSource<Int, Value>() {
+class PageNumSource(
+    private val cryptoDatabase: CryptoDatabase,
+    private val query: String
+) : PagingSource<Int, CryptoEntity>() {
     //load data
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Value> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CryptoEntity> {
         return try {
             // Start refresh at page 1 if undefined.
             val page = params.key ?: 1
             //get network data
-            val result = loadPage(page, params.loadSize)
-                ?: return LoadResult.Error(EOFException("No more data!"))
+            val result = cryptoDatabase.CryptoDao().searchCrypto(query)
 
             LoadResult.Page(
                 // data to be loaded
@@ -37,7 +38,7 @@ class PageNumSource<Value : Any>(
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, Value>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, CryptoEntity>): Int? {
         // Try to find the page key of the closest page to anchorPosition, from
         // either the prevKey or the nextKey, but you need to handle nullability
         // here:

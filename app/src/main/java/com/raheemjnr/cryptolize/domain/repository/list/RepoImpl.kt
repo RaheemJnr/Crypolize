@@ -11,26 +11,13 @@ import com.raheemjnr.cryptolize.data.repository.local.entity.CryptoEntity
 import com.raheemjnr.cryptolize.data.repository.network.CryptoRemoteMediator
 import com.raheemjnr.cryptolize.data.repository.network.CryptolizeApiCall
 import com.raheemjnr.cryptolize.domain.mappers.MapDTOtoDbEntity
+import com.raheemjnr.cryptolize.utils.PageNumSource
 import kotlinx.coroutines.flow.Flow
 
 
 class ListRepoImpl(
     context: Context
 ) : ListRepo {
-
-//        @WorkerThread
-//    override suspend fun getCryptoList(
-//        page: Int, pageSize: Int
-//    ): List<Crypto> {
-//        val response = CryptolizeApiCall.CRYPTO_SERVICE.getCryptoList(page)
-//        return if (response.isSuccessful && !response.body().isNullOrEmpty()) {
-//            val body = response.body()
-//            val bodyList = mapper.toDomainList(body!!)
-//            bodyList
-//        } else {
-//            emptyList()
-//        }
-//    }
 
     private val cryptoDatabase: CryptoDatabase =
         CryptoDatabase.getInstance(context = context)
@@ -55,5 +42,20 @@ class ListRepoImpl(
             pagingSourceFactory = pagingSourceFactory
         ).flow
 
+    }
+    //    fun getCryptoList(pageSize: Int = 20) =
+//        Pager(config = PagingConfig(pageSize = pageSize, initialLoadSize = pageSize)) {
+//            PageNumSource { pageNum, pageSize ->
+//                repo(pageNum, pageSize)
+//            }
+//        }.flow.cachedIn(viewModelScope)
+
+    override fun searchCrypto(query: String): Flow<PagingData<CryptoEntity>> {
+        return Pager(
+            config = PagingConfig(pageSize = 10),
+            pagingSourceFactory = {
+                PageNumSource(cryptoDatabase = cryptoDatabase, query = query)
+            }
+        ).flow
     }
 }

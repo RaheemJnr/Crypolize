@@ -12,4 +12,6 @@ interface ListRepo {
     //list
      fun getCryptoList(): Flow<PagingData<CryptoEntity>>
 
+     fun searchCrypto(query:String):Flow<PagingData<CryptoEntity>>
+
 }

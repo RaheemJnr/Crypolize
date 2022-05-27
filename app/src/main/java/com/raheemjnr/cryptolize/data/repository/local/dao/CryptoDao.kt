@@ -18,7 +18,7 @@ interface CryptoDao {
             UPPER(:query) == symbol
         """
     )
-    fun searchCrypto(query: String): PagingSource<Int, CryptoEntity>
+    fun searchCrypto(query: String): List<CryptoEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllCrypto(cryptoEntity: List<CryptoEntity>)
