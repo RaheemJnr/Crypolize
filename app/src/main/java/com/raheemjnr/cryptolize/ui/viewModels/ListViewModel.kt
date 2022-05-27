@@ -3,13 +3,9 @@ package com.raheemjnr.cryptolize.ui.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import androidx.paging.cachedIn
 import com.raheemjnr.cryptolize.data.repository.local.entity.CryptoEntity
 import com.raheemjnr.cryptolize.domain.repository.list.ListRepo
-import com.raheemjnr.cryptolize.utils.PageNumSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
