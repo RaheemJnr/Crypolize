@@ -21,14 +21,25 @@ class PageNumSource(
             //get network data
             val result = cryptoDatabase.CryptoDao().searchCrypto(query)
 
-            LoadResult.Page(
-                // data to be loaded
-                data = result,
-                //Set this parameter if you can load more up, otherwise don't set it
-                prevKey = if (page == 1) null else page - 1,
-                //Load the key of the next page. If you pass null, it means the end
-                nextKey = page.plus(1)
-            )
+            if (result.isNotEmpty()) {
+                LoadResult.Page(
+                    // data to be loaded
+                    data = result,
+                    //Set this parameter if you can load more up, otherwise don't set it
+                    prevKey = if (page == 1) null else page - 1,
+                    //Load the key of the next page. If you pass null, it means the end
+                    nextKey = page.plus(1)
+                )
+            } else {
+                LoadResult.Page(
+                    // data to be loaded
+                    data = emptyList(),
+                    //Set this parameter if you can load more up, otherwise don't set it
+                    prevKey = null,
+                    //Load the key of the next page. If you pass null, it means the end
+                    nextKey = null
+                )
+            }
         } catch (e: IOException) {
             // IOException for network failures.
             return LoadResult.Error(e)

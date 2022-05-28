@@ -7,19 +7,23 @@ import com.raheemjnr.cryptolize.data.repository.local.entity.CryptoEntity
 @Dao
 interface CryptoDao {
 
+    // return all crypto item in the database
     @Transaction
     @Query("SELECT * FROM local_crypto_table")
     fun getAllCrypto(): PagingSource<Int, CryptoEntity>
 
+    // search crypto list for provided query in the database
+    @Transaction
     @Query(
         """
             SELECT * FROM local_crypto_table
             WHERE LOWER(id) LIKE '%' || LOWER(:query) || '%' OR
-            UPPER(:query) == symbol
+            UPPER(:query) == id
         """
     )
-    fun searchCrypto(query: String): List<CryptoEntity>
+    suspend fun searchCrypto(query: String): List<CryptoEntity>
 
+    //
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllCrypto(cryptoEntity: List<CryptoEntity>)
 

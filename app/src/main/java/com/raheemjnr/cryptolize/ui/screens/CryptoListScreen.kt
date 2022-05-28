@@ -49,13 +49,18 @@ fun CryptoListScreen(navController: NavController) {
             .CryptoListViewModelFactory(ListRepoImpl(context = context))
     )
     //
+    val query by viewModel.query
     val isRefreshing = viewModel.isRefreshing.collectAsState()
     val pagingItems = viewModel.getCryptoList().collectAsLazyPagingItems()
+    val searchCryptoItem = viewModel.pagingData.collectAsLazyPagingItems()
     val lazyListState = rememberLazyListState()
 
     Scaffold(
         topBar = {
-            ListTopAppbar()
+            ListTopAppbar(
+                query = query,
+                cryptoListViewModel = viewModel
+            )
         }
     ) {
         Column {
@@ -77,7 +82,7 @@ fun CryptoListScreen(navController: NavController) {
                     LazyColumn(state = lazyListState) {
                         items(items = pagingItems,
                             key = { crypto ->
-                                crypto.id
+                                crypto.symbol.toString().first()
                             }
                         ) { item ->
                             item?.let {

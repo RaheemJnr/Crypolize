@@ -6,7 +6,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.TextStyle
@@ -17,10 +17,12 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun CryptoListSearch(
+    query: String,
+    onTextChange: (String) -> Unit,
+    onSearchClicked: (String) -> Unit,
     modifier: Modifier
 ) {
     val focusManager = LocalFocusManager.current
-    var searchValue by remember { mutableStateOf("") }
     Row(
         modifier = modifier
     ) {
@@ -30,9 +32,9 @@ fun CryptoListSearch(
                 .requiredHeight(60.dp)
                 .requiredWidth(255.dp)
                 .padding(4.dp),
-            value = searchValue,
+            value = query,
             onValueChange = {
-                searchValue = it
+                onTextChange(it)
             },
             label = {
                 Text(text = "Search")
@@ -46,11 +48,12 @@ fun CryptoListSearch(
             },
             keyboardOptions = KeyboardOptions.Default.copy(
                 keyboardType = KeyboardType.Text,
-                imeAction = ImeAction.Done
+                imeAction = ImeAction.Search
             ),
             keyboardActions = KeyboardActions(
-                onDone = {
+                onSearch = {
                     //code to execute
+                    onSearchClicked(query)
                     focusManager.clearFocus()
                 }
             ),
@@ -73,5 +76,5 @@ fun CryptoListSearch(
 @Composable
 fun SearchbarPrev() {
 
-    CryptoListSearch(modifier = androidx.compose.ui.Modifier)
+    // CryptoListSearch(modifier = Modifier, query = "")
 }
