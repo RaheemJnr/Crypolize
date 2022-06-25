@@ -52,7 +52,7 @@ fun CryptoListScreen(navController: NavController) {
     val query by viewModel.query
     val isRefreshing = viewModel.isRefreshing.collectAsState()
     val pagingItems = viewModel.getCryptoList().collectAsLazyPagingItems()
-    val searchCryptoItem = viewModel.pagingData.collectAsLazyPagingItems()
+    //val searchCryptoItem = viewModel.pagingData.collectAsLazyPagingItems()
     val lazyListState = rememberLazyListState()
 
     Scaffold(
