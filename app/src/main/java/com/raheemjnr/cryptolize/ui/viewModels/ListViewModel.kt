@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import com.raheemjnr.cryptolize.data.repository.local.entity.CryptoEntity
 import com.raheemjnr.cryptolize.domain.repository.list.ListRepo
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,9 +17,20 @@ import kotlinx.coroutines.launch
 class CryptoListViewModel(private val repo: ListRepo) : ViewModel() {
 
     private val _isRefreshing = MutableStateFlow(false)
-
     val isRefreshing: StateFlow<Boolean>
         get() = _isRefreshing.asStateFlow()
+
+
+
+    fun refresh() {
+        // This doesn't handle multiple 'refreshing' tasks, don't use this
+        viewModelScope.launch {
+            // A fake 2 second 'refresh'
+            _isRefreshing.emit(true)
+            delay(2000)
+            _isRefreshing.emit(false)
+        }
+    }
 
 
     fun getCryptoList(): Flow<PagingData<CryptoEntity>> {
@@ -32,14 +44,6 @@ class CryptoListViewModel(private val repo: ListRepo) : ViewModel() {
 //            }
 //        }.flow.cachedIn(viewModelScope)
 
-    // swipe to refresh
-    fun refresh() {
-        viewModelScope.launch {
-            _isRefreshing.emit(true)
-            getCryptoList()
-            _isRefreshing.emit(false)
-        }
-    }
 
 
     /** viewModel Factory

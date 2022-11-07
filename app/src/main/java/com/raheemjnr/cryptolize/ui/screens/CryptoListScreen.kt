@@ -72,6 +72,7 @@ fun CryptoListScreen(navController: NavController) {
                     state = rememberSwipeRefreshState(isRefreshing = isRefreshing.value),
                     onRefresh = {
                         viewModel.refresh()
+                        viewModel.getCryptoList()
                     }
                 ) {
                     LazyColumn(state = lazyListState) {
