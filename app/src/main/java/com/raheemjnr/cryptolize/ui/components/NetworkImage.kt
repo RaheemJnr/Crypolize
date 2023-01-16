@@ -1,5 +1,6 @@
 package com.raheemjnr.cryptolize.ui.components
 
+import android.provider.ContactsContract
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -56,12 +57,12 @@ fun CoinImage(
             contentScale = contentScale
         )
 
-        if (painter.state is ImagePainter.State.Loading && placeholderColor != null) {
-            Spacer(
-                modifier = Modifier
-                    .background(placeholderColor)
-            )
-        }
+//        if (painter.state is ContactsContract.CommonDataKinds.Im && placeholderColor != null) {
+//            Spacer(
+//                modifier = Modifier
+//                    .background(placeholderColor)
+//            )
+//        }
     }
 }
 
