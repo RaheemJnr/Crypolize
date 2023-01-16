@@ -5,12 +5,12 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.raheemjnr.cryptolize"
         minSdk 21
-        targetSdk 31
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -34,14 +34,14 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
-        useIR = true
+
         freeCompilerArgs = ['-Xjvm-default=compatibility']
     }
     buildFeatures {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion compose_version
+        kotlinCompilerExtensionVersion '1.3.0'
         kotlinCompilerVersion '1.6.10'
     }
     packagingOptions {
@@ -58,10 +58,10 @@ dependencies {
     implementation 'com.google.android.material:material:1.7.0'
 
     //compose
-    implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.material:material:$compose_version"
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation "androidx.compose.runtime:runtime:$compose_version"
+    implementation "androidx.compose.ui:ui:1.3.3"
+    implementation "androidx.compose.material:material:1.3.1"
+    implementation "androidx.compose.ui:ui-tooling-preview:1.3.3"
+    implementation "androidx.compose.runtime:runtime:1.3.3"
     implementation 'androidx.activity:activity-compose:1.6.1'
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
     //
@@ -110,6 +110,6 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
-    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:1.3.3"
+    debugImplementation "androidx.compose.ui:ui-tooling:1.3.3"
 }
