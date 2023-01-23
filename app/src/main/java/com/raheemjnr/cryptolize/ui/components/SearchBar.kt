@@ -3,7 +3,7 @@ package com.raheemjnr.cryptolize.ui.components
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.*
@@ -15,6 +15,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CryptoListSearch(
     modifier: Modifier
@@ -40,7 +41,7 @@ fun CryptoListSearch(
             leadingIcon = {
                 Icon(
                     Icons.Filled.Search, contentDescription = "search icon",
-                    tint = MaterialTheme.colors.secondary,
+                    tint = MaterialTheme.colorScheme.secondary,
                     modifier = Modifier.size(16.dp)
                 )
             },
@@ -55,14 +56,14 @@ fun CryptoListSearch(
                 }
             ),
             textStyle = TextStyle(
-                color = MaterialTheme.colors.onSurface,
-                background = MaterialTheme.colors.surface
+                color = MaterialTheme.colorScheme.onSurface,
+                background = MaterialTheme.colorScheme.surface
             ),
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                focusedBorderColor = MaterialTheme.colors.primary,
-                unfocusedBorderColor = MaterialTheme.colors.secondary,
-                unfocusedLabelColor = MaterialTheme.colors.secondary,
-                focusedLabelColor = MaterialTheme.colors.primary
+                focusedBorderColor = MaterialTheme.colorScheme.primary,
+                unfocusedBorderColor = MaterialTheme.colorScheme.secondary,
+                unfocusedLabelColor = MaterialTheme.colorScheme.secondary,
+                focusedLabelColor = MaterialTheme.colorScheme.primary
 
             )
         )
@@ -73,5 +74,5 @@ fun CryptoListSearch(
 @Composable
 fun SearchbarPrev() {
 
-    CryptoListSearch(modifier = androidx.compose.ui.Modifier)
+    CryptoListSearch(modifier = Modifier)
 }
