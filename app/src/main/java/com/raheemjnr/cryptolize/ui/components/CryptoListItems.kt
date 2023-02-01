@@ -15,6 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -32,12 +33,13 @@ import com.raheemjnr.cryptolize.utils.Formatter.formatCurrency
 import com.raheemjnr.cryptolize.utils.Formatter.roundPriceChange
 import com.raheemjnr.cryptolize.utils.Formatter.roundToThreeDecimals
 import com.raheemjnr.cryptolize.utils.Formatter.roundToTwoDecimals
+import com.raheemjnr.cryptolize.utils.SkeletonShimmerAnimation
 import java.util.*
 
 @Composable
 fun CryptoListItems(
     items: CryptoEntity?,
-    loadState:LoadState,
+    loadState: Boolean,
     onClick: () -> Unit,
 ) {
     val animatedProgress = remember { Animatable(initialValue = 0.8f) }
@@ -88,14 +90,20 @@ fun CryptoListItems(
                 onClick()
             }
             .padding(12.dp)
-           // .graphicsLayer(scaleY = animatedProgress.value, scaleX = animatedProgress.value)
+        // .graphicsLayer(scaleY = animatedProgress.value, scaleX = animatedProgress.value)
     ) {
         // name/pair
         Column {
-
-            Text(
-                text = annotatedText
+            SkeletonShimmerAnimation(
+                shape = RectangleShape,
+                contentAlignment = Alignment.Center,
+                contentView = {
+                    Text(
+                        text = annotatedText
+                    )
+                }
             )
+
             //
             Text(
                 text = "Vol ${

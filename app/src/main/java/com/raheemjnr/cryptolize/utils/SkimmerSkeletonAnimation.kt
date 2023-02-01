@@ -26,7 +26,7 @@ fun SkeletonShimmerAnimation(
     modifier: Modifier = Modifier,
     isLoading: Boolean = false,
     shape: Shape,
-    contentAlignment: Alignment,
+    contentAlignment: Alignment = Alignment.Center,
     contentView: @Composable () -> Unit = {},
     defaultView: (@Composable () -> Unit)? = null,
 ) {

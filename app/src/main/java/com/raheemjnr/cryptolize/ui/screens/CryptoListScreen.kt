@@ -54,6 +54,8 @@ fun CryptoListScreen(navController: NavController) {
     val isRefreshing = viewModel.isRefreshing.collectAsState()
     val pagingItems = viewModel.getCryptoList().collectAsLazyPagingItems()
     val lazyListState = rememberLazyListState()
+    val isLoading = pagingItems.loadState.refresh is LoadState.Loading
+
 
     Scaffold(
         topBar = {
@@ -86,7 +88,7 @@ fun CryptoListScreen(navController: NavController) {
                             item?.let {
                                 Column {
                                     CryptoListItems(
-                                        loadState = LoadState.Loading,
+                                        loadState = isLoading,
                                         items = item
                                     ) {
                                         //on item click
