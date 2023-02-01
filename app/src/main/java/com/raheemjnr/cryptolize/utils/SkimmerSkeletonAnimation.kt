@@ -42,10 +42,6 @@ fun SkeletonShimmerAnimation(
                 by default the size of the size of the skeleton box is zero
                 but when recomposition happen and size change apply the change here
                  */
-                /**
-                by default the size of the size of the skeleton box is zero
-                but when recomposition happen and size change apply the change here
-                 */
                 defaultSize.value = it
             },
         contentAlignment = contentAlignment
@@ -83,11 +79,6 @@ fun SkeletonShimmerAnimation(
                     animationToggle.value = true
                 }
             }
-            /**
-             *  default Skeleton Box for each UI item that will be animated and we applied
-             *  the size changes from [defaultSize] value
-             *  calculated in the [onSizeChanged] modifier above
-             *  */
             /**
              *  default Skeleton Box for each UI item that will be animated and we applied
              *  the size changes from [defaultSize] value

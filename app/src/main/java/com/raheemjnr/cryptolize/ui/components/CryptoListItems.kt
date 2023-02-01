@@ -88,10 +88,11 @@ fun CryptoListItems(
                 onClick()
             }
             .padding(12.dp)
-            .graphicsLayer(scaleY = animatedProgress.value, scaleX = animatedProgress.value)
+           // .graphicsLayer(scaleY = animatedProgress.value, scaleX = animatedProgress.value)
     ) {
         // name/pair
         Column {
+
             Text(
                 text = annotatedText
             )
