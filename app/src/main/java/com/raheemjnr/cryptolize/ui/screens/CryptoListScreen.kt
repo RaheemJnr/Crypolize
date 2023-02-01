@@ -85,6 +85,7 @@ fun CryptoListScreen(navController: NavController) {
                             item?.let {
                                 Column {
                                     CryptoListItems(
+                                        loadState = LoadState.Loading,
                                         items = item
                                     ) {
                                         //on item click

@@ -25,6 +25,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.paging.LoadState
 import com.raheemjnr.cryptolize.data.repository.local.entity.CryptoEntity
 import com.raheemjnr.cryptolize.domain.models.Crypto
 import com.raheemjnr.cryptolize.utils.Formatter.formatCurrency
@@ -36,6 +37,7 @@ import java.util.*
 @Composable
 fun CryptoListItems(
     items: CryptoEntity?,
+    loadState:LoadState,
     onClick: () -> Unit,
 ) {
     val animatedProgress = remember { Animatable(initialValue = 0.8f) }
@@ -148,19 +150,4 @@ fun CryptoListItems(
         }
 
     }
-}
-
-//
-@Preview(showBackground = true)
-@Composable
-fun CryptoListItemsPreview() {
-    CryptoListItems(
-        items = CryptoEntity(
-            id = "BTC", symbol = "BTC",
-            image = "", current_price = 42205.3,
-            price_change_percentage_24h = null, total_volume = 22.4
-        )
-    ) {}
-
-
 }

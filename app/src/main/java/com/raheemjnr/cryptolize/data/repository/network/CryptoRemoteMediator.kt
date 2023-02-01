@@ -84,7 +84,7 @@ class CryptoRemoteMediator(
     ): CryptoKeysEntity? {
         return state.pages.lastOrNull { it.data.isNotEmpty() }?.data?.lastOrNull()
             ?.let { cryptoEntity ->
-                cryptoEntity.id?.let { cryptoKeyDao.getRemoteKeys(id = it) }
+                cryptoEntity.id.let { cryptoKeyDao.getRemoteKeys(id = it) }
             }
     }
 
@@ -93,7 +93,7 @@ class CryptoRemoteMediator(
     ): CryptoKeysEntity? {
         return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()
             ?.let { cryptoEntity ->
-                cryptoEntity.id?.let { cryptoKeyDao.getRemoteKeys(id = it) }
+                cryptoEntity.id.let { cryptoKeyDao.getRemoteKeys(id = it) }
             }
 
 
