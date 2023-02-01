@@ -21,33 +21,30 @@ import com.raheemjnr.cryptolize.ui.theme.CryptolizeTheme
 fun MainScreenNavigation() {
 
     val navController = rememberNavController()
-    CryptolizeTheme() {
-        NavHost(navController, startDestination = MainScreen.CryptoListScreen.route) {
+    NavHost(navController, startDestination = MainScreen.CryptoListScreen.route) {
 
-            //List
-            composable(MainScreen.CryptoListScreen.route) {
-                CryptoListScreen(navController = navController)
-            }
-
-            //detail screen
-            composable("${MainScreen.DetailScreen.route}/{coinId}/{coinName}",
-                arguments = listOf(
-                    navArgument("coinId") {
-                        type = NavType.StringType
-                    }, navArgument("coinName") {
-                        type = NavType.StringType
-                    }
-                )
-            ) { backStackEntry ->
-                DetailScreen(
-                    navController,
-                    coinId = backStackEntry.arguments?.getString("coinId") ?: "",
-                    coinName = backStackEntry.arguments?.getString("coinName") ?: "",
-                )
-            }
-
-
+        //List
+        composable(MainScreen.CryptoListScreen.route) {
+            CryptoListScreen(navController = navController)
         }
+
+        //detail screen
+        composable("${MainScreen.DetailScreen.route}/{coinId}/{coinName}",
+            arguments = listOf(
+                navArgument("coinId") {
+                    type = NavType.StringType
+                }, navArgument("coinName") {
+                    type = NavType.StringType
+                }
+            )
+        ) { backStackEntry ->
+            DetailScreen(
+                navController,
+                coinId = backStackEntry.arguments?.getString("coinId") ?: "",
+                coinName = backStackEntry.arguments?.getString("coinName") ?: "",
+            )
+        }
+
 
     }
 

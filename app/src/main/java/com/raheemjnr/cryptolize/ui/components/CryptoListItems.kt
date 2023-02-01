@@ -39,7 +39,6 @@ import java.util.*
 @Composable
 fun CryptoListItems(
     items: CryptoEntity?,
-    loadState: Boolean,
     onClick: () -> Unit,
 ) {
     val animatedProgress = remember { Animatable(initialValue = 0.8f) }
@@ -90,18 +89,20 @@ fun CryptoListItems(
                 onClick()
             }
             .padding(12.dp)
-        // .graphicsLayer(scaleY = animatedProgress.value, scaleX = animatedProgress.value)
+         .graphicsLayer(scaleY = animatedProgress.value, scaleX = animatedProgress.value)
     ) {
         // name/pair
         Column {
-            SkeletonShimmerAnimation(
-                shape = RectangleShape,
-                contentAlignment = Alignment.Center,
-                contentView = {
-                    Text(
-                        text = annotatedText
-                    )
-                }
+//            SkeletonShimmerAnimation(
+//                isLoading = loadState,
+//                shape = RectangleShape,
+//                contentAlignment = Alignment.Center,
+//                contentView = {
+//
+//                }
+//            )
+            Text(
+                text = annotatedText
             )
 
             //

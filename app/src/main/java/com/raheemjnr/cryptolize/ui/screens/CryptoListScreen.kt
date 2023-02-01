@@ -1,10 +1,8 @@
 package com.raheemjnr.cryptolize.ui.screens
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
@@ -12,16 +10,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.paging.LoadState
-import androidx.paging.LoadType
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import com.airbnb.lottie.compose.LottieCompositionSpec
@@ -54,7 +47,7 @@ fun CryptoListScreen(navController: NavController) {
     val isRefreshing = viewModel.isRefreshing.collectAsState()
     val pagingItems = viewModel.getCryptoList().collectAsLazyPagingItems()
     val lazyListState = rememberLazyListState()
-    val isLoading = pagingItems.loadState.refresh is LoadState.Loading
+   val isLoading = pagingItems.loadState.refresh is LoadState.Loading
 
 
     Scaffold(
@@ -88,7 +81,6 @@ fun CryptoListScreen(navController: NavController) {
                             item?.let {
                                 Column {
                                     CryptoListItems(
-                                        loadState = isLoading,
                                         items = item
                                     ) {
                                         //on item click
@@ -103,37 +95,37 @@ fun CryptoListScreen(navController: NavController) {
                         pagingItems.apply {
                             when {
                                 //refresh list
-                                loadState.refresh is LoadState.Loading -> item {
-                                    Dialog(
-                                        onDismissRequest = {},
-                                        DialogProperties(
-                                            dismissOnBackPress = false,
-                                            dismissOnClickOutside = false
-                                        )
-                                    ) {
-                                        Box(
-                                            modifier = Modifier
-                                                .size(55.dp)
-                                                .background(
-                                                    Color.Transparent,
-                                                    shape = RoundedCornerShape(8.dp)
-                                                )
-                                        ) {
-                                            val composition by rememberLottieComposition(
-                                                LottieCompositionSpec
-                                                    // here `code` is the file name of lottie file
-                                                    // use it accordingly
-                                                    .RawRes(R.raw.cryptolize_loading_anim)
-                                            )
-                                            composition?.let { lottieComposition ->
-                                                LottieAnimation(
-                                                    showMessage = false,
-                                                    composition = lottieComposition
-                                                )
-                                            }
-                                        }
-                                    }
-                                }
+//                                loadState.refresh is LoadState.Loading -> item {
+//                                    Dialog(
+//                                        onDismissRequest = {},
+//                                        DialogProperties(
+//                                            dismissOnBackPress = false,
+//                                            dismissOnClickOutside = false
+//                                        )
+//                                    ) {
+//                                        Box(
+//                                            modifier = Modifier
+//                                                .size(55.dp)
+//                                                .background(
+//                                                    Color.Transparent,
+//                                                    shape = RoundedCornerShape(8.dp)
+//                                                )
+//                                        ) {
+//                                            val composition by rememberLottieComposition(
+//                                                LottieCompositionSpec
+//                                                    // here `code` is the file name of lottie file
+//                                                    // use it accordingly
+//                                                    .RawRes(R.raw.cryptolize_loading_anim)
+//                                            )
+//                                            composition?.let { lottieComposition ->
+//                                                LottieAnimation(
+//                                                    showMessage = false,
+//                                                    composition = lottieComposition
+//                                                )
+//                                            }
+//                                        }
+//                                    }
+//                                }
                                 //add to the already available list
                                 loadState.append is LoadState.Loading -> item {
                                     val composition by rememberLottieComposition(
