@@ -14,6 +14,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.graphicsLayer
@@ -39,6 +40,7 @@ import java.util.*
 @Composable
 fun CryptoListItems(
     items: CryptoEntity?,
+    isLoading: Boolean = true,
     onClick: () -> Unit,
 ) {
     val animatedProgress = remember { Animatable(initialValue = 0.8f) }
@@ -89,75 +91,141 @@ fun CryptoListItems(
                 onClick()
             }
             .padding(12.dp)
-         .graphicsLayer(scaleY = animatedProgress.value, scaleX = animatedProgress.value)
+        // .graphicsLayer(scaleY = animatedProgress.value, scaleX = animatedProgress.value)
     ) {
         // name/pair
         Column {
-//            SkeletonShimmerAnimation(
-//                isLoading = loadState,
-//                shape = RectangleShape,
-//                contentAlignment = Alignment.Center,
-//                contentView = {
-//
-//                }
-//            )
-            Text(
-                text = annotatedText
-            )
 
-            //
-            Text(
-                text = "Vol ${
-                    items?.total_volume?.let {
-                        formatCurrency(
-                            it.toInt()
-                        )
-                    }
-                }",
-                fontSize = 14.sp,
-                color = MaterialTheme.colors.secondary
+            SkeletonShimmerAnimation(
+                isLoading = isLoading,
+                shape = RectangleShape,
+                contentAlignment = Alignment.Center,
+                contentView = {
+                    Text(
+                        text = annotatedText
+                    )
+                },
+                defaultView = {
+                    Text(
+                        text = "                       "
+                    )
+                }
             )
-
+            Spacer(modifier = Modifier.height(4.dp))
+            //volume text
+            SkeletonShimmerAnimation(
+                isLoading = isLoading,
+                shape = RectangleShape,
+                contentAlignment = Alignment.Center,
+                contentView = {
+                    Text(
+                        text = "Vol ${
+                            items?.total_volume?.let {
+                                formatCurrency(
+                                    it.toInt()
+                                )
+                            }
+                        }",
+                        fontSize = 14.sp,
+                        color = MaterialTheme.colors.secondary
+                    )
+                },
+                defaultView = {
+                    Text(
+                        text = "       "
+                    )
+                }
+            )
         }
         // last price
         Column(
             modifier = Modifier.offset(x = (-20).dp)
         ) {
             //
-            Text(
-                text = formatCurrency(items?.current_price!!.roundToTwoDecimals().toDouble()),
-                fontSize = 18.sp,
-                color = MaterialTheme.colors.primary
+            SkeletonShimmerAnimation(
+                isLoading = isLoading,
+                shape = RectangleShape,
+                contentAlignment = Alignment.Center,
+                contentView = {
+                    Text(
+                        text = formatCurrency(
+                            items?.current_price!!.roundToTwoDecimals().toDouble()
+                        ),
+                        fontSize = 18.sp,
+                        color = MaterialTheme.colors.primary
+                    )
+                },
+                defaultView = {
+                    Text(
+                        text = "       "
+                    )
+                }
             )
-            Text(
-                text = formatCurrency(items.current_price.roundToThreeDecimals().toDouble()),
-                fontSize = 14.sp,
-                color = MaterialTheme.colors.secondary
+            Spacer(modifier = Modifier.height(4.dp))
+            SkeletonShimmerAnimation(
+                isLoading = isLoading,
+                shape = RectangleShape,
+                contentAlignment = Alignment.Center,
+                contentView = {
+                    Text(
+                        text = formatCurrency(
+                            items?.current_price!!.roundToThreeDecimals().toDouble()
+                        ),
+                        fontSize = 14.sp,
+                        color = MaterialTheme.colors.secondary
+                    )
+                },
+                defaultView = {
+                    Text(
+                        text = "       "
+                    )
+                }
             )
+
         }
         // 24h change
-        Surface(
-            color = when {
-                items?.price_change_percentage_24h!! > 0 -> Color(0xff32a852)
-                items.price_change_percentage_24h.equals(0.0) -> Color.Gray
-                else -> {
-                    Color.Red
+        SkeletonShimmerAnimation(
+            isLoading = isLoading,
+            shape = RectangleShape,
+            contentAlignment = Alignment.Center,
+            contentView = {
+                Surface(
+                    color = when {
+                        items?.price_change_percentage_24h!! > 0 -> Color(0xff32a852)
+                        items.price_change_percentage_24h.equals(0.0) -> Color.Gray
+                        else -> {
+                            Color.Red
+                        }
+                    },
+                    shape = RoundedCornerShape(4.dp),
+                    contentColor = Color.White,
+                    elevation = 8.dp,
+                ) {
+                    Text(
+                        text = "${items.price_change_percentage_24h.roundPriceChange()}%",
+                        style = MaterialTheme.typography.subtitle2,
+                        modifier = Modifier
+                            .width(55.dp)
+                            .height(35.dp)
+                            .padding(10.dp),
+                        textAlign = TextAlign.Center
+                    )
                 }
             },
-            shape = RoundedCornerShape(4.dp),
-            contentColor = Color.White,
-            elevation = 8.dp,
-        ) {
-            Text(
-                text = "${items.price_change_percentage_24h.roundPriceChange()}%",
-                style = MaterialTheme.typography.subtitle2,
-                modifier = Modifier
-                    .width(55.dp)
-                    .height(35.dp)
-                    .padding(10.dp),
-                textAlign = TextAlign.Center
-            )
-        }
+            defaultView = {
+                Box(
+                    modifier = Modifier
+                        .width(55.dp)
+                        .height(35.dp)
+                        .clip(shape = RoundedCornerShape(4.dp))
+                        .padding(10.dp)
+
+
+                )
+
+            }
+        )
+
 
     }
 }

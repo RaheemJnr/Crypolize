@@ -1,5 +1,6 @@
 package com.raheemjnr.cryptolize.ui.viewModels
 
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -7,10 +8,7 @@ import androidx.paging.PagingData
 import com.raheemjnr.cryptolize.data.repository.local.entity.CryptoEntity
 import com.raheemjnr.cryptolize.domain.repository.list.ListRepo
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 
@@ -19,8 +17,6 @@ class CryptoListViewModel(private val repo: ListRepo) : ViewModel() {
     private val _isRefreshing = MutableStateFlow(false)
     val isRefreshing: StateFlow<Boolean>
         get() = _isRefreshing.asStateFlow()
-
-
 
     fun refresh() {
         // This doesn't handle multiple 'refreshing' tasks, don't use this
@@ -32,18 +28,20 @@ class CryptoListViewModel(private val repo: ListRepo) : ViewModel() {
         }
     }
 
+    // Ui State
+    data class UiState(
+        val isLoading: Boolean = false,
+        val status: Flow<PagingData<CryptoEntity>> = flowOf(),
+        val errorMessage: String? = null,
+    )
+
+
+    var uiState = mutableStateOf(UiState())
+
 
     fun getCryptoList(): Flow<PagingData<CryptoEntity>> {
         return repo.getCryptoList()
     }
-
-//    fun getCryptoList(pageSize: Int = 20) =
-//        Pager(config = PagingConfig(pageSize = pageSize, initialLoadSize = pageSize)) {
-//            PageNumSource { pageNum, pageSize ->
-//                repo(pageNum, pageSize)
-//            }
-//        }.flow.cachedIn(viewModelScope)
-
 
 
     /** viewModel Factory

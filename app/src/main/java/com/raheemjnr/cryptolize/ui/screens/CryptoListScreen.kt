@@ -1,17 +1,20 @@
 package com.raheemjnr.cryptolize.ui.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.paging.LoadState
@@ -32,6 +35,7 @@ import com.raheemjnr.cryptolize.ui.components.ListTopAppbar
 import com.raheemjnr.cryptolize.ui.viewModels.CryptoListViewModel
 import com.raheemjnr.cryptolize.utils.LottieAnimation
 import com.raheemjnr.cryptolize.utils.openUrl
+import kotlinx.coroutines.delay
 
 @ExperimentalPagerApi
 @Composable
@@ -47,7 +51,22 @@ fun CryptoListScreen(navController: NavController) {
     val isRefreshing = viewModel.isRefreshing.collectAsState()
     val pagingItems = viewModel.getCryptoList().collectAsLazyPagingItems()
     val lazyListState = rememberLazyListState()
-   val isLoading = pagingItems.loadState.refresh is LoadState.Loading
+    val isLoading = remember {
+        mutableStateOf(false)
+    }
+
+    val loading = remember {
+        mutableStateOf(false)
+    }
+
+
+    LaunchedEffect(key1 = null) {
+        loading.value = true
+
+        delay(5000L)
+
+        loading.value = false
+    }
 
 
     Scaffold(
@@ -81,6 +100,7 @@ fun CryptoListScreen(navController: NavController) {
                             item?.let {
                                 Column {
                                     CryptoListItems(
+                                        isLoading = isLoading.value,
                                         items = item
                                     ) {
                                         //on item click
@@ -95,7 +115,9 @@ fun CryptoListScreen(navController: NavController) {
                         pagingItems.apply {
                             when {
                                 //refresh list
-//                                loadState.refresh is LoadState.Loading -> item {
+                                loadState.refresh is LoadState.Loading -> item {
+
+                                    isLoading.value = true
 //                                    Dialog(
 //                                        onDismissRequest = {},
 //                                        DialogProperties(
@@ -125,7 +147,7 @@ fun CryptoListScreen(navController: NavController) {
 //                                            }
 //                                        }
 //                                    }
-//                                }
+                                }
                                 //add to the already available list
                                 loadState.append is LoadState.Loading -> item {
                                     val composition by rememberLottieComposition(

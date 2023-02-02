@@ -11,7 +11,6 @@ import androidx.navigation.navArgument
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.raheemjnr.cryptolize.ui.screens.CryptoListScreen
 import com.raheemjnr.cryptolize.ui.screens.DetailScreen
-import com.raheemjnr.cryptolize.ui.theme.CryptolizeTheme
 
 /** nav graph to navigate to respective screens */
 @ExperimentalPagerApi
