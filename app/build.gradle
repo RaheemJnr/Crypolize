@@ -49,6 +49,11 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
+    android {
+        namespace 'com.raheemjnr.cryptolize'
+    }
+
+    namespace 'com.raheemjnr.cryptolize'
 }
 
 dependencies {
