@@ -51,10 +51,6 @@ fun CryptoListScreen(navController: NavController) {
     val isRefreshing = viewModel.isRefreshing.collectAsState()
     val pagingItems = viewModel.getCryptoList().collectAsLazyPagingItems()
     val lazyListState = rememberLazyListState()
-    val isLoading = remember {
-        mutableStateOf(false)
-    }
-
     val loading = remember {
         mutableStateOf(false)
     }
@@ -100,7 +96,6 @@ fun CryptoListScreen(navController: NavController) {
                             item?.let {
                                 Column {
                                     CryptoListItems(
-                                        isLoading = isLoading.value,
                                         items = item
                                     ) {
                                         //on item click
@@ -117,36 +112,35 @@ fun CryptoListScreen(navController: NavController) {
                                 //refresh list
                                 loadState.refresh is LoadState.Loading -> item {
 
-                                    isLoading.value = true
-//                                    Dialog(
-//                                        onDismissRequest = {},
-//                                        DialogProperties(
-//                                            dismissOnBackPress = false,
-//                                            dismissOnClickOutside = false
-//                                        )
-//                                    ) {
-//                                        Box(
-//                                            modifier = Modifier
-//                                                .size(55.dp)
-//                                                .background(
-//                                                    Color.Transparent,
-//                                                    shape = RoundedCornerShape(8.dp)
-//                                                )
-//                                        ) {
-//                                            val composition by rememberLottieComposition(
-//                                                LottieCompositionSpec
-//                                                    // here `code` is the file name of lottie file
-//                                                    // use it accordingly
-//                                                    .RawRes(R.raw.cryptolize_loading_anim)
-//                                            )
-//                                            composition?.let { lottieComposition ->
-//                                                LottieAnimation(
-//                                                    showMessage = false,
-//                                                    composition = lottieComposition
-//                                                )
-//                                            }
-//                                        }
-//                                    }
+                                    Dialog(
+                                        onDismissRequest = {},
+                                        DialogProperties(
+                                            dismissOnBackPress = false,
+                                            dismissOnClickOutside = false
+                                        )
+                                    ) {
+                                        Box(
+                                            modifier = Modifier
+                                                .size(55.dp)
+                                                .background(
+                                                    Color.Transparent,
+                                                    shape = RoundedCornerShape(8.dp)
+                                                )
+                                        ) {
+                                            val composition by rememberLottieComposition(
+                                                LottieCompositionSpec
+                                                    // here `code` is the file name of lottie file
+                                                    // use it accordingly
+                                                    .RawRes(R.raw.cryptolize_loading_anim)
+                                            )
+                                            composition?.let { lottieComposition ->
+                                                LottieAnimation(
+                                                    showMessage = false,
+                                                    composition = lottieComposition
+                                                )
+                                            }
+                                        }
+                                    }
                                 }
                                 //add to the already available list
                                 loadState.append is LoadState.Loading -> item {
