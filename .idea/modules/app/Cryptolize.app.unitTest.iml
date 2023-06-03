@@ -25,6 +25,7 @@
           <stringArguments>
             <stringArg name="classpath">
               <args>
+                <arg>$MODULE_DIR$/../../../app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/R.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/aaf0ffbeb89e1d8abfa79cd7dd56b7e7/transformed/jetified-constraintlayout-compose-1.0.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/5ae5409fa7006bd9c1e8fb58b59f2499/transformed/jetified-moshi-kotlin-1.13.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/f011f0827dda933a9f314ada85f29666/transformed/jetified-accompanist-swiperefresh-0.23.1-api.jar</arg>
